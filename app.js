@@ -79,6 +79,7 @@
           color: raw.color ? String(raw.color) : "",
           note: raw.note ? String(raw.note) : "",
           logo: resolveLogo(raw),
+          colors: normalizeColors(raw.colors),
         };
       })
       .filter(Boolean);
@@ -148,6 +149,46 @@
     return product.color;
   }
 
+  // Available colourways. Each entry is { name, hex }, or a bare hex string.
+  function normalizeColors(raw) {
+    if (!Array.isArray(raw)) return [];
+    return raw
+      .map(function (entry) {
+        if (typeof entry === "string") return { name: entry, hex: entry };
+        if (!entry || !entry.hex) return null;
+        return { name: entry.name ? String(entry.name) : "", hex: String(entry.hex) };
+      })
+      .filter(Boolean);
+  }
+
+  function fillColors(node, product) {
+    var row = node.querySelector(".product__colors");
+    if (!product.colors.length) return;
+
+    var names = product.colors
+      .map(function (color) {
+        return color.name;
+      })
+      .filter(Boolean);
+
+    product.colors.forEach(function (color) {
+      var swatch = document.createElement("span");
+      swatch.className = "product__swatch";
+      swatch.style.backgroundColor = color.hex;
+      swatch.setAttribute("aria-hidden", "true");
+      row.appendChild(swatch);
+    });
+
+    // One label for the whole row reads better than one per square.
+    row.setAttribute(
+      "aria-label",
+      names.length
+        ? "Also in " + names.join(", ")
+        : product.colors.length + " colours available",
+    );
+    row.hidden = false;
+  }
+
   function fillBrand(node, product) {
     var brandRow = node.querySelector(".product__brand");
     var logo = node.querySelector(".product__logo");
@@ -193,6 +234,7 @@
     link.textContent = product.name;
 
     fillBrand(node, product);
+    fillColors(node, product);
     node.querySelector(".product__price").textContent = product.price;
     node.querySelector(".product__meta").textContent = metaText(product);
     node.querySelector(".product__note").textContent = product.note;

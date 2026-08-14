@@ -259,6 +259,25 @@ a {
   margin-top: 0.35rem;
 }
 
+/* Available colourways, shown as small squares under the price. */
+.product__colors {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.3rem;
+  margin-top: 0.55rem;
+}
+
+.product__colors[hidden] {
+  display: none;
+}
+
+.product__swatch {
+  width: 11px;
+  height: 11px;
+  flex: none;
+  box-shadow: inset 0 0 0 1px rgba(17, 17, 17, 0.16);
+}
+
 @media (hover: hover) {
   .product__link {
     cursor: pointer;

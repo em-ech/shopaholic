@@ -5,18 +5,18 @@
    2. Add products to the PRODUCTS array.
 
    Required on every product:  name, price, image, url
-   Optional:                   id, brand, color, note, logo
+   Optional:                   id, brand, color, colors, note, logo
 
    Notes
    - If you leave out "id" one is generated from the name. Products with an
      explicit id keep their Saved state even if you later reword the name, so
      an id is worth setting.
+   - "colors" draws the little squares under the price. Each entry is
+     { name: "Navy blue", hex: "#2A323D" }. Leave it out for no squares.
    - The retailer logo appears above the product name. Leave "logo" out and the
      retailer's own icon is pulled from its domain automatically. Set "logo" to
      an image URL to override it. If no logo can be loaded, the brand name
      shows as text instead.
-   - Everything below the title is example data. Delete it once your own
-     products are in.
    ========================================================================== */
 
 window.COLLECTION = {
@@ -27,69 +27,324 @@ window.COLLECTION = {
 
 window.PRODUCTS = [
   {
-    id: "demo-cotton-tee",
-    name: "Basic Crew Neck T Shirt",
-    brand: "COS",
-    price: "25.00 GBP",
+    id: "nude-ryuk-tee-brown",
+    name: "Ryuk Tee Brown",
+    brand: "Nude Project",
+    price: "54.00 GBP",
+    color: "Brown",
+    colors: [{ name: "Brown", hex: "#6B4F3A" }],
+    image:
+      "https://cdn.shopify.com/s/files/1/0025/3725/9054/files/15front_9465acf1-7ff8-473e-9eb5-f5465a9ab36c.webp?v=1786391805",
+    url:
+      "https://nude-project.com/en-gb/collections/t-shirts/products/tekna-tee-brown",
+  },
+  {
+    id: "nude-tennis-tee-white",
+    name: "Tennis Tee White",
+    brand: "Nude Project",
+    price: "54.00 GBP",
     color: "White",
+    colors: [{ name: "White", hex: "#F2F0EA" }],
     image:
-      "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=1200&q=80&auto=format",
-    url: "https://www.cos.com/",
-    note: "Example product",
+      "https://cdn.shopify.com/s/files/1/0025/3725/9054/files/TENNISTEEWHITE_front.webp?v=1786017874",
+    url:
+      "https://nude-project.com/en-gb/collections/t-shirts/products/tennis-tee-white",
   },
   {
-    id: "demo-satin-joggers",
-    name: "Satin Jogger Trousers",
-    brand: "Mango",
-    price: "39.99 GBP",
-    color: "Blush",
+    id: "nude-court-tee-ivory",
+    name: "Court Tee Ivory",
+    brand: "Nude Project",
+    price: "54.00 GBP",
+    color: "Ivory",
+    colors: [{ name: "Ivory", hex: "#EDE6D8" }],
     image:
-      "https://images.unsplash.com/photo-1594633312681-425c7b97ccd1?w=1200&q=80&auto=format",
-    url: "https://shop.mango.com/",
-    note: "Example product",
+      "https://cdn.shopify.com/s/files/1/0025/3725/9054/files/345front_a260a921-f9f2-469c-8389-29f2ffd9c7a7.webp?v=1786017710",
+    url:
+      "https://nude-project.com/en-gb/collections/t-shirts/products/nps-court-tee-marshmallow",
   },
   {
-    id: "demo-biker-jacket",
-    name: "Faux Leather Biker Jacket",
-    brand: "Zara",
-    price: "89.99 GBP",
+    id: "nude-origins-tee-black",
+    name: "Origins Tee Black",
+    brand: "Nude Project",
+    price: "44.00 GBP",
     color: "Black",
+    colors: [{ name: "Black", hex: "#17171A" }],
     image:
-      "https://images.unsplash.com/photo-1551028719-00167b16eac5?w=1200&q=80&auto=format",
-    url: "https://www.zara.com/",
-    note: "Example product",
+      "https://cdn.shopify.com/s/files/1/0025/3725/9054/files/ORIGINS_TEE_BLACK_front_6ea47f02-cd6f-4f79-8626-1f2bd0316be1.webp?v=1786018559",
+    url:
+      "https://nude-project.com/en-gb/collections/t-shirts/products/sella-ss25-tee-black-1",
   },
   {
-    id: "demo-belted-coat",
-    name: "Belted Wool Blend Coat",
-    brand: "Arket",
-    price: "229.00 GBP",
-    color: "Camel",
-    image:
-      "https://images.unsplash.com/photo-1539533018447-63fcce2678e3?w=1200&q=80&auto=format",
-    url: "https://www.arket.com/",
-    note: "Example product",
-  },
-  {
-    id: "demo-canvas-backpack",
-    name: "Structured Canvas Backpack",
-    brand: "Everlane",
-    price: "98.00 USD",
+    id: "nude-wavy-knit-sweater-navy",
+    name: "Wavy Knit Sweater Navy",
+    brand: "Nude Project",
+    price: "139.00 GBP",
     color: "Navy",
+    colors: [{ name: "Navy", hex: "#232C43" }],
     image:
-      "https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=1200&q=80&auto=format",
-    url: "https://www.everlane.com/",
-    note: "Example product",
+      "https://cdn.shopify.com/s/files/1/0025/3725/9054/files/13front_e96ab72e-4843-4cda-9c82-65d47df64f1b.webp?v=1786009216",
+    url:
+      "https://nude-project.com/en-gb/collections/knitwear/products/wavy-knit-blue",
   },
   {
-    id: "demo-fringed-poncho",
-    name: "Fringed Open Knit Poncho",
-    brand: "Aritzia",
-    price: "145.00 USD",
-    color: "Cream",
+    id: "nude-origins-quarter-zip-khaki",
+    name: "Origins Quarter-Zip Khaki",
+    brand: "Nude Project",
+    price: "99.00 GBP",
+    color: "Khaki",
+    colors: [{ name: "Khaki", hex: "#6E6A4C" }],
     image:
-      "https://images.unsplash.com/photo-1434389677669-e08b4cac3105?w=1200&q=80&auto=format",
-    url: "https://www.aritzia.com/",
-    note: "Example product",
+      "https://cdn.shopify.com/s/files/1/0025/3725/9054/files/1front_green_c759d6e7-2e03-4c4c-add1-be200bef444a.webp?v=1786348847",
+    url:
+      "https://nude-project.com/en-gb/collections/hoodies/products/origins-halfzip-fw26-forest-green",
+  },
+  {
+    id: "eme-thrill-off-sand-oversized-tee",
+    name: "Thrill Off Sand Oversized Tee",
+    brand: "eme studios",
+    price: "65.00 USD",
+    color: "Off Sand",
+    colors: [{ name: "Off Sand", hex: "#D8CBB4" }],
+    image:
+      "https://cdn.shopify.com/s/files/1/1804/1835/files/20206_07_31EMEURGENTE0322.webp?v=1785828399&width=1600",
+    url:
+      "https://emestudios.com/us/en/product/thrill-off-sand-oversized-tee",
+  },
+  {
+    id: "eme-thrill-shadow-long-sleeve",
+    name: "Thrill Shadow Long Sleeve",
+    brand: "eme studios",
+    price: "79.00 USD",
+    color: "Shadow",
+    colors: [{ name: "Shadow", hex: "#6A6A6C" }],
+    image:
+      "https://cdn.shopify.com/s/files/1/1804/1835/files/1_a15f0d8c-eacc-41b9-87bc-a884d080d4b8.webp?v=1776412055&width=1600",
+    url:
+      "https://emestudios.com/us/en/product/thrill-shadow-long-sleeve",
+  },
+  {
+    id: "eme-core-shadow-oversized-tee",
+    name: "Core Shadow Oversized Tee",
+    brand: "eme studios",
+    price: "65.00 USD",
+    color: "Shadow",
+    colors: [{ name: "Shadow", hex: "#6A6A6C" }],
+    image:
+      "https://cdn.shopify.com/s/files/1/1804/1835/files/8435674690356_1.webp?v=1767096554&width=1600",
+    url:
+      "https://emestudios.com/us/en/product/core-shadow-oversized-tee",
+  },
+  {
+    id: "eme-basic-navy-long-sleeve",
+    name: "Basic Navy Long Sleeve",
+    brand: "eme studios",
+    price: "48.30 USD",
+    color: "Navy",
+    colors: [{ name: "Navy", hex: "#232C43" }],
+    image:
+      "https://cdn.shopify.com/s/files/1/1804/1835/files/2025_02_07EME14351.webp?v=1756678107&width=1600",
+    url:
+      "https://emestudios.com/us/en/product/basic-navy-long-sleeve",
+  },
+  {
+    id: "eme-bachatas-navy-polo-crewneck",
+    name: "Bachatas Navy Polo Crewneck",
+    brand: "eme studios",
+    price: "76.30 USD",
+    color: "Navy",
+    colors: [{ name: "Navy", hex: "#232C43" }],
+    image:
+      "https://cdn.shopify.com/s/files/1/1804/1835/files/2025_12_18EME2087.webp?v=1767093771&width=1600",
+    url:
+      "https://emestudios.com/us/en/product/bachatas-navy-polo-crewneck",
+  },
+  {
+    id: "eme-academy-navy-oversized-crewneck",
+    name: "Academy Navy Oversized Crewneck",
+    brand: "eme studios",
+    price: "49.50 USD",
+    color: "Navy",
+    colors: [{ name: "Navy", hex: "#232C43" }],
+    image:
+      "https://cdn.shopify.com/s/files/1/1804/1835/files/2025_12_18EME2186.webp?v=1767095355&width=1600",
+    url:
+      "https://emestudios.com/us/en/product/academy-navy-oversized-crewneck",
+  },
+  {
+    id: "eme-suty-sycamore-reverse-crewneck",
+    name: "Suty Sycamore Reverse Crewneck",
+    brand: "eme studios",
+    price: "79.20 USD",
+    color: "Sycamore",
+    colors: [{ name: "Sycamore", hex: "#8F8672" }],
+    image:
+      "https://cdn.shopify.com/s/files/1/1804/1835/files/2025_04_24EME1182.webp?v=1756677653&width=1600",
+    url:
+      "https://emestudios.com/us/en/product/suty-sycamore-reverse-crewneck",
+  },
+  {
+    id: "eme-thrill-navy-zipper-knit",
+    name: "Thrill Navy Zipper Knit",
+    brand: "eme studios",
+    price: "139.00 USD",
+    color: "Navy",
+    colors: [{ name: "Navy", hex: "#232C43" }],
+    image:
+      "https://cdn.shopify.com/s/files/1/1804/1835/files/KANT_NAVY_CARDIGAN_ZIP_1.webp?v=1746533270&width=1600",
+    url:
+      "https://emestudios.com/us/en/product/thrill-navy-zipper-knit",
+  },
+  {
+    id: "zara-slim-fit-rib-contrast-t-shirt-oyster-white",
+    name: "Slim Fit Rib Contrast T Shirt",
+    brand: "Zara",
+    price: "29.99 GBP",
+    color: "Oyster-white",
+    image:
+      "https://static.zara.net/assets/public/ccb8/5acf/d90a406cb215/0ba63b98070d/04087034251-p/04087034251-p.jpg?ts=1779127843299&w=1024",
+    url:
+      "https://www.zara.com/uk/en/slim-fit-t-shirt-with-contrast-ribbed-trims-p04087034.html?v1=555071525&v2=2718839",
+  },
+  {
+    id: "zara-ribbed-henley-t-shirt-khaki",
+    name: "Ribbed Henley T Shirt",
+    brand: "Zara",
+    price: "29.99 GBP",
+    color: "Khaki",
+    image:
+      "https://static.zara.net/assets/public/b6ab/cb27/105a4cd69aca/11c0b89dbefa/06462420505-p/06462420505-p.jpg?ts=1786373621900&w=1024",
+    url:
+      "https://www.zara.com/uk/en/ribbed-henley-t-shirt-p06462420.html?v1=554659836&v2=2432042",
+  },
+  {
+    id: "zara-relaxed-fit-interlock-t-shirt-04-dark-khaki",
+    name: "Relaxed Fit Interlock T Shirt /04",
+    brand: "Zara",
+    price: "22.99 GBP",
+    color: "Dark khaki",
+    colors: [{ name: "Dark khaki", hex: "#4D4D3C" }, { name: "Mid-grey", hex: "#A5A4A2" }, { name: "White", hex: "#F4F6FA" }, { name: "Pink / lilac", hex: "#D6BEC6" }, { name: "Black", hex: "#242524" }, { name: "Light blue", hex: "#A8C9E0" }],
+    image:
+      "https://static.zara.net/assets/public/fc57/6ce1/0b854f978d8b/982e7eedfe80/05584431507-p/05584431507-p.jpg?ts=1785919742238&w=1024",
+    url:
+      "https://www.zara.com/uk/en/relaxed-fit-interlock-t-shirt--04-p05584471.html?v1=545425838&v2=2432042",
+  },
+  {
+    id: "zara-relaxed-fit-knit-t-shirt-camel",
+    name: "Relaxed Fit Knit T Shirt",
+    brand: "Zara",
+    price: "29.99 GBP",
+    color: "Camel",
+    colors: [{ name: "Camel", hex: "#928374" }, { name: "Blue / grey", hex: "#C0C5C8" }, { name: "Turquoise", hex: "#41A2AE" }, { name: "Oyster-white", hex: "#EFE4D2" }],
+    image:
+      "https://static.zara.net/assets/public/388f/bb7d/12e04dcf876e/0cd91195f9ab/09598441707-p/09598441707-p.jpg?ts=1785853957777&w=1024",
+    url:
+      "https://www.zara.com/uk/en/relaxed-fit-knit-t-shirt-p09598441.html?v1=545479345&v2=2432042",
+  },
+  {
+    id: "zara-textured-regular-fit-knit-polo-shirt-navy-blue",
+    name: "Textured Regular Fit Knit Polo Shirt",
+    brand: "Zara",
+    price: "35.99 GBP",
+    color: "Navy blue",
+    colors: [{ name: "Navy blue", hex: "#2A323D" }, { name: "Green", hex: "#398464" }, { name: "Chocolate", hex: "#38302A" }, { name: "Oyster-white", hex: "#FCF5E8" }],
+    image:
+      "https://static.zara.net/assets/public/fe34/aafb/1ac34c02b817/6c69a27c2ebc/03332410401-p/03332410401-p.jpg?ts=1785853958309&w=1024",
+    url:
+      "https://www.zara.com/uk/en/textured-regular-fit-knit-polo-shirt-p03332410.html?v1=545485573&v2=2727947",
+  },
+  {
+    id: "zara-relaxed-fit-knit-t-shirt-oyster-white",
+    name: "Relaxed Fit Knit T Shirt",
+    brand: "Zara",
+    price: "29.99 GBP",
+    color: "Oyster-white",
+    colors: [{ name: "Oyster-white", hex: "#EFE4D2" }, { name: "Blue / grey", hex: "#C0C5C8" }, { name: "Turquoise", hex: "#41A2AE" }, { name: "Camel", hex: "#928374" }],
+    image:
+      "https://static.zara.net/assets/public/b59a/49c6/d00e43caa26f/684dc84a0959/09598441251-p/09598441251-p.jpg?ts=1768569417137&w=1024",
+    url:
+      "https://www.zara.com/uk/en/relaxed-fit-knit-t-shirt-p09598441.html?v1=545479344&v2=2727947",
+  },
+  {
+    id: "zara-relaxed-fit-embroidered-text-polo-shirt-light-blue",
+    name: "Relaxed Fit Embroidered Text Polo Shirt",
+    brand: "Zara",
+    price: "35.99 GBP",
+    color: "Light blue",
+    colors: [{ name: "Light blue", hex: "#74A9DC" }, { name: "Bottle green", hex: "#1D4541" }, { name: "Oyster-white", hex: "#E6E6DF" }],
+    image:
+      "https://static.zara.net/assets/public/2d9d/5cfe/88db450fb425/2b0e89897a65/04087350406-p/04087350406-p.jpg?ts=1785417606214&w=1024",
+    url:
+      "https://www.zara.com/uk/en/relaxed-fit-embroidered-text-polo-shirt-p04087350.html?v1=548909888&v2=2727947",
+  },
+  {
+    id: "zara-contrast-regular-fit-polo-shirt-oyster-white",
+    name: "Contrast Regular Fit Polo Shirt",
+    brand: "Zara",
+    price: "29.99 GBP",
+    color: "Oyster-white",
+    colors: [{ name: "Oyster-white", hex: "#F9F6F0" }, { name: "Navy blue", hex: "#202434" }],
+    image:
+      "https://static.zara.net/assets/public/c3df/fcf3/0e26458cb28f/8d5423ef37ef/04092449251-p/04092449251-p.jpg?ts=1785825514180&w=1024",
+    url:
+      "https://www.zara.com/uk/en/contrast-regular-fit-polo-shirt-p04092449.html?v1=547044508&v2=2727947",
+  },
+  {
+    id: "zara-100-linen-regular-fit-trousers-navy-blue",
+    name: "100% Linen Regular Fit Trousers",
+    brand: "Zara",
+    price: "39.99 GBP",
+    color: "Navy blue",
+    colors: [{ name: "Navy blue", hex: "#2A323D" }, { name: "Brown", hex: "#38302A" }, { name: "Black", hex: "#242524" }, { name: "White", hex: "#F9F6F0" }, { name: "Light beige", hex: "#CFC2B7" }, { name: "Mink", hex: "#564A3C" }],
+    image:
+      "https://static.zara.net/assets/public/ebfd/2e7d/0e6044a0824c/ef7ebb0d6078/04410012401-p/04410012401-p.jpg?ts=1772728967979&w=1024",
+    url:
+      "https://www.zara.com/uk/en/100-linen-regular-fit-trousers-p05070012.html?v1=545456679",
+  },
+  {
+    id: "zara-textured-relaxed-fit-pleated-trousers-light-beige",
+    name: "Textured Relaxed Fit Pleated Trousers",
+    brand: "Zara",
+    price: "39.99 GBP",
+    color: "Light beige",
+    colors: [{ name: "Light beige", hex: "#ACA492" }, { name: "White", hex: "#F9F6F0" }, { name: "Grey green", hex: "#60594E" }],
+    image:
+      "https://static.zara.net/assets/public/4487/f648/4b95405786b4/6bcb6a3d7db8/00706920052-p/00706920052-p.jpg?ts=1785768690828&w=1024",
+    url:
+      "https://www.zara.com/uk/en/relaxed-fit-textured-pleated-trousers-p00706920.html?v1=548761351",
+  },
+  {
+    id: "zara-geometric-jacquard-relaxed-fit-shirt-black",
+    name: "Geometric Jacquard Relaxed Fit Shirt",
+    brand: "Zara",
+    price: "35.99 GBP",
+    color: "Black",
+    colors: [{ name: "Black", hex: "#0A0A0A" }, { name: "Green", hex: "#2D332D" }],
+    image:
+      "https://static.zara.net/assets/public/2d9b/f968/1d9846038819/7b7452f5bb98/01450300800-p/01450300800-p.jpg?ts=1782397319623&w=1024",
+    url:
+      "https://www.zara.com/uk/en/geometric-jacquard-relaxed-fit-shirt-p01450300.html?v1=545496261&v2=2431994",
+  },
+  {
+    id: "zara-textured-regular-fit-shirt-charcoal",
+    name: "Textured Regular Fit Shirt",
+    brand: "Zara",
+    price: "35.99 GBP",
+    color: "Charcoal",
+    image:
+      "https://static.zara.net/assets/public/05db/663f/5b884f588f5a/7d48ba1cd029/04795417822-p/04795417822-p.jpg?ts=1782226377442&w=1024",
+    url:
+      "https://www.zara.com/uk/en/textured-regular-fit-shirt-p04795417.html?v1=545465839&v2=2431994",
+  },
+  {
+    id: "zara-relaxed-fit-flowing-shirt-black",
+    name: "Relaxed Fit Flowing Shirt",
+    brand: "Zara",
+    price: "45.99 GBP",
+    color: "Black",
+    colors: [{ name: "Black", hex: "#0A0A0A" }, { name: "Grey / tan", hex: "#CEC3B2" }, { name: "Brown", hex: "#3D2E2D" }, { name: "Mid-ecru", hex: "#EDE4D8" }],
+    image:
+      "https://static.zara.net/assets/public/0ee9/40c0/15cf45d1972a/81e1dd0c7a9e/00706923800-p/00706923800-p.jpg?ts=1786091483445&w=1024",
+    url:
+      "https://www.zara.com/uk/en/relaxed-fit-flowing-shirt-p04364653.html?v1=545412607&v2=2431994",
   },
 ];
