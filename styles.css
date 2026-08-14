@@ -1,0 +1,342 @@
+/* --------------------------------------------------------------------------
+   Tokens
+   -------------------------------------------------------------------------- */
+:root {
+  --ink: #111111;
+  --ink-soft: #6d6d6d;
+  --well: #eeedea;
+  --page: #ffffff;
+
+  --page-pad: 1rem;
+  --col-gap: 1.25rem;
+  --row-gap: 3rem;
+
+  --type-ui: 0.75rem;
+  --track: 0.04em;
+
+  --font:
+    "Helvetica Neue", Helvetica, "Inter", -apple-system, BlinkMacSystemFont,
+    "Segoe UI", Arial, sans-serif;
+}
+
+@media (min-width: 900px) {
+  :root {
+    --page-pad: 1.5rem;
+    --col-gap: 3rem;
+    --row-gap: 4.5rem;
+    --type-ui: 0.8125rem;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   Base
+   -------------------------------------------------------------------------- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  padding: 0 var(--page-pad) 6rem;
+  background: var(--page);
+  color: var(--ink);
+  font-family: var(--font);
+  font-size: var(--type-ui);
+  line-height: 1.45;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1,
+h2,
+p {
+  margin: 0;
+  font-size: inherit;
+  font-weight: 400;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+:focus-visible {
+  outline: 1px solid var(--ink);
+  outline-offset: 3px;
+}
+
+.skip-link {
+  position: absolute;
+  left: -9999px;
+  top: 0;
+}
+
+.skip-link:focus {
+  left: var(--page-pad);
+  top: 0.5rem;
+  z-index: 10;
+  background: var(--page);
+  padding: 0.5rem 0.75rem;
+  letter-spacing: var(--track);
+  text-transform: uppercase;
+}
+
+/* --------------------------------------------------------------------------
+   Masthead
+   -------------------------------------------------------------------------- */
+.masthead {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.75rem 2rem;
+  padding: 2.25rem 0 2.75rem;
+}
+
+@media (min-width: 900px) {
+  .masthead {
+    padding: 3rem 0 3.5rem;
+  }
+}
+
+.masthead__title {
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  font-size: var(--type-ui);
+}
+
+.masthead__nav {
+  display: flex;
+  gap: 1.75rem;
+}
+
+.nav-link {
+  text-transform: uppercase;
+  letter-spacing: var(--track);
+  color: var(--ink-soft);
+  padding-bottom: 2px;
+  border-bottom: 1px solid transparent;
+  transition:
+    color 0.2s ease,
+    border-color 0.2s ease;
+}
+
+.nav-link[aria-current="page"] {
+  color: var(--ink);
+  border-bottom-color: var(--ink);
+}
+
+.nav-link__count {
+  margin-left: 0.4em;
+  font-variant-numeric: tabular-nums;
+}
+
+/* --------------------------------------------------------------------------
+   Grid
+   -------------------------------------------------------------------------- */
+.grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  column-gap: var(--col-gap);
+  row-gap: var(--row-gap);
+}
+
+@media (min-width: 560px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 900px) {
+  .grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* --------------------------------------------------------------------------
+   Product
+   -------------------------------------------------------------------------- */
+.product {
+  position: relative;
+}
+
+.product__media {
+  background: var(--well);
+  aspect-ratio: 2 / 3;
+  overflow: hidden;
+}
+
+.product__image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: opacity 0.35s ease;
+}
+
+.product__image[hidden] {
+  display: none;
+}
+
+.product__info {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+  padding-top: 0.9rem;
+}
+
+.product__text {
+  min-width: 0;
+}
+
+.product__brand {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin-bottom: 0.35rem;
+  color: var(--ink-soft);
+  font-size: 0.6875rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.product__brand:empty,
+.product__brand.is-empty {
+  display: none;
+}
+
+.product__logo {
+  width: auto;
+  height: 14px;
+  max-width: 72px;
+  object-fit: contain;
+  object-position: left center;
+}
+
+.product__logo[hidden] {
+  display: none;
+}
+
+.product__name {
+  text-transform: uppercase;
+  letter-spacing: var(--track);
+}
+
+/* The link is stretched across the whole product so the image, the name and
+   the information block all open the retailer. The heart sits above it. */
+.product__link::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+}
+
+.product__price {
+  color: var(--ink);
+}
+
+.product__meta,
+.product__note {
+  color: var(--ink-soft);
+}
+
+.product__meta:empty,
+.product__note:empty {
+  display: none;
+}
+
+.product__note {
+  margin-top: 0.35rem;
+}
+
+@media (hover: hover) {
+  .product__link {
+    cursor: pointer;
+  }
+
+  .product:hover .product__image {
+    opacity: 0.82;
+  }
+}
+
+.product__link:focus-visible {
+  outline: none;
+}
+
+.product__link:focus-visible::after {
+  outline: 1px solid var(--ink);
+  outline-offset: 6px;
+}
+
+/* --------------------------------------------------------------------------
+   Heart
+   -------------------------------------------------------------------------- */
+.product__save {
+  position: relative;
+  z-index: 2;
+  flex: none;
+  margin: -0.5rem -0.5rem 0 0;
+  padding: 0.5rem;
+  border: 0;
+  background: none;
+  color: var(--ink);
+  cursor: pointer;
+  line-height: 0;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.product__heart {
+  width: 18px;
+  height: 18px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.4;
+  stroke-linejoin: round;
+  transition:
+    fill 0.18s ease,
+    transform 0.18s ease;
+}
+
+.product__save[aria-pressed="true"] .product__heart {
+  fill: currentColor;
+}
+
+.product__save.is-pulsing .product__heart {
+  transform: scale(1.18);
+}
+
+/* --------------------------------------------------------------------------
+   Messages
+   -------------------------------------------------------------------------- */
+.feedback {
+  color: var(--ink-soft);
+  padding: 1rem 0 4rem;
+}
+
+.status {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+  }
+}

@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Em's Intervention</title>
+    <meta
+      name="description"
+      content="A short curated list of pieces. Tap a product to shop it, tap the heart to save it."
+    />
+    <meta name="theme-color" content="#ffffff" />
+    <meta name="color-scheme" content="light" />
+    <link rel="preconnect" href="https://images.unsplash.com" crossorigin />
+    <link
+      rel="icon"
+      href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Ctext y='19' font-size='20'%3E%E2%99%A1%3C/text%3E%3C/svg%3E"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <a class="skip-link" href="#grid">Skip to products</a>
+
+    <header class="masthead">
+      <h1 class="masthead__title" id="collection-title">&nbsp;</h1>
+      <nav class="masthead__nav" aria-label="Views">
+        <a class="nav-link" id="nav-all" href="#all">All</a>
+        <a class="nav-link" id="nav-saved" href="#saved"
+          >Saved<span class="nav-link__count" id="saved-count" hidden></span
+        ></a>
+      </nav>
+    </header>
+
+    <main>
+      <p class="feedback" id="empty-message" hidden>No saved pieces yet.</p>
+      <div class="grid" id="grid"></div>
+    </main>
+
+    <p class="status" id="status" role="status" aria-live="polite"></p>
+
+    <template id="product-template">
+      <article class="product">
+        <div class="product__media">
+          <img
+            class="product__image"
+            alt=""
+            loading="lazy"
+            decoding="async"
+            referrerpolicy="no-referrer"
+          />
+        </div>
+        <div class="product__info">
+          <div class="product__text">
+            <p class="product__brand">
+              <img
+                class="product__logo"
+                alt=""
+                hidden
+                loading="lazy"
+                decoding="async"
+                referrerpolicy="no-referrer"
+              />
+              <span class="product__brandname"></span>
+            </p>
+            <h2 class="product__name">
+              <a
+                class="product__link"
+                target="_blank"
+                rel="noopener noreferrer"
+              ></a>
+            </h2>
+            <p class="product__price"></p>
+            <p class="product__meta"></p>
+            <p class="product__note"></p>
+          </div>
+          <button class="product__save" type="button" aria-pressed="false">
+            <svg
+              class="product__heart"
+              viewBox="0 0 24 24"
+              aria-hidden="true"
+              focusable="false"
+            >
+              <path
+                d="M12 20.7 3.9 12.9a5.1 5.1 0 0 1 0-7.3 5.1 5.1 0 0 1 7.2 0l.9.9.9-.9a5.1 5.1 0 0 1 7.2 0 5.1 5.1 0 0 1 0 7.3Z"
+              />
+            </svg>
+          </button>
+        </div>
+      </article>
+    </template>
+
+    <script src="products.js"></script>
+    <script src="app.js"></script>
+  </body>
+</html>
