@@ -135,11 +135,13 @@ a {
 
 /* Both dimensions are stated. An inline svg carrying only a viewBox has no
    intrinsic width, so leaving width on auto collapses it to nothing.
-   1.747 is the mark's own ratio, 290 wide over 166 tall. */
+   2.3012 is the mark's own ratio, 382 wide over 166 tall. Three letters are
+   wider than the two the mark used to carry, so the height comes down to keep
+   it from crowding the title. */
 .masthead__mark {
   flex: none;
-  height: calc(var(--title-size) * 0.72);
-  width: calc(var(--title-size) * 0.72 * 1.747);
+  height: calc(var(--title-size) * 0.78);
+  width: calc(var(--title-size) * 0.78 * 2.3012);
 }
 
 .masthead__mark[hidden] {

@@ -112,7 +112,7 @@ the full range the style comes in and draws the small squares under the price.
 ### Adding a person
 
 ```sh
-./new-list.sh jared "Jared's Intervention"
+./new-list.sh jared "Jared's Dress Code"
 ```
 
 Creates `jared/`, seeds `jared/products.js`, generates `jared/index.html`. The

@@ -23,7 +23,7 @@ window.COLLECTION = {
   // Saved hearts are stored against this id. Every list needs its own, and an
   // id must never change once published or the hearts under it are orphaned.
   id: "em",
-  title: "Em's Intervention",
+  title: "Em's Dress Code",
   // Draws the Em wordmark to the left of the title. It is Em's mark, so no
   // other list should set this.
   wordmark: true,

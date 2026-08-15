@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # Creates a new list for another person.
 #
-# Usage: ./new-list.sh jared "Jared's Intervention"
+# Usage: ./new-list.sh jared "Jared's Dress Code"
 #
 # Makes a folder, seeds its products.js, and generates its page shell. After
 # this, add products to <slug>/products.js and run ./deploy.sh.
@@ -14,7 +14,7 @@ TITLE="${2:-}"
 
 if [ -z "$SLUG" ] || [ -z "$TITLE" ]; then
   echo "Usage: ./new-list.sh <slug> \"<Title>\"" >&2
-  echo "Example: ./new-list.sh jared \"Jared's Intervention\"" >&2
+  echo "Example: ./new-list.sh jared \"Jared's Dress Code\"" >&2
   exit 1
 fi
 

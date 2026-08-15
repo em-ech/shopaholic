@@ -12,7 +12,7 @@ cd "$(dirname "$0")"
 SHELL_FILE="index.html"
 count=0
 
-# The title as it is written in a list's products.js, e.g. Jared's Intervention.
+# The title as it is written in a list's products.js, e.g. Jared's Dress Code.
 read_title() {
   sed -n 's/^[[:space:]]*title:[[:space:]]*"\(.*\)",[[:space:]]*$/\1/p' "$1" | head -1
 }
