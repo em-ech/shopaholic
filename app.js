@@ -5,12 +5,20 @@
 (function () {
   "use strict";
 
-  var STORAGE_KEY = "shopping-list:saved:v1";
+  var LEGACY_STORAGE_KEY = "shopping-list:saved:v1";
   var VIEW_ALL = "all";
   var VIEW_SAVED = "saved";
 
+  var collection = window.COLLECTION || {};
+
+  // Every list on this site shares one origin, and localStorage is keyed by
+  // origin rather than by path. Without the list id in the key, Em's hearts
+  // and Jared's hearts would overwrite each other.
+  var STORAGE_KEY = "shopaholic:saved:v1:" + (collection.id || "default");
+
   var dom = {
     title: document.getElementById("collection-title"),
+    mark: document.getElementById("collection-mark"),
     grid: document.getElementById("grid"),
     emptyMessage: document.getElementById("empty-message"),
     navAll: document.getElementById("nav-all"),
@@ -35,7 +43,7 @@
   // COLLECTION.autoLogos to false to show the brand name on its own instead.
   function resolveLogo(raw) {
     if (raw.logo) return String(raw.logo);
-    if (window.COLLECTION && window.COLLECTION.autoLogos === false) return "";
+    if (collection.autoLogos === false) return "";
 
     try {
       var host = new URL(raw.url).hostname;
@@ -92,14 +100,22 @@
   // Only ids are stored. Ids that no longer match a product are kept in
   // storage but ignored everywhere else, so removing a product never breaks
   // the Saved view and re-adding it restores the heart.
-  function readSavedIds() {
+  function readKey(key) {
     try {
-      var parsed = JSON.parse(window.localStorage.getItem(STORAGE_KEY) || "[]");
+      var parsed = JSON.parse(window.localStorage.getItem(key) || "[]");
       return Array.isArray(parsed) ? parsed.map(String) : [];
     } catch (error) {
       console.warn("Could not read saved products.", error);
       return [];
     }
+  }
+
+  // The list that used to be the whole site keeps the hearts it already had.
+  // Only one list may claim them, and only until it saves under its own key.
+  function readSavedIds() {
+    var ids = readKey(STORAGE_KEY);
+    if (ids.length || !collection.inheritsLegacySaves) return ids;
+    return readKey(LEGACY_STORAGE_KEY);
   }
 
   function writeSavedIds(ids) {
@@ -156,7 +172,10 @@
       .map(function (entry) {
         if (typeof entry === "string") return { name: entry, hex: entry };
         if (!entry || !entry.hex) return null;
-        return { name: entry.name ? String(entry.name) : "", hex: String(entry.hex) };
+        return {
+          name: entry.name ? String(entry.name) : "",
+          hex: String(entry.hex),
+        };
       })
       .filter(Boolean);
   }
@@ -302,9 +321,17 @@
 
   /* ---------------------------------------------------------------- init --- */
 
-  var title = (window.COLLECTION && window.COLLECTION.title) || "Shopping List";
+  var title = collection.title || "Shopping List";
   dom.title.textContent = title;
   document.title = title;
+
+  // The wordmark in the shell is Em's. A list only shows it by asking for it,
+  // so another person's list is not headed by someone else's mark.
+  // The attribute is set directly rather than through the "hidden" property:
+  // that property belongs to HTMLElement, and this is an SVGElement, so
+  // assigning to it silently does nothing at all.
+  if (collection.wordmark === true) dom.mark.removeAttribute("hidden");
+  else dom.mark.setAttribute("hidden", "");
 
   window.addEventListener("hashchange", render);
   // Saved state stays in step when the site is open in more than one tab.

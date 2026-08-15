@@ -7,6 +7,11 @@
   --well: #eeedea;
   --page: #ffffff;
 
+  /* Taken from the Em logo artwork so the band and the mark are the same ink. */
+  --navy: #0d1f3c;
+  --navy-ink: #ffffff;
+  --navy-ink-soft: rgba(255, 255, 255, 0.62);
+
   --page-pad: 1rem;
   --col-gap: 1.25rem;
   --row-gap: 3rem;
@@ -94,36 +99,87 @@ a {
 /* --------------------------------------------------------------------------
    Masthead
    -------------------------------------------------------------------------- */
+/* The band runs the full width of the viewport, so it cancels the page padding
+   with a negative margin and puts the same value back as its own padding. */
 .masthead {
+  /* The mark is sized off the title so the pair stays in proportion at every
+     width. Sharing the row with the mark is what caps the title size. */
+  --title-size: clamp(2rem, 7vw, 4.5rem);
+
   display: flex;
   flex-wrap: wrap;
-  align-items: baseline;
+  align-items: flex-end;
   justify-content: space-between;
-  gap: 0.75rem 2rem;
-  padding: 2.25rem 0 2.75rem;
+  gap: 1rem 2rem;
+  margin: 0 calc(var(--page-pad) * -1) 3rem;
+  padding: 3rem var(--page-pad) 2rem;
+  background: var(--navy);
+  color: var(--navy-ink);
 }
 
 @media (min-width: 900px) {
   .masthead {
-    padding: 3rem 0 3.5rem;
+    margin-bottom: 4rem;
+    padding: 4.5rem var(--page-pad) 2.75rem;
+  }
+}
+
+.masthead__brand {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.9rem 1.25rem;
+  /* Lets a long title wrap instead of pushing the nav off the band. */
+  min-width: 0;
+}
+
+/* Both dimensions are stated. An inline svg carrying only a viewBox has no
+   intrinsic width, so leaving width on auto collapses it to nothing.
+   1.747 is the mark's own ratio, 290 wide over 166 tall. */
+.masthead__mark {
+  flex: none;
+  height: calc(var(--title-size) * 0.72);
+  width: calc(var(--title-size) * 0.72 * 1.747);
+}
+
+.masthead__mark[hidden] {
+  display: none;
+}
+
+/* On the narrowest phones the mark and a long title cannot share a row without
+   the title shrinking below the size it is meant to be. The mark takes its own
+   line rather than the title giving up any height. */
+@media (max-width: 400px) {
+  .masthead__brand {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.65rem;
   }
 }
 
 .masthead__title {
   text-transform: uppercase;
-  letter-spacing: 0.12em;
-  font-size: var(--type-ui);
+  /* Large type needs far less tracking than the small caps elsewhere. */
+  letter-spacing: 0.015em;
+  line-height: 0.98;
+  font-size: var(--title-size);
+  color: var(--navy-ink);
+  /* A flex item will not shrink below its own content without this, so on a
+     phone the title runs off the band instead of wrapping. */
+  min-width: 0;
 }
 
 .masthead__nav {
   display: flex;
   gap: 1.75rem;
+  /* Holds the nav off the title's baseline once the title is this large. */
+  padding-bottom: 0.35rem;
 }
 
 .nav-link {
   text-transform: uppercase;
   letter-spacing: var(--track);
-  color: var(--ink-soft);
+  color: var(--navy-ink-soft);
   padding-bottom: 2px;
   border-bottom: 1px solid transparent;
   transition:
@@ -132,8 +188,13 @@ a {
 }
 
 .nav-link[aria-current="page"] {
-  color: var(--ink);
-  border-bottom-color: var(--ink);
+  color: var(--navy-ink);
+  border-bottom-color: var(--navy-ink);
+}
+
+/* The page-wide focus ring is near black, which disappears on the band. */
+.masthead :focus-visible {
+  outline-color: var(--navy-ink);
 }
 
 .nav-link__count {
