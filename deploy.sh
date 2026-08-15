@@ -16,6 +16,19 @@ if [ "$BRANCH" != "main" ]; then
   exit 1
 fi
 
+# GitHub Pages serves assets with a ten minute cache, and browsers hold them
+# longer still, so a visitor can sit on yesterday's app.js against today's
+# products.js. Stamping the asset urls makes every deploy a new url, which no
+# cache can serve stale. Only the shared assets are stamped: products.js is
+# relative to each list's own folder.
+STAMP="$(date -u +%Y%m%d%H%M%S)"
+sed -i '' -E \
+  -e "s|(href=\"styles\.css)(\?v=[0-9]+)?\"|\1?v=$STAMP\"|" \
+  -e "s|(src=\"app\.js)(\?v=[0-9]+)?\"|\1?v=$STAMP\"|" \
+  -e "s|(src=\"products\.js)(\?v=[0-9]+)?\"|\1?v=$STAMP\"|" \
+  index.html
+echo "Stamped assets v=$STAMP"
+
 # The page shell is shared, so every list is brought back in step first.
 ./sync-lists.sh
 echo

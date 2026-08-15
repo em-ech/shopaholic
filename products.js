@@ -39,6 +39,7 @@ window.PRODUCTS = [
     id: "nude-ryuk-tee-brown",
     name: "Ryuk Tee Brown",
     brand: "Nude Project",
+    type: "Short sleeve",
     price: "54.00 GBP",
     color: "Brown",
     colors: [{ name: "Brown", hex: "#6B4F3A" }],
@@ -50,6 +51,7 @@ window.PRODUCTS = [
     id: "nude-tennis-tee-white",
     name: "Tennis Tee White",
     brand: "Nude Project",
+    type: "Short sleeve",
     price: "54.00 GBP",
     color: "White",
     colors: [{ name: "White", hex: "#F2F0EA" }],
@@ -61,6 +63,7 @@ window.PRODUCTS = [
     id: "nude-court-tee-ivory",
     name: "Court Tee Ivory",
     brand: "Nude Project",
+    type: "Short sleeve",
     price: "54.00 GBP",
     color: "Ivory",
     colors: [{ name: "Ivory", hex: "#EDE6D8" }],
@@ -72,6 +75,7 @@ window.PRODUCTS = [
     id: "nude-origins-tee-black",
     name: "Origins Tee Black",
     brand: "Nude Project",
+    type: "Short sleeve",
     price: "44.00 GBP",
     color: "Black",
     colors: [{ name: "Black", hex: "#17171A" }],
@@ -83,6 +87,7 @@ window.PRODUCTS = [
     id: "nude-wavy-knit-sweater-navy",
     name: "Wavy Knit Sweater Navy",
     brand: "Nude Project",
+    type: "Long sleeve",
     price: "139.00 GBP",
     color: "Navy",
     colors: [{ name: "Navy", hex: "#232C43" }],
@@ -94,6 +99,7 @@ window.PRODUCTS = [
     id: "nude-origins-quarter-zip-khaki",
     name: "Origins Quarter-Zip Khaki",
     brand: "Nude Project",
+    type: "Long sleeve",
     price: "99.00 GBP",
     color: "Khaki",
     colors: [{ name: "Khaki", hex: "#6E6A4C" }],
@@ -105,6 +111,7 @@ window.PRODUCTS = [
     id: "eme-thrill-off-sand-oversized-tee",
     name: "Thrill Off Sand Oversized Tee",
     brand: "eme studios",
+    type: "Short sleeve",
     price: "65.00 USD",
     color: "Off Sand",
     colors: [
@@ -119,6 +126,7 @@ window.PRODUCTS = [
     id: "eme-thrill-shadow-long-sleeve",
     name: "Thrill Shadow Long Sleeve",
     brand: "eme studios",
+    type: "Long sleeve",
     price: "79.00 USD",
     color: "Shadow",
     colors: [
@@ -134,6 +142,7 @@ window.PRODUCTS = [
     id: "eme-core-shadow-oversized-tee",
     name: "Core Shadow Oversized Tee",
     brand: "eme studios",
+    type: "Short sleeve",
     price: "65.00 USD",
     color: "Shadow",
     colors: [
@@ -148,6 +157,7 @@ window.PRODUCTS = [
     id: "eme-basic-navy-long-sleeve",
     name: "Basic Navy Long Sleeve",
     brand: "eme studios",
+    type: "Long sleeve",
     price: "48.30 USD",
     color: "Navy",
     colors: [
@@ -162,6 +172,7 @@ window.PRODUCTS = [
     id: "eme-bachatas-navy-polo-crewneck",
     name: "Bachatas Navy Polo Crewneck",
     brand: "eme studios",
+    type: "Long sleeve",
     price: "76.30 USD",
     color: "Navy",
     colors: [
@@ -176,6 +187,7 @@ window.PRODUCTS = [
     id: "eme-academy-navy-oversized-crewneck",
     name: "Academy Navy Oversized Crewneck",
     brand: "eme studios",
+    type: "Long sleeve",
     price: "49.50 USD",
     color: "Navy",
     colors: [
@@ -190,6 +202,7 @@ window.PRODUCTS = [
     id: "eme-suty-sycamore-reverse-crewneck",
     name: "Suty Sycamore Reverse Crewneck",
     brand: "eme studios",
+    type: "Long sleeve",
     price: "79.20 USD",
     color: "Sycamore",
     colors: [{ name: "Sycamore", hex: "#8F8672" }],
@@ -201,6 +214,7 @@ window.PRODUCTS = [
     id: "eme-thrill-navy-zipper-knit",
     name: "Thrill Navy Zipper Knit",
     brand: "eme studios",
+    type: "Long sleeve",
     price: "139.00 USD",
     color: "Navy",
     colors: [
@@ -221,6 +235,7 @@ window.PRODUCTS = [
     id: "zara-slim-fit-rib-contrast-t-shirt-oyster-white",
     name: "Slim Fit Rib Contrast T Shirt",
     brand: "Zara",
+    type: "Short sleeve",
     price: "29.99 GBP",
     color: "Oyster-white",
     image:
@@ -231,6 +246,7 @@ window.PRODUCTS = [
     id: "zara-ribbed-henley-t-shirt-khaki",
     name: "Ribbed Henley T Shirt",
     brand: "Zara",
+    type: "Short sleeve",
     price: "29.99 GBP",
     color: "Khaki",
     image:
@@ -241,6 +257,7 @@ window.PRODUCTS = [
     id: "zara-relaxed-fit-interlock-t-shirt-04-dark-khaki",
     name: "Relaxed Fit Interlock T Shirt /04",
     brand: "Zara",
+    type: "Short sleeve",
     price: "22.99 GBP",
     color: "Dark khaki",
     colors: [
@@ -259,6 +276,7 @@ window.PRODUCTS = [
     id: "zara-relaxed-fit-knit-t-shirt-camel",
     name: "Relaxed Fit Knit T Shirt",
     brand: "Zara",
+    type: "Short sleeve",
     price: "29.99 GBP",
     color: "Camel",
     colors: [
@@ -275,6 +293,7 @@ window.PRODUCTS = [
     id: "zara-textured-regular-fit-knit-polo-shirt-navy-blue",
     name: "Textured Regular Fit Knit Polo Shirt",
     brand: "Zara",
+    type: "Long sleeve",
     price: "35.99 GBP",
     color: "Navy blue",
     colors: [
@@ -291,6 +310,7 @@ window.PRODUCTS = [
     id: "zara-relaxed-fit-knit-t-shirt-oyster-white",
     name: "Relaxed Fit Knit T Shirt",
     brand: "Zara",
+    type: "Short sleeve",
     price: "29.99 GBP",
     color: "Oyster-white",
     colors: [
@@ -307,6 +327,7 @@ window.PRODUCTS = [
     id: "zara-relaxed-fit-embroidered-text-polo-shirt-light-blue",
     name: "Relaxed Fit Embroidered Text Polo Shirt",
     brand: "Zara",
+    type: "Short sleeve",
     price: "35.99 GBP",
     color: "Light blue",
     colors: [
@@ -322,6 +343,7 @@ window.PRODUCTS = [
     id: "zara-contrast-regular-fit-polo-shirt-oyster-white",
     name: "Contrast Regular Fit Polo Shirt",
     brand: "Zara",
+    type: "Short sleeve",
     price: "29.99 GBP",
     color: "Oyster-white",
     colors: [
@@ -336,6 +358,7 @@ window.PRODUCTS = [
     id: "zara-100-linen-regular-fit-trousers-navy-blue",
     name: "100% Linen Regular Fit Trousers",
     brand: "Zara",
+    type: "Pants",
     price: "39.99 GBP",
     color: "Navy blue",
     colors: [
@@ -354,6 +377,7 @@ window.PRODUCTS = [
     id: "zara-textured-relaxed-fit-pleated-trousers-light-beige",
     name: "Textured Relaxed Fit Pleated Trousers",
     brand: "Zara",
+    type: "Pants",
     price: "39.99 GBP",
     color: "Light beige",
     colors: [
@@ -369,6 +393,7 @@ window.PRODUCTS = [
     id: "zara-geometric-jacquard-relaxed-fit-shirt-black",
     name: "Geometric Jacquard Relaxed Fit Shirt",
     brand: "Zara",
+    type: "Long sleeve",
     price: "35.99 GBP",
     color: "Black",
     colors: [
@@ -383,6 +408,7 @@ window.PRODUCTS = [
     id: "zara-textured-regular-fit-shirt-charcoal",
     name: "Textured Regular Fit Shirt",
     brand: "Zara",
+    type: "Long sleeve",
     price: "35.99 GBP",
     color: "Charcoal",
     image:
@@ -393,6 +419,7 @@ window.PRODUCTS = [
     id: "zara-relaxed-fit-flowing-shirt-black",
     name: "Relaxed Fit Flowing Shirt",
     brand: "Zara",
+    type: "Long sleeve",
     price: "45.99 GBP",
     color: "Black",
     colors: [
@@ -410,6 +437,7 @@ window.PRODUCTS = [
     name: "Moulinee Texture Polo Shirt",
     nameOriginal: "Polo estructura moulinee",
     brand: "Springfield",
+    type: "Short sleeve",
     price: "12.99 EUR",
     color: "Kaki",
     image:
@@ -421,6 +449,7 @@ window.PRODUCTS = [
     name: "Short Sleeve Turn Up Shirt",
     nameOriginal: "Camisa manga corta vuelta",
     brand: "Springfield",
+    type: "Short sleeve",
     price: "12.99 EUR",
     color: "Verde",
     image:
@@ -432,6 +461,7 @@ window.PRODUCTS = [
     name: "Colour Block T Shirt",
     nameOriginal: "Camiseta color block",
     brand: "Springfield",
+    type: "Short sleeve",
     price: "9.99 EUR",
     color: "Naranja",
     image:
@@ -443,6 +473,7 @@ window.PRODUCTS = [
     name: "Double Waffle T Shirt",
     nameOriginal: "Camiseta waffle doble",
     brand: "Springfield",
+    type: "Short sleeve",
     price: "9.99 EUR",
     color: "Azul",
     image:
@@ -454,6 +485,7 @@ window.PRODUCTS = [
     name: "Double Waffle T Shirt",
     nameOriginal: "Camiseta waffle doble",
     brand: "Springfield",
+    type: "Short sleeve",
     price: "9.99 EUR",
     color: "Blanco",
     image:
@@ -465,6 +497,7 @@ window.PRODUCTS = [
     name: "Technical Wide Relaxed Fit Shorts",
     nameOriginal: "Bermuda técnica wide & relaxed fit",
     brand: "Springfield",
+    type: "Shorts",
     price: "12.99 EUR",
     color: "Azul",
     image:
@@ -476,6 +509,7 @@ window.PRODUCTS = [
     name: "Long Sleeve Pique Colour Block T Shirt",
     nameOriginal: "Camiseta piqué manga larga bloques",
     brand: "Springfield",
+    type: "Long sleeve",
     price: "16.09 EUR",
     color: "Azul",
     image:
@@ -487,6 +521,7 @@ window.PRODUCTS = [
     name: "Boxed Bike Sweatshirt",
     nameOriginal: "Sudadera bici caja",
     brand: "Springfield",
+    type: "Long sleeve",
     price: "23.09 EUR",
     color: "Burdeos",
     image:
@@ -498,6 +533,7 @@ window.PRODUCTS = [
     name: "Short Sleeve Shirt",
     nameOriginal: "Camisa manga corta",
     brand: "Springfield",
+    type: "Short sleeve",
     price: "14.99 EUR",
     color: "Beige",
     image:
@@ -509,6 +545,7 @@ window.PRODUCTS = [
     name: "Regular Fit Denim Shirt",
     nameOriginal: "Camisa vaquera regular fit",
     brand: "Springfield",
+    type: "Long sleeve",
     price: "39.99 EUR",
     color: "Gris",
     image:
@@ -520,6 +557,7 @@ window.PRODUCTS = [
     name: "Plain Shirt",
     nameOriginal: "Camisa Lisa",
     brand: "Springfield",
+    type: "Long sleeve",
     price: "26.99 EUR",
     color: "Negro",
     image:
@@ -531,6 +569,7 @@ window.PRODUCTS = [
     name: "Striped Short Sleeve Shirt",
     nameOriginal: "Camisa manga corta rayas",
     brand: "Springfield",
+    type: "Short sleeve",
     price: "20.99 EUR",
     color: "Azul",
     image:
@@ -542,10 +581,11 @@ window.PRODUCTS = [
     name: "Linen Bowling Short Sleeve Shirt",
     nameOriginal: "Camisa manga corta bowling lino",
     brand: "Springfield",
+    type: "Short sleeve",
     price: "9.99 EUR",
     color: "Tostado",
     image:
-      "https://myspringfield.com/on/demandware.static/-/Sites-gc-spf-master-catalog/default/dw16f21c87/images/swatch/P_054302566C.jpg",
+      "https://myspringfield.com/dw/image/v2/AAYL_PRD/on/demandware.static/-/Sites-gc-spf-master-catalog/default/dw70144217/images/hi-res/P_054302566FM.jpg",
     url: "https://myspringfield.com/es/es/hombre/camisas/camisa-manga-corta-bowling-lino/0543025.html?dwvar_0543025_color=35",
   },
   {
@@ -553,6 +593,7 @@ window.PRODUCTS = [
     name: "Slim Fit Chinos",
     nameOriginal: "Pantalón chino slim fit",
     brand: "Springfield",
+    type: "Pants",
     price: "27.99 EUR",
     color: "Beige",
     image:
@@ -564,6 +605,7 @@ window.PRODUCTS = [
     name: "Comfort Knit Chinos",
     nameOriginal: "Pantalón chino comfort knit",
     brand: "Springfield",
+    type: "Pants",
     price: "27.99 EUR",
     color: "Beige",
     image:
@@ -575,6 +617,7 @@ window.PRODUCTS = [
     name: "Technical Wide Relaxed Fit Shorts",
     nameOriginal: "Bermuda técnica wide & relaxed fit",
     brand: "Springfield",
+    type: "Shorts",
     price: "12.99 EUR",
     color: "Estampado",
     image:
@@ -586,6 +629,7 @@ window.PRODUCTS = [
     name: "Comfort Fit Shorts",
     nameOriginal: "Bermuda comfort fit",
     brand: "Springfield",
+    type: "Shorts",
     price: "12.99 EUR",
     color: "Nude",
     image:
@@ -597,6 +641,7 @@ window.PRODUCTS = [
     name: "Comfort Fit Shorts",
     nameOriginal: "Bermuda comfort fit",
     brand: "Springfield",
+    type: "Shorts",
     price: "12.99 EUR",
     color: "Azul",
     image:
@@ -608,6 +653,7 @@ window.PRODUCTS = [
     name: "Washed Five Pocket Straight Fit Shorts",
     nameOriginal: "Bermuda 5 bolsillos lavada straight fit",
     brand: "Springfield",
+    type: "Shorts",
     price: "9.99 EUR",
     color: "Azul",
     image:
@@ -619,6 +665,7 @@ window.PRODUCTS = [
     name: "Lightweight Poplin Regular Shorts",
     nameOriginal: "Bermuda ligera popelín regular",
     brand: "Springfield",
+    type: "Shorts",
     price: "19.90 EUR",
     color: "Beige",
     image:
@@ -630,6 +677,7 @@ window.PRODUCTS = [
     name: "Cotton Jogger Shorts",
     nameOriginal: "Short jogger algodón",
     brand: "Springfield",
+    type: "Shorts",
     price: "22.49 EUR",
     color: "Azul",
     image:
@@ -641,6 +689,7 @@ window.PRODUCTS = [
     name: "Track Shorts",
     nameOriginal: "Short chandal",
     brand: "Springfield",
+    type: "Shorts",
     price: "9.99 EUR",
     color: "Negro",
     image:
@@ -652,6 +701,7 @@ window.PRODUCTS = [
     name: "Textured Shorts",
     nameOriginal: "Bermuda textura",
     brand: "Springfield",
+    type: "Shorts",
     price: "10.99 EUR",
     color: "Negro",
     image:
@@ -663,6 +713,7 @@ window.PRODUCTS = [
     name: "Linen Jogger Shorts",
     nameOriginal: "Short jogger lino",
     brand: "Springfield",
+    type: "Shorts",
     price: "19.99 EUR",
     color: "Azul",
     image:
@@ -673,6 +724,7 @@ window.PRODUCTS = [
     id: "carhartt-ebbert-sweatshirt-black-white",
     name: "Ebbert Sweatshirt, Black / White",
     brand: "Carhartt WIP",
+    type: "Long sleeve",
     price: "138.00 USD",
     image:
       "https://cdn.shopify.com/s/files/1/2193/5809/files/I037113_0D2_XX-ST-01.jpg?v=1784914359&width=1400",
@@ -682,6 +734,7 @@ window.PRODUCTS = [
     id: "carhartt-oakland-shirt-jacket-blue-dark-navy-worn-used-wash",
     name: "Oakland Shirt Jacket, Blue / Dark Navy (worn used wash)",
     brand: "Carhartt WIP",
+    type: "Outerwear",
     price: "248.00 USD",
     image:
       "https://cdn.shopify.com/s/files/1/2193/5809/files/I037532_453_4Q-ST-01.jpg?v=1784309484&width=1400",
@@ -691,6 +744,7 @@ window.PRODUCTS = [
     id: "carhartt-lambert-t-shirt-raven",
     name: "Lambert T Shirt, Raven",
     brand: "Carhartt WIP",
+    type: "Short sleeve",
     price: "65.00 USD",
     image:
       "https://cdn.shopify.com/s/files/1/2193/5809/files/I037016_3T6_FQ-ST-01.jpg?v=1784741567&width=1400",
@@ -700,6 +754,7 @@ window.PRODUCTS = [
     id: "carhartt-brandon-pant-black-marble-used-wash",
     name: "Brandon Pant, Black (marble used wash)",
     brand: "Carhartt WIP",
+    type: "Pants",
     price: "188.00 USD",
     image:
       "https://cdn.shopify.com/s/files/1/2193/5809/files/I035893_89_7X-ST-01_7517a856-259c-48b7-b832-5e1d7e9f06de.jpg?v=1782408833&width=1400",
@@ -709,6 +764,7 @@ window.PRODUCTS = [
     id: "carhartt-vista-t-shirt-dark-scarab",
     name: "Vista T Shirt, Dark Scarab",
     brand: "Carhartt WIP",
+    type: "Short sleeve",
     price: "68.00 USD",
     image:
       "https://cdn.shopify.com/s/files/1/2193/5809/files/I030780_3U0_GD-ST-01.jpg?v=1784741564&width=1400",
@@ -718,6 +774,7 @@ window.PRODUCTS = [
     id: "carhartt-blackletter-t-shirt-black",
     name: "Blackletter T Shirt, Black",
     brand: "Carhartt WIP",
+    type: "Short sleeve",
     price: "58.00 USD",
     image:
       "https://cdn.shopify.com/s/files/1/2193/5809/files/I037245_89_XX-ST-01.jpg?v=1784914355&width=1400",
@@ -727,6 +784,7 @@ window.PRODUCTS = [
     id: "carhartt-long-sleeve-blackletter-waffle-t-shirt-black-white",
     name: "Long Sleeve Blackletter Waffle T Shirt, Black / White",
     brand: "Carhartt WIP",
+    type: "Long sleeve",
     price: "95.00 USD",
     image:
       "https://cdn.shopify.com/s/files/1/2193/5809/files/I037270_0D2_XX-ST-01.jpg?v=1783099874&width=1400",
@@ -736,6 +794,7 @@ window.PRODUCTS = [
     id: "carhartt-brandon-pant-black-tobacco-used-wash",
     name: "Brandon Pant, Black (tobacco used wash)",
     brand: "Carhartt WIP",
+    type: "Pants",
     price: "188.00 USD",
     image:
       "https://cdn.shopify.com/s/files/1/2193/5809/files/I035893_89_0R-OF-03.jpg?v=1783445482&width=1400",
@@ -745,6 +804,7 @@ window.PRODUCTS = [
     id: "ami-white-cotton-t-shirt-with-ami-de-coeur-arrow",
     name: "White cotton t shirt with Ami de Coeur arrow",
     brand: "Ami Paris",
+    type: "Short sleeve",
     price: "230.00 USD",
     image:
       "https://cdn.shopify.com/s/files/1/0774/7865/8352/files/HTS411.JE0270_160eb8f1-5bd3-4f72-a2e2-5acc009e646c.jpg?width=1400",
@@ -754,6 +814,7 @@ window.PRODUCTS = [
     id: "ami-white-cotton-t-shirt-with-ami-de-coeur",
     name: "White cotton t shirt with Ami de Coeur",
     brand: "Ami Paris",
+    type: "Short sleeve",
     price: "190.00 USD",
     image:
       "https://cdn.shopify.com/s/files/1/0774/7865/8352/files/BFUTS035.724_22f9e4e7-93bf-4923-9867-50b8e1b03d30.jpg?width=1400",
@@ -763,6 +824,7 @@ window.PRODUCTS = [
     id: "ami-black-cotton-t-shirt-with-ami-de-coeur",
     name: "Black cotton t shirt with Ami de Coeur",
     brand: "Ami Paris",
+    type: "Short sleeve",
     price: "190.00 USD",
     image:
       "https://cdn.shopify.com/s/files/1/0774/7865/8352/files/BFUTS035.724_fcc51069-a0b6-4f43-b1c8-34b4f5911721.jpg?width=1400",
@@ -772,6 +834,7 @@ window.PRODUCTS = [
     id: "ami-black-contrasted-cotton-t-shirt-with-ami-de-coeur",
     name: "Black contrasted cotton t shirt with Ami de Coeur",
     brand: "Ami Paris",
+    type: "Short sleeve",
     price: "240.00 USD",
     image:
       "https://cdn.shopify.com/s/files/1/0774/7865/8352/files/HTS412.JE0246.jpg?width=1400",
@@ -781,6 +844,7 @@ window.PRODUCTS = [
     id: "ami-blue-cotton-t-shirt-with-ami-de-coeur",
     name: "Blue cotton t shirt with Ami de Coeur",
     brand: "Ami Paris",
+    type: "Short sleeve",
     price: "190.00 USD",
     image:
       "https://cdn.shopify.com/s/files/1/0774/7865/8352/files/BFUTS035.724_e55187fb-81c1-4fa9-b97d-c16b52a8a04d.jpg?width=1400",
@@ -790,6 +854,7 @@ window.PRODUCTS = [
     id: "ami-blue-cotton-boxy-embroidered-ami-de-coeur-shirt",
     name: "Blue Cotton Boxy Embroidered Ami De Coeur Shirt",
     brand: "Ami Paris",
+    type: "Long sleeve",
     price: "440.00 USD",
     image:
       "https://cdn.shopify.com/s/files/1/0774/7865/8352/files/HSH822.CO0221_79017bbc-c0b5-440a-867a-289f1b2ef0a0.jpg?width=1400",
@@ -799,6 +864,7 @@ window.PRODUCTS = [
     id: "ami-black-cotton-sweatshirt-with-ami-de-coeur",
     name: "Black cotton sweatshirt with Ami de Coeur",
     brand: "Ami Paris",
+    type: "Long sleeve",
     price: "360.00 USD",
     image:
       "https://cdn.shopify.com/s/files/1/0774/7865/8352/files/BFUSW035.730_953dfd9b-8cf6-437e-8e03-6f08840c7db7.jpg?width=1400",
@@ -808,6 +874,7 @@ window.PRODUCTS = [
     id: "ami-white-wool-ami-de-coeur-crewneck-sweater",
     name: "White Wool Ami De Coeur Crewneck Sweater",
     brand: "Ami Paris",
+    type: "Long sleeve",
     price: "550.00 USD",
     image:
       "https://cdn.shopify.com/s/files/1/0774/7865/8352/files/UKS838.018_e4049d34-cb5c-495a-a0ce-baf3b0a1dca2.jpg?width=1400",
@@ -817,6 +884,7 @@ window.PRODUCTS = [
     id: "ami-natural-crewneck-wool-sweater-with-ami-de-coeur",
     name: "Natural crewneck wool sweater with Ami de Coeur",
     brand: "Ami Paris",
+    type: "Long sleeve",
     price: "550.00 USD",
     image:
       "https://cdn.shopify.com/s/files/1/0774/7865/8352/files/UKS838.018_53441b5e-19e2-4cdc-b5ca-4b0dce0263c9.jpg?width=1400",
@@ -826,6 +894,7 @@ window.PRODUCTS = [
     id: "ami-blue-crewneck-wool-sweater-with-ami-de-coeur",
     name: "Blue crewneck wool sweater with Ami de Coeur",
     brand: "Ami Paris",
+    type: "Long sleeve",
     price: "440.00 USD",
     image:
       "https://cdn.shopify.com/s/files/1/0774/7865/8352/files/HKS826.001_13407a27-dd88-491d-aadd-aef746700d10.jpg?width=1400",
@@ -835,6 +904,7 @@ window.PRODUCTS = [
     id: "uniqlo-super-non-iron-jersey-slim-shirt-regular-collar-white",
     name: "Super Non Iron Jersey Slim Shirt, Regular Collar",
     brand: "UNIQLO",
+    type: "Long sleeve",
     price: "49.90 USD",
     color: "White",
     image:
@@ -845,6 +915,7 @@ window.PRODUCTS = [
     id: "uniqlo-washable-knitted-skipper-polo-sweater-dark-purple",
     name: "Washable Knitted Skipper Polo Sweater",
     brand: "UNIQLO",
+    type: "Long sleeve",
     price: "39.90 USD",
     color: "Dark Purple",
     image:
@@ -855,6 +926,7 @@ window.PRODUCTS = [
     id: "uniqlo-flannel-shirt-black",
     name: "Flannel Shirt",
     brand: "UNIQLO",
+    type: "Long sleeve",
     price: "49.90 USD",
     color: "Black",
     image:
@@ -865,6 +937,7 @@ window.PRODUCTS = [
     id: "uniqlo-washable-milano-ribbed-skipper-polo-sweater-gray",
     name: "Washable Milano Ribbed Skipper Polo Sweater",
     brand: "UNIQLO",
+    type: "Long sleeve",
     price: "49.90 USD",
     color: "Gray",
     image:
@@ -875,6 +948,7 @@ window.PRODUCTS = [
     id: "uniqlo-airism-cotton-pique-full-open-polo-shirt-white",
     name: "AIRism Cotton Pique Full Open Polo Shirt",
     brand: "UNIQLO",
+    type: "Short sleeve",
     price: "19.90 USD",
     color: "White",
     image:
@@ -885,6 +959,7 @@ window.PRODUCTS = [
     id: "uniqlo-boxy-cropped-t-shirt-white",
     name: "Boxy Cropped T Shirt",
     brand: "UNIQLO",
+    type: "Short sleeve",
     price: "19.90 USD",
     color: "White",
     image:
@@ -895,6 +970,7 @@ window.PRODUCTS = [
     id: "uniqlo-airism-cotton-oversized-t-shirt-half-sleeve-white",
     name: "AIRism Cotton Oversized T Shirt, Half Sleeve",
     brand: "UNIQLO",
+    type: "Short sleeve",
     price: "24.90 USD",
     color: "White",
     image:
@@ -905,6 +981,7 @@ window.PRODUCTS = [
     id: "uniqlo-airism-cotton-t-shirt-sleeveless-green",
     name: "AIRism Cotton T Shirt, Sleeveless",
     brand: "UNIQLO",
+    type: "Short sleeve",
     price: "19.90 USD",
     color: "Green",
     image:
@@ -915,6 +992,7 @@ window.PRODUCTS = [
     id: "uniqlo-dry-waffle-henley-t-shirt-natural",
     name: "DRY Waffle Henley T Shirt",
     brand: "UNIQLO",
+    type: "Short sleeve",
     price: "19.90 USD",
     color: "Natural",
     image:
@@ -925,6 +1003,7 @@ window.PRODUCTS = [
     id: "barbour-cotton-quarter-zip-jumper",
     name: "Cotton Quarter Zip Jumper",
     brand: "Barbour",
+    type: "Long sleeve",
     price: "140.00 USD",
     image:
       "https://www.barbour.com/dw/image/v2/blcl_prd/on/demandware.static/-/Sites-master-catalog/default/dwc8dff084/images/MKN1074OL91/MKN1074OL91_01front.jpg?sw=1500&q=70&strip=false",
@@ -934,6 +1013,7 @@ window.PRODUCTS = [
     id: "barbour-pima-cotton-crew-neck-jumper",
     name: "Pima Cotton Crew Neck Jumper",
     brand: "Barbour",
+    type: "Long sleeve",
     price: "120.00 USD",
     image:
       "https://www.barbour.com/dw/image/v2/blcl_prd/on/demandware.static/-/Sites-master-catalog/default/dwec80fdd8/images/MKN0932GN34/MKN0932GN34_01front.jpg?sw=1500&q=70&strip=false",

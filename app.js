@@ -12,73 +12,87 @@
   var SORT_CURATED = "curated";
   var SORT_PRICE_ASC = "price-asc";
   var SORT_PRICE_DESC = "price-desc";
+  var SORTS = [SORT_CURATED, SORT_PRICE_ASC, SORT_PRICE_DESC];
 
   var PAGE_SIZE = 20;
-  var ANY = "";
 
-  // Retailers write colourways in their own language and vocabulary, so the
-  // filter groups them into families. A card still shows the colourway exactly
-  // as its retailer wrote it. Anything not listed here becomes its own family,
-  // so a new colourway is never silently swallowed.
-  var COLOUR_FAMILIES = {
-    black: "Black",
-    negro: "Black",
+  // How many products sit across a row, once the screen is wide enough to have
+  // a say. Narrower than that and the layout decides for itself.
+  var COLUMN_CHOICES = ["2", "3", "4"];
+  var COLUMNS_DEFAULT = "4";
 
-    white: "White",
-    blanco: "White",
-    "oyster-white": "White",
-    ivory: "White",
+  // The three facets are all multi select and all behave identically, so they
+  // are described once and everything else loops over this.
+  var FACETS = [
+    { key: "brand", field: "brand", title: "Brand" },
+    { key: "type", field: "type", title: "Type" },
+    { key: "color", field: "colorFamily", title: "Colour" },
+  ];
 
-    beige: "Beige",
-    "light beige": "Beige",
-    "off sand": "Beige",
-    camel: "Beige",
-    natural: "Beige",
-    nude: "Beige",
-    tostado: "Beige",
-    khaki: "Beige",
-    kaki: "Beige",
-    "dark khaki": "Beige",
-    sycamore: "Beige",
+  // Retailers write colourways in their own language and vocabulary. One table
+  // does both jobs: "label" is what the card shows, in English, and "family" is
+  // the bucket the filter groups it into. Where the two are the same, only the
+  // family is given. A colourway missing from this table keeps the retailer's
+  // own wording and becomes its own family, so nothing is ever silently
+  // swallowed, it just shows up untranslated and gets added here.
+  var COLOURS = {
+    black: { family: "Black" },
+    negro: { label: "Black", family: "Black" },
 
-    blue: "Blue",
-    azul: "Blue",
-    navy: "Blue",
-    "navy blue": "Blue",
-    "light blue": "Blue",
+    white: { family: "White" },
+    blanco: { label: "White", family: "White" },
+    "oyster-white": { label: "Oyster white", family: "White" },
+    ivory: { family: "White" },
 
-    grey: "Grey",
-    gray: "Grey",
-    gris: "Grey",
-    charcoal: "Grey",
-    shadow: "Grey",
+    beige: { family: "Beige" },
+    "light beige": { family: "Beige" },
+    "off sand": { family: "Beige" },
+    camel: { family: "Beige" },
+    natural: { family: "Beige" },
+    nude: { family: "Beige" },
+    tostado: { label: "Tan", family: "Beige" },
+    khaki: { family: "Beige" },
+    kaki: { label: "Khaki", family: "Beige" },
+    "dark khaki": { family: "Beige" },
+    sycamore: { family: "Beige" },
 
-    green: "Green",
-    verde: "Green",
+    blue: { family: "Blue" },
+    azul: { label: "Blue", family: "Blue" },
+    navy: { family: "Blue" },
+    "navy blue": { family: "Blue" },
+    "light blue": { family: "Blue" },
 
-    brown: "Brown",
-    naranja: "Orange",
-    burdeos: "Red",
-    "dark purple": "Purple",
-    estampado: "Multi",
+    grey: { family: "Grey" },
+    gray: { label: "Grey", family: "Grey" },
+    gris: { label: "Grey", family: "Grey" },
+    charcoal: { family: "Grey" },
+    shadow: { family: "Grey" },
+
+    green: { family: "Green" },
+    verde: { label: "Green", family: "Green" },
+
+    brown: { family: "Brown" },
+    naranja: { label: "Orange", family: "Orange" },
+    burdeos: { label: "Burgundy", family: "Red" },
+    "dark purple": { family: "Purple" },
+    estampado: { label: "Print", family: "Multi" },
   };
 
   var COLOUR_UNSET = "Unspecified";
 
   /* ------------------------------------------------------------ currency --- */
 
-  // A list can hold pieces priced in different currencies, which makes the
-  // prices impossible to compare and impossible to sort honestly. Every price
-  // is converted to one currency for sorting, and the card shows both the
-  // retailer's own figure and the converted one.
+  // A list can hold pieces priced in different currencies, which makes them
+  // impossible to compare and impossible to sort honestly. Every price is
+  // converted to one currency for sorting, and the card shows the converted
+  // figure with the retailer's own underneath.
   //
   // These rates are a snapshot, not a live feed. Taken from
-  // exchangerate-api.com on 15 August 2026. They drift, which is why the card
-  // says "about". To refresh them, replace the numbers and the date below:
+  // exchangerate-api.com on 15 August 2026. They drift, which is why a
+  // converted price is marked approximate. To refresh them:
   //   curl -s https://open.er-api.com/v6/latest/USD
   // and use 1 / rates[CODE] for each currency.
   var BASE_CURRENCY = "USD";
-  var RATES_AS_OF = "15 August 2026";
   var RATES_TO_BASE = {
     USD: 1,
     EUR: 1.1566,
@@ -88,8 +102,8 @@
   var collection = window.COLLECTION || {};
 
   // Every list on this site shares one origin, and localStorage is keyed by
-  // origin rather than by path. Without the list id in the key, Em's hearts
-  // and Jared's hearts would overwrite each other.
+  // origin rather than by path. Without the list id in the key, Em's hearts and
+  // Jared's hearts would overwrite each other.
   var STORAGE_KEY = "shopaholic:saved:v1:" + (collection.id || "default");
 
   var dom = {
@@ -102,15 +116,24 @@
     savedCount: document.getElementById("saved-count"),
     status: document.getElementById("status"),
     template: document.getElementById("product-template"),
-    filterBrand: document.getElementById("filter-brand"),
-    filterColor: document.getElementById("filter-color"),
-    sortBy: document.getElementById("sort-by"),
     resultCount: document.getElementById("result-count"),
+    filtersToggle: document.getElementById("filters-toggle"),
+    filtersCount: document.getElementById("filters-count"),
+    drawer: document.getElementById("filters"),
+    drawerScrim: document.getElementById("drawer-scrim"),
+    drawerClose: document.getElementById("drawer-close"),
+    filtersClear: document.getElementById("filters-clear"),
+    sortBy: document.getElementById("sort-by"),
+    perRow: document.getElementById("per-row"),
     pager: document.getElementById("pager"),
     pagerPrev: document.getElementById("pager-prev"),
     pagerNext: document.getElementById("pager-next"),
     pagerStatus: document.getElementById("pager-status"),
   };
+
+  FACETS.forEach(function (facet) {
+    facet.node = document.getElementById("facet-" + facet.key);
+  });
 
   /* ---------------------------------------------------------------- data --- */
 
@@ -141,10 +164,21 @@
     }
   }
 
+  function colorEntry(color) {
+    return COLOURS[String(color).trim().toLowerCase()] || null;
+  }
+
   function colorFamily(color) {
-    var key = String(color).trim().toLowerCase();
-    if (!key) return COLOUR_UNSET;
-    return COLOUR_FAMILIES[key] || String(color).trim();
+    if (!String(color).trim()) return COLOUR_UNSET;
+    var entry = colorEntry(color);
+    return (entry && entry.family) || String(color).trim();
+  }
+
+  // What the card shows. English where the table knows the translation, and the
+  // retailer's own wording where it does not.
+  function colorLabel(color) {
+    var entry = colorEntry(color);
+    return (entry && entry.label) || String(color).trim();
   }
 
   // Reads the first figure in the price, so a range like "59.00 to 69.00 USD"
@@ -161,8 +195,8 @@
     return match ? match[1] : "";
   }
 
-  // A price in a currency with no rate keeps its own figure rather than being
-  // dropped or guessed at, and says so in the console so it gets noticed.
+  // The number every price sorts on. A currency with no rate keeps its own
+  // figure rather than being dropped or guessed at, and says so in the console.
   function baseValue(price) {
     var value = priceValue(price);
     var currency = priceCurrency(price);
@@ -179,13 +213,34 @@
     return value;
   }
 
-  // Shown under the retailer's own price. Nothing is shown when the price is
-  // already in the base currency, or when there is no rate to convert it with.
-  function convertedLabel(price) {
+  function isConvertible(price) {
     var currency = priceCurrency(price);
-    if (!currency || currency === BASE_CURRENCY) return "";
-    if (!RATES_TO_BASE[currency]) return "";
-    return "about " + baseValue(price).toFixed(2) + " " + BASE_CURRENCY;
+    return Boolean(
+      currency && currency !== BASE_CURRENCY && RATES_TO_BASE[currency],
+    );
+  }
+
+  // The converted figure on its own. The tilde marking it approximate is a
+  // separate character in the markup, not part of this string, so it can be
+  // styled and hidden from screen readers on its own.
+  function convertedLabel(price) {
+    if (!isConvertible(price)) return "";
+    return baseValue(price).toFixed(2) + " " + BASE_CURRENCY;
+  }
+
+  // Available colourways. Each entry is { name, hex }, or a bare hex string.
+  function normalizeColors(raw) {
+    if (!Array.isArray(raw)) return [];
+    return raw
+      .map(function (entry) {
+        if (typeof entry === "string") return { name: entry, hex: entry };
+        if (!entry || !entry.hex) return null;
+        return {
+          name: entry.name ? String(entry.name) : "",
+          hex: String(entry.hex),
+        };
+      })
+      .filter(Boolean);
   }
 
   // Keeps only products that can actually be rendered, and gives every one of
@@ -218,7 +273,8 @@
           image: String(raw.image),
           url: String(raw.url),
           brand: raw.brand ? String(raw.brand) : "",
-          color: color,
+          type: raw.type ? String(raw.type) : "",
+          color: colorLabel(color),
           note: raw.note ? String(raw.note) : "",
           logo: resolveLogo(raw),
           colors: normalizeColors(raw.colors),
@@ -226,12 +282,12 @@
           // card, and its own wording is kept and shown underneath.
           nameOriginal: raw.nameOriginal ? String(raw.nameOriginal) : "",
           colorFamily: colorFamily(color),
-          // Sorting compares one currency, so it compares this, not the
-          // figure printed on the card.
+          // Sorting compares this number, never the figure printed on a card.
           baseValue: baseValue(raw.price),
-          // The converted figure leads and the retailer's own follows it, so
-          // everything on the page can be scanned against one currency.
+          // The converted figure leads, the retailer's own follows, so the whole
+          // page can be scanned against one currency.
           priceLead: converted || String(raw.price),
+          priceIsApproximate: Boolean(converted),
           priceOriginal: converted ? String(raw.price) : "",
         };
       })
@@ -242,9 +298,9 @@
 
   /* ------------------------------------------------------------- storage --- */
 
-  // Only ids are stored. Ids that no longer match a product are kept in
-  // storage but ignored everywhere else, so removing a product never breaks
-  // the Saved view and re-adding it restores the heart.
+  // Only ids are stored. Ids that no longer match a product are kept in storage
+  // but ignored everywhere else, so removing a product never breaks the Saved
+  // view and re-adding it restores the heart.
   function readKey(key) {
     try {
       var parsed = JSON.parse(window.localStorage.getItem(key) || "[]");
@@ -291,6 +347,138 @@
     });
   }
 
+  /* --------------------------------------------------------------- state --- */
+
+  // Everything the visitor picks lives in the hash, so a filtered page can be
+  // sent to someone and the back button steps through it. The three facets are
+  // multi select, carried as comma separated lists.
+  function readState() {
+    var raw = window.location.hash.replace(/^#/, "");
+    // Links made before the filters existed were just "#saved" or "#all".
+    if (raw === VIEW_SAVED || raw === VIEW_ALL) raw = "view=" + raw;
+
+    var state = {
+      view: VIEW_ALL,
+      sort: SORT_CURATED,
+      brand: [],
+      type: [],
+      color: [],
+      cols: COLUMNS_DEFAULT,
+      page: 1,
+    };
+
+    raw.split("&").forEach(function (pair) {
+      var split = pair.indexOf("=");
+      if (split === -1) return;
+      var key = decodeURIComponent(pair.slice(0, split));
+      var value = decodeURIComponent(pair.slice(split + 1));
+      if (!Object.prototype.hasOwnProperty.call(state, key)) return;
+
+      if (Array.isArray(state[key])) {
+        state[key] = value
+          .split(",")
+          .map(function (item) {
+            return item.trim();
+          })
+          .filter(Boolean);
+      } else if (key === "page") {
+        state[key] = Math.max(1, parseInt(value, 10) || 1);
+      } else {
+        state[key] = value;
+      }
+    });
+
+    if (state.view !== VIEW_SAVED) state.view = VIEW_ALL;
+    if (SORTS.indexOf(state.sort) === -1) state.sort = SORT_CURATED;
+    if (COLUMN_CHOICES.indexOf(state.cols) === -1) state.cols = COLUMNS_DEFAULT;
+    return state;
+  }
+
+  function stateToHash(state) {
+    // "view" is always written so the hash is never empty, which keeps
+    // hashchange firing predictably when the last filter is cleared.
+    var parts = ["view=" + state.view];
+    if (state.sort !== SORT_CURATED) {
+      parts.push("sort=" + encodeURIComponent(state.sort));
+    }
+    FACETS.forEach(function (facet) {
+      var picked = state[facet.key];
+      if (picked && picked.length) {
+        parts.push(facet.key + "=" + encodeURIComponent(picked.join(",")));
+      }
+    });
+    if (state.cols !== COLUMNS_DEFAULT) parts.push("cols=" + state.cols);
+    if (state.page > 1) parts.push("page=" + state.page);
+    return "#" + parts.join("&");
+  }
+
+  // Any change other than paging sends the visitor back to page one, since the
+  // page they were on may not exist once the list is filtered.
+  function updateState(changes) {
+    var state = readState();
+    Object.keys(changes).forEach(function (key) {
+      state[key] = changes[key];
+    });
+    if (!Object.prototype.hasOwnProperty.call(changes, "page")) state.page = 1;
+
+    var next = stateToHash(state);
+    if (next === window.location.hash) render();
+    else window.location.hash = next;
+  }
+
+  // Switching view keeps the filters, the sort and the density. Only the page
+  // resets, since the other view is a different length.
+  function viewLink(state, view) {
+    return {
+      view: view,
+      sort: state.sort,
+      brand: state.brand,
+      type: state.type,
+      color: state.color,
+      cols: state.cols,
+      page: 1,
+    };
+  }
+
+  function activeFilterCount(state) {
+    return FACETS.reduce(function (total, facet) {
+      return total + state[facet.key].length;
+    }, 0);
+  }
+
+  /* ----------------------------------------------------------- selecting --- */
+
+  // An empty facet means "no opinion". Within one facet the picks are an OR, and
+  // across facets they are an AND, which is what a shopper expects.
+  function matchesFilters(product, state) {
+    return FACETS.every(function (facet) {
+      var picked = state[facet.key];
+      if (!picked.length) return true;
+      return picked.indexOf(product[facet.field]) !== -1;
+    });
+  }
+
+  function sortProducts(list, sort) {
+    if (sort === SORT_CURATED) return list;
+    var sorted = list.slice();
+    sorted.sort(function (a, b) {
+      return sort === SORT_PRICE_ASC
+        ? a.baseValue - b.baseValue
+        : b.baseValue - a.baseValue;
+    });
+    return sorted;
+  }
+
+  function selectProducts(state) {
+    var base = state.view === VIEW_SAVED ? savedProducts() : products;
+    return sortProducts(
+      base.filter(function (product) {
+        return matchesFilters(product, state);
+      }),
+      state.sort,
+    );
+  }
+
   /* -------------------------------------------------------------- render --- */
 
   function saveLabel(product, saved) {
@@ -304,25 +492,6 @@
     if (product.color) parts.push(product.color);
     if (product.brand) parts.push("by " + product.brand);
     return parts.join(", ");
-  }
-
-  function metaText(product) {
-    return product.color;
-  }
-
-  // Available colourways. Each entry is { name, hex }, or a bare hex string.
-  function normalizeColors(raw) {
-    if (!Array.isArray(raw)) return [];
-    return raw
-      .map(function (entry) {
-        if (typeof entry === "string") return { name: entry, hex: entry };
-        if (!entry || !entry.hex) return null;
-        return {
-          name: entry.name ? String(entry.name) : "",
-          hex: String(entry.hex),
-        };
-      })
-      .filter(Boolean);
   }
 
   function fillColors(node, product) {
@@ -378,6 +547,18 @@
     });
   }
 
+  // A converted price is marked with a tilde. The tilde is decorative, so it is
+  // hidden from screen readers and the word "about" is read in its place.
+  function fillPrice(node, product) {
+    node.querySelector(".product__approx-word").textContent =
+      product.priceIsApproximate ? "about " : "";
+    node.querySelector(".product__approx").textContent =
+      product.priceIsApproximate ? "~" : "";
+    node.querySelector(".product__price-value").textContent = product.priceLead;
+    node.querySelector(".product__price-original").textContent =
+      product.priceOriginal;
+  }
+
   function buildProduct(product) {
     var node = dom.template.content.firstElementChild.cloneNode(true);
     var image = node.querySelector(".product__image");
@@ -399,18 +580,16 @@
 
     fillBrand(node, product);
     fillColors(node, product);
+    fillPrice(node, product);
     node.querySelector(".product__original").textContent = product.nameOriginal;
-    node.querySelector(".product__price").textContent = product.priceLead;
-    node.querySelector(".product__price-original").textContent =
-      product.priceOriginal;
-    node.querySelector(".product__meta").textContent = metaText(product);
+    node.querySelector(".product__meta").textContent = product.color;
     node.querySelector(".product__note").textContent = product.note;
 
     save.setAttribute("aria-pressed", String(saved));
     save.setAttribute("aria-label", saveLabel(product, saved));
     save.addEventListener("click", function (event) {
-      // The heart sits inside the product, which is one big link. This keeps
-      // a heart tap from opening the retailer.
+      // The heart sits inside the product, which is one big link. This keeps a
+      // heart tap from opening the retailer.
       event.preventDefault();
       event.stopPropagation();
 
@@ -433,139 +612,20 @@
     return node;
   }
 
-  /* --------------------------------------------------------------- state --- */
-
-  // Everything the visitor picks lives in the hash, so a filtered page can be
-  // sent to someone and the back button steps through it.
-  function readState() {
-    var raw = window.location.hash.replace(/^#/, "");
-    // Links made before the filters existed were just "#saved" or "#all".
-    if (raw === VIEW_SAVED || raw === VIEW_ALL) raw = "view=" + raw;
-
-    var state = {
-      view: VIEW_ALL,
-      sort: SORT_CURATED,
-      brand: ANY,
-      color: ANY,
-      page: 1,
-    };
-
-    raw.split("&").forEach(function (pair) {
-      if (!pair) return;
-      var split = pair.indexOf("=");
-      if (split === -1) return;
-      var key = decodeURIComponent(pair.slice(0, split));
-      var value = decodeURIComponent(pair.slice(split + 1));
-      if (!Object.prototype.hasOwnProperty.call(state, key)) return;
-      state[key] =
-        key === "page" ? Math.max(1, parseInt(value, 10) || 1) : value;
-    });
-
-    if (state.view !== VIEW_SAVED) state.view = VIEW_ALL;
-    if (state.sort !== SORT_PRICE_ASC && state.sort !== SORT_PRICE_DESC) {
-      state.sort = SORT_CURATED;
-    }
-    return state;
-  }
-
-  function stateToHash(state) {
-    // "view" is always written so the hash is never empty, which keeps
-    // hashchange firing predictably when the last filter is cleared.
-    var parts = ["view=" + state.view];
-    if (state.sort !== SORT_CURATED)
-      parts.push("sort=" + encodeURIComponent(state.sort));
-    if (state.brand) parts.push("brand=" + encodeURIComponent(state.brand));
-    if (state.color) parts.push("color=" + encodeURIComponent(state.color));
-    if (state.page > 1) parts.push("page=" + state.page);
-    return "#" + parts.join("&");
-  }
-
-  // Any change other than paging sends the visitor back to page one, since the
-  // page they were on may no longer exist once the list is filtered.
-  function updateState(changes) {
-    var state = readState();
-    Object.keys(changes).forEach(function (key) {
-      state[key] = changes[key];
-    });
-    if (!Object.prototype.hasOwnProperty.call(changes, "page")) state.page = 1;
-
-    var next = stateToHash(state);
-    if (next === window.location.hash) render();
-    else window.location.hash = next;
-  }
-
-  /* ------------------------------------------------------------ selecting --- */
-
-  function matchesFilters(product, state) {
-    if (state.brand && product.brand !== state.brand) return false;
-    if (state.color && product.colorFamily !== state.color) return false;
-    return true;
-  }
-
-  function sortProducts(list, sort) {
-    if (sort === SORT_CURATED) return list;
-    var sorted = list.slice();
-    sorted.sort(function (a, b) {
-      return sort === SORT_PRICE_ASC
-        ? a.baseValue - b.baseValue
-        : b.baseValue - a.baseValue;
-    });
-    return sorted;
-  }
-
-  function selectProducts(state) {
-    var base = state.view === VIEW_SAVED ? savedProducts() : products;
-    return sortProducts(
-      base.filter(function (product) {
-        return matchesFilters(product, state);
-      }),
-      state.sort,
-    );
-  }
-
   function updateSavedCount() {
     var count = savedProducts().length;
     dom.savedCount.textContent = count ? String(count) : "";
     dom.savedCount.hidden = count === 0;
   }
 
-  // Options are built from the products themselves, so adding a product with a
-  // new brand or colourway needs no change here.
-  function fillSelect(select, anyLabel, values, selected) {
-    select.textContent = "";
+  /* --------------------------------------------------------------- facets --- */
 
-    var any = document.createElement("option");
-    any.value = ANY;
-    any.textContent = anyLabel;
-    select.appendChild(any);
-
-    values.forEach(function (entry) {
-      var option = document.createElement("option");
-      option.value = entry.value;
-      option.textContent = entry.value + " (" + entry.count + ")";
-      select.appendChild(option);
-    });
-
-    // A filter the visitor picked is kept selectable even when the current
-    // view has none of it, otherwise the control would silently reset.
-    if (
-      selected &&
-      !values.some(function (e) {
-        return e.value === selected;
-      })
-    ) {
-      var orphan = document.createElement("option");
-      orphan.value = selected;
-      orphan.textContent = selected + " (0)";
-      select.appendChild(orphan);
-    }
-    select.value = selected;
-  }
-
-  function tally(list, key) {
+  // Options come from the products themselves, so a new brand, type or
+  // colourway needs no change here.
+  function tally(list, field) {
     var counts = Object.create(null);
     list.forEach(function (product) {
-      var value = product[key];
+      var value = product[field];
       if (!value) return;
       counts[value] = (counts[value] || 0) + 1;
     });
@@ -576,31 +636,97 @@
       });
   }
 
+  function renderFacet(facet, base, picked) {
+    var options = tally(base, facet.field);
+
+    // A pick with nothing behind it in this view is kept on the list, so the
+    // control never silently drops what the visitor chose.
+    picked.forEach(function (value) {
+      var known = options.some(function (option) {
+        return option.value === value;
+      });
+      if (!known) options.push({ value: value, count: 0 });
+    });
+
+    facet.node.textContent = "";
+
+    options.forEach(function (option) {
+      var id = "facet-" + facet.key + "-" + slugify(option.value);
+
+      var row = document.createElement("label");
+      row.className = "facet__option";
+      row.setAttribute("for", id);
+
+      var box = document.createElement("input");
+      box.type = "checkbox";
+      box.className = "facet__checkbox";
+      box.id = id;
+      box.value = option.value;
+      box.checked = picked.indexOf(option.value) !== -1;
+      box.addEventListener("change", function () {
+        var next = readState()[facet.key].slice();
+        var at = next.indexOf(option.value);
+        if (box.checked && at === -1) next.push(option.value);
+        if (!box.checked && at !== -1) next.splice(at, 1);
+        var changes = {};
+        changes[facet.key] = next;
+        updateState(changes);
+      });
+
+      var name = document.createElement("span");
+      name.className = "facet__name";
+      name.textContent = option.value;
+
+      var count = document.createElement("span");
+      count.className = "facet__count";
+      count.textContent = String(option.count);
+
+      row.appendChild(box);
+      row.appendChild(name);
+      row.appendChild(count);
+      facet.node.appendChild(row);
+    });
+  }
+
   function renderControls(state) {
     // Counts describe the view being browsed, not the whole catalogue, so the
     // numbers still make sense inside Saved.
     var base = state.view === VIEW_SAVED ? savedProducts() : products;
-    fillSelect(
-      dom.filterBrand,
-      "All brands",
-      tally(base, "brand"),
-      state.brand,
-    );
-    fillSelect(
-      dom.filterColor,
-      "All colours",
-      tally(base, "colorFamily"),
-      state.color,
-    );
+    FACETS.forEach(function (facet) {
+      renderFacet(facet, base, state[facet.key]);
+    });
     dom.sortBy.value = state.sort;
+    dom.perRow.value = state.cols;
+
+    var active = activeFilterCount(state);
+    dom.filtersCount.textContent = active ? String(active) : "";
+    dom.filtersCount.hidden = active === 0;
+    dom.filtersClear.disabled = active === 0 && state.sort === SORT_CURATED;
   }
 
-  function renderPager(state, total, pages) {
+  /* --------------------------------------------------------------- drawer --- */
+
+  function isDrawerOpen() {
+    return dom.filtersToggle.getAttribute("aria-expanded") === "true";
+  }
+
+  function setDrawer(open) {
+    dom.filtersToggle.setAttribute("aria-expanded", String(open));
+    dom.drawer.hidden = !open;
+    dom.drawerScrim.hidden = !open;
+    document.body.classList.toggle("has-drawer", open);
+    if (open) dom.drawerClose.focus();
+    else dom.filtersToggle.focus();
+  }
+
+  /* ---------------------------------------------------------------- pager --- */
+
+  function renderPager(page, total, pages) {
     dom.pager.hidden = pages <= 1;
-    dom.pagerPrev.disabled = state.page <= 1;
-    dom.pagerNext.disabled = state.page >= pages;
+    dom.pagerPrev.disabled = page <= 1;
+    dom.pagerNext.disabled = page >= pages;
     dom.pagerStatus.textContent =
-      pages > 1 ? "Page " + state.page + " of " + pages : "";
+      pages > 1 ? "Page " + page + " of " + pages : "";
     dom.resultCount.textContent = total === 1 ? "1 piece" : total + " pieces";
   }
 
@@ -608,7 +734,7 @@
     var state = readState();
     var list = selectProducts(state);
     var pages = Math.max(1, Math.ceil(list.length / PAGE_SIZE));
-    // Deleting a filter, or unsaving the last piece on a page, can leave the
+    // Clearing a filter, or unsaving the last piece on a page, can leave the
     // visitor past the end of the list.
     var page = Math.min(state.page, pages);
     var slice = list.slice((page - 1) * PAGE_SIZE, page * PAGE_SIZE);
@@ -620,12 +746,12 @@
 
     dom.grid.textContent = "";
     dom.grid.appendChild(fragment);
+    dom.grid.setAttribute("data-cols", state.cols);
 
     if (list.length === 0) {
-      dom.emptyMessage.textContent =
-        state.brand || state.color
-          ? "Nothing here matches those filters."
-          : "No saved pieces yet.";
+      dom.emptyMessage.textContent = activeFilterCount(state)
+        ? "Nothing here matches those filters."
+        : "No saved pieces yet.";
       dom.emptyMessage.hidden = false;
     } else {
       dom.emptyMessage.hidden = true;
@@ -639,23 +765,11 @@
       "aria-current",
       state.view === VIEW_SAVED ? "page" : "false",
     );
-    dom.navAll.href = stateToHash({
-      view: VIEW_ALL,
-      sort: state.sort,
-      brand: state.brand,
-      color: state.color,
-      page: 1,
-    });
-    dom.navSaved.href = stateToHash({
-      view: VIEW_SAVED,
-      sort: state.sort,
-      brand: state.brand,
-      color: state.color,
-      page: 1,
-    });
+    dom.navAll.href = stateToHash(viewLink(state, VIEW_ALL));
+    dom.navSaved.href = stateToHash(viewLink(state, VIEW_SAVED));
 
     renderControls(state);
-    renderPager({ view: state.view, page: page }, list.length, pages);
+    renderPager(page, list.length, pages);
     updateSavedCount();
   }
 
@@ -666,21 +780,35 @@
   document.title = title;
 
   // The wordmark in the shell is Em's. A list only shows it by asking for it,
-  // so another person's list is not headed by someone else's mark.
-  // The attribute is set directly rather than through the "hidden" property:
-  // that property belongs to HTMLElement, and this is an SVGElement, so
-  // assigning to it silently does nothing at all.
+  // so another person's list is not headed by someone else's mark. The
+  // attribute is set directly rather than through the "hidden" property: that
+  // property belongs to HTMLElement, and this is an SVGElement, so assigning to
+  // it silently does nothing.
   if (collection.wordmark === true) dom.mark.removeAttribute("hidden");
   else dom.mark.setAttribute("hidden", "");
 
-  dom.filterBrand.addEventListener("change", function () {
-    updateState({ brand: dom.filterBrand.value });
+  dom.filtersToggle.addEventListener("click", function () {
+    setDrawer(!isDrawerOpen());
   });
-  dom.filterColor.addEventListener("change", function () {
-    updateState({ color: dom.filterColor.value });
+  dom.drawerClose.addEventListener("click", function () {
+    setDrawer(false);
   });
+  dom.drawerScrim.addEventListener("click", function () {
+    setDrawer(false);
+  });
+  document.addEventListener("keydown", function (event) {
+    if (event.key === "Escape" && isDrawerOpen()) setDrawer(false);
+  });
+
+  dom.filtersClear.addEventListener("click", function () {
+    updateState({ brand: [], type: [], color: [], sort: SORT_CURATED });
+  });
+
   dom.sortBy.addEventListener("change", function () {
     updateState({ sort: dom.sortBy.value });
+  });
+  dom.perRow.addEventListener("change", function () {
+    updateState({ cols: dom.perRow.value });
   });
 
   dom.pagerPrev.addEventListener("click", function () {

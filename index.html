@@ -6,107 +6,104 @@
     <title>Em's Dress Code</title>
     <meta
       name="description"
-      content="A short curated list of pieces. Tap a product to shop it, tap the heart to save it."
+      content="A curated list of pieces from many stores in one place. Tap a product to shop it, tap the heart to save it."
     />
     <meta name="theme-color" content="#0d1f3c" />
     <meta name="color-scheme" content="light" />
     <link rel="preconnect" href="https://cdn.shopify.com" crossorigin />
-    <!-- The EDC monogram on a navy tile, the same drawing as the masthead
-         mark. Inline so it needs no file and reads on both a light and a dark
+    <!-- Em's wordmark on a navy tile, the same drawing as the mark on the band.
+         Inline so it needs no file and reads on both a light and a dark
          browser tab. -->
     <link
       rel="icon"
-      href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='-22 70 460 460'%3E%3Crect x='-22' y='70' width='460' height='460' fill='%230d1f3c'/%3E%3Cg fill='%23fff'%3E%3Ccircle cx='28' cy='228' r='11'/%3E%3Ccircle cx='64' cy='228' r='11'/%3E%3Ccircle cx='100' cy='228' r='11'/%3E%3Ccircle cx='28' cy='264' r='11'/%3E%3Ccircle cx='28' cy='300' r='11'/%3E%3Ccircle cx='64' cy='300' r='11'/%3E%3Ccircle cx='100' cy='300' r='11'/%3E%3Ccircle cx='28' cy='336' r='11'/%3E%3Ccircle cx='28' cy='372' r='11'/%3E%3Ccircle cx='64' cy='372' r='11'/%3E%3Ccircle cx='100' cy='372' r='11'/%3E%3Ccircle cx='172' cy='228' r='11'/%3E%3Ccircle cx='208' cy='228' r='11'/%3E%3Ccircle cx='172' cy='264' r='11'/%3E%3Ccircle cx='244' cy='264' r='11'/%3E%3Ccircle cx='172' cy='300' r='11'/%3E%3Ccircle cx='244' cy='300' r='11'/%3E%3Ccircle cx='172' cy='336' r='11'/%3E%3Ccircle cx='244' cy='336' r='11'/%3E%3Ccircle cx='172' cy='372' r='11'/%3E%3Ccircle cx='208' cy='372' r='11'/%3E%3Ccircle cx='316' cy='228' r='11'/%3E%3Ccircle cx='352' cy='228' r='11'/%3E%3Ccircle cx='388' cy='228' r='11'/%3E%3Ccircle cx='316' cy='264' r='11'/%3E%3Ccircle cx='316' cy='300' r='11'/%3E%3Ccircle cx='316' cy='336' r='11'/%3E%3Ccircle cx='316' cy='372' r='11'/%3E%3Ccircle cx='352' cy='372' r='11'/%3E%3Ccircle cx='388' cy='372' r='11'/%3E%3C/g%3E%3C/svg%3E"
+      href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='-18 120 360 360'%3E%3Crect x='-18' y='120' width='360' height='360' fill='%230d1f3c'/%3E%3Cg fill='%23fff'%3E%3Ccircle cx='28' cy='228' r='11'/%3E%3Ccircle cx='64' cy='228' r='11'/%3E%3Ccircle cx='100' cy='228' r='11'/%3E%3Ccircle cx='28' cy='264' r='11'/%3E%3Ccircle cx='28' cy='300' r='11'/%3E%3Ccircle cx='64' cy='300' r='11'/%3E%3Ccircle cx='100' cy='300' r='11'/%3E%3Ccircle cx='28' cy='336' r='11'/%3E%3Ccircle cx='28' cy='372' r='11'/%3E%3Ccircle cx='64' cy='372' r='11'/%3E%3Ccircle cx='100' cy='372' r='11'/%3E%3Ccircle cx='152' cy='300' r='11'/%3E%3Ccircle cx='188' cy='300' r='11'/%3E%3Ccircle cx='224' cy='300' r='11'/%3E%3Ccircle cx='260' cy='300' r='11'/%3E%3Ccircle cx='296' cy='300' r='11'/%3E%3Ccircle cx='152' cy='336' r='11'/%3E%3Ccircle cx='224' cy='336' r='11'/%3E%3Ccircle cx='296' cy='336' r='11'/%3E%3Ccircle cx='152' cy='372' r='11'/%3E%3Ccircle cx='224' cy='372' r='11'/%3E%3Ccircle cx='296' cy='372' r='11'/%3E%3C/g%3E%3C/svg%3E"
     />
-    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="styles.css?v=20260815033347" />
   </head>
   <body>
     <a class="skip-link" href="#grid">Skip to products</a>
 
     <header class="masthead">
-      <div class="masthead__brand">
-        <!-- The EDC monogram, on the same 36px grid and 11px dots as Em's
-             original artwork, so it sits on the same rhythm. This is the same
-             drawing as the favicon, minus the navy tile, because the band
-             already supplies the navy. Decorative here, since the title beside
-             it says the name in words. Shown only on the list that sets
-             "wordmark" in its products.js. -->
-        <svg
-          class="masthead__mark"
-          id="collection-mark"
-          viewBox="17 217 382 166"
-          aria-hidden="true"
-          focusable="false"
-          hidden
-        >
-          <g fill="currentColor">
-            <circle cx="28" cy="228" r="11" />
-            <circle cx="64" cy="228" r="11" />
-            <circle cx="100" cy="228" r="11" />
-            <circle cx="28" cy="264" r="11" />
-            <circle cx="28" cy="300" r="11" />
-            <circle cx="64" cy="300" r="11" />
-            <circle cx="100" cy="300" r="11" />
-            <circle cx="28" cy="336" r="11" />
-            <circle cx="28" cy="372" r="11" />
-            <circle cx="64" cy="372" r="11" />
-            <circle cx="100" cy="372" r="11" />
-            <circle cx="172" cy="228" r="11" />
-            <circle cx="208" cy="228" r="11" />
-            <circle cx="172" cy="264" r="11" />
-            <circle cx="244" cy="264" r="11" />
-            <circle cx="172" cy="300" r="11" />
-            <circle cx="244" cy="300" r="11" />
-            <circle cx="172" cy="336" r="11" />
-            <circle cx="244" cy="336" r="11" />
-            <circle cx="172" cy="372" r="11" />
-            <circle cx="208" cy="372" r="11" />
-            <circle cx="316" cy="228" r="11" />
-            <circle cx="352" cy="228" r="11" />
-            <circle cx="388" cy="228" r="11" />
-            <circle cx="316" cy="264" r="11" />
-            <circle cx="316" cy="300" r="11" />
-            <circle cx="316" cy="336" r="11" />
-            <circle cx="316" cy="372" r="11" />
-            <circle cx="352" cy="372" r="11" />
-            <circle cx="388" cy="372" r="11" />
-          </g>
-        </svg>
-        <h1 class="masthead__title" id="collection-title">&nbsp;</h1>
-      </div>
-      <nav class="masthead__nav" aria-label="Views">
-        <a class="nav-link" id="nav-all" href="#all">All</a>
-        <a class="nav-link" id="nav-saved" href="#saved"
-          >Saved<span class="nav-link__count" id="saved-count" hidden></span
-        ></a>
-      </nav>
+      <h1 class="masthead__title" id="collection-title">&nbsp;</h1>
+      <!-- Em's wordmark, the same drawing as the favicon without its navy tile,
+           since the band already supplies the navy. Decorative, because the
+           title says the name in words. Shown only on the list that sets
+           "wordmark" in its products.js. -->
+      <svg
+        class="masthead__mark"
+        id="collection-mark"
+        viewBox="17 217 290 166"
+        aria-hidden="true"
+        focusable="false"
+        hidden
+      >
+        <g fill="currentColor">
+          <circle cx="28" cy="228" r="11" />
+          <circle cx="64" cy="228" r="11" />
+          <circle cx="100" cy="228" r="11" />
+          <circle cx="28" cy="264" r="11" />
+          <circle cx="28" cy="300" r="11" />
+          <circle cx="64" cy="300" r="11" />
+          <circle cx="100" cy="300" r="11" />
+          <circle cx="28" cy="336" r="11" />
+          <circle cx="28" cy="372" r="11" />
+          <circle cx="64" cy="372" r="11" />
+          <circle cx="100" cy="372" r="11" />
+          <circle cx="152" cy="300" r="11" />
+          <circle cx="188" cy="300" r="11" />
+          <circle cx="224" cy="300" r="11" />
+          <circle cx="260" cy="300" r="11" />
+          <circle cx="296" cy="300" r="11" />
+          <circle cx="152" cy="336" r="11" />
+          <circle cx="224" cy="336" r="11" />
+          <circle cx="296" cy="336" r="11" />
+          <circle cx="152" cy="372" r="11" />
+          <circle cx="224" cy="372" r="11" />
+          <circle cx="296" cy="372" r="11" />
+        </g>
+      </svg>
     </header>
 
     <main>
-      <div class="controls">
-        <div class="controls__filters">
-          <div class="controls__group">
-            <label class="controls__label" for="filter-brand">Brand</label>
-            <select class="controls__select" id="filter-brand"></select>
-          </div>
-          <div class="controls__group">
-            <label class="controls__label" for="filter-color">Colour</label>
-            <select class="controls__select" id="filter-color"></select>
-          </div>
-          <div class="controls__group">
-            <label class="controls__label" for="sort-by">Sort</label>
-            <select class="controls__select" id="sort-by">
-              <option value="curated">Curated</option>
-              <option value="price-asc">Price low to high</option>
-              <option value="price-desc">Price high to low</option>
-            </select>
-          </div>
+      <div class="toolbar">
+        <div class="toolbar__start">
+          <button
+            class="filters-toggle"
+            id="filters-toggle"
+            type="button"
+            aria-expanded="false"
+            aria-controls="filters"
+          >
+            <svg
+              class="filters-toggle__icon"
+              viewBox="0 0 16 12"
+              aria-hidden="true"
+              focusable="false"
+            >
+              <rect x="0" y="0" width="16" height="1.6" />
+              <rect x="0" y="5.2" width="16" height="1.6" />
+              <rect x="0" y="10.4" width="16" height="1.6" />
+            </svg>
+            Filters<span
+              class="filters-toggle__count"
+              id="filters-count"
+              hidden
+            ></span>
+          </button>
+
+          <nav class="views" aria-label="Views">
+            <a class="nav-link" id="nav-all" href="#all">All</a>
+            <a class="nav-link" id="nav-saved" href="#saved"
+              >Saved<span class="nav-link__count" id="saved-count" hidden></span
+            ></a>
+          </nav>
         </div>
-        <p class="controls__count" id="result-count"></p>
+
+        <p class="toolbar__count" id="result-count"></p>
       </div>
 
       <p class="feedback" id="empty-message" hidden>No saved pieces yet.</p>
-      <div class="grid" id="grid"></div>
+      <div class="grid" id="grid" data-cols="4"></div>
 
       <nav class="pager" id="pager" aria-label="Pages" hidden>
         <button class="pager__button" id="pager-prev" type="button">
@@ -120,6 +117,59 @@
     </main>
 
     <p class="status" id="status" role="status" aria-live="polite"></p>
+
+    <!-- The filter panel slides in over the page rather than pushing it down,
+         so the grid keeps its place while the visitor narrows things. -->
+    <div class="drawer-scrim" id="drawer-scrim" hidden></div>
+    <aside class="drawer" id="filters" aria-label="Filters" hidden>
+      <div class="drawer__head">
+        <p class="drawer__title">Filters</p>
+        <button class="drawer__close" id="drawer-close" type="button">
+          Close
+        </button>
+      </div>
+
+      <div class="drawer__body">
+        <fieldset class="facet">
+          <legend class="facet__title">Brand</legend>
+          <div class="facet__options" id="facet-brand"></div>
+        </fieldset>
+
+        <fieldset class="facet">
+          <legend class="facet__title">Type</legend>
+          <div class="facet__options" id="facet-type"></div>
+        </fieldset>
+
+        <fieldset class="facet">
+          <legend class="facet__title">Colour</legend>
+          <div class="facet__options" id="facet-color"></div>
+        </fieldset>
+
+        <div class="facet">
+          <label class="facet__title" for="sort-by">Sort</label>
+          <select class="drawer__select" id="sort-by">
+            <option value="curated">Curated</option>
+            <option value="price-asc">Price low to high</option>
+            <option value="price-desc">Price high to low</option>
+          </select>
+        </div>
+
+        <div class="facet">
+          <label class="facet__title" for="per-row">Per row</label>
+          <select class="drawer__select" id="per-row">
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="drawer__foot">
+        <button class="drawer__clear" id="filters-clear" type="button">
+          Clear all
+        </button>
+      </div>
+    </aside>
 
     <template id="product-template">
       <article class="product">
@@ -153,7 +203,11 @@
               ></a>
             </h2>
             <p class="product__original"></p>
-            <p class="product__price"></p>
+            <p class="product__price">
+              <span class="visually-hidden product__approx-word"></span
+              ><span class="product__approx" aria-hidden="true"></span
+              ><span class="product__price-value"></span>
+            </p>
             <p class="product__price-original"></p>
             <p class="product__meta"></p>
             <p class="product__colors" hidden></p>
@@ -175,7 +229,7 @@
       </article>
     </template>
 
-    <script src="products.js"></script>
-    <script src="app.js"></script>
+    <script src="products.js?v=20260815033347"></script>
+    <script src="app.js?v=20260815033347"></script>
   </body>
 </html>
