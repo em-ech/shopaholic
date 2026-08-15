@@ -9,6 +9,62 @@
   var VIEW_ALL = "all";
   var VIEW_SAVED = "saved";
 
+  var SORT_CURATED = "curated";
+  var SORT_PRICE_ASC = "price-asc";
+  var SORT_PRICE_DESC = "price-desc";
+
+  var PAGE_SIZE = 20;
+  var ANY = "";
+
+  // Retailers write colourways in their own language and vocabulary, so the
+  // filter groups them into families. A card still shows the colourway exactly
+  // as its retailer wrote it. Anything not listed here becomes its own family,
+  // so a new colourway is never silently swallowed.
+  var COLOUR_FAMILIES = {
+    black: "Black",
+    negro: "Black",
+
+    white: "White",
+    blanco: "White",
+    "oyster-white": "White",
+    ivory: "White",
+
+    beige: "Beige",
+    "light beige": "Beige",
+    "off sand": "Beige",
+    camel: "Beige",
+    natural: "Beige",
+    nude: "Beige",
+    tostado: "Beige",
+    khaki: "Beige",
+    kaki: "Beige",
+    "dark khaki": "Beige",
+    sycamore: "Beige",
+
+    blue: "Blue",
+    azul: "Blue",
+    navy: "Blue",
+    "navy blue": "Blue",
+    "light blue": "Blue",
+
+    grey: "Grey",
+    gray: "Grey",
+    gris: "Grey",
+    charcoal: "Grey",
+    shadow: "Grey",
+
+    green: "Green",
+    verde: "Green",
+
+    brown: "Brown",
+    naranja: "Orange",
+    burdeos: "Red",
+    "dark purple": "Purple",
+    estampado: "Multi",
+  };
+
+  var COLOUR_UNSET = "Unspecified";
+
   var collection = window.COLLECTION || {};
 
   // Every list on this site shares one origin, and localStorage is keyed by
@@ -26,6 +82,14 @@
     savedCount: document.getElementById("saved-count"),
     status: document.getElementById("status"),
     template: document.getElementById("product-template"),
+    filterBrand: document.getElementById("filter-brand"),
+    filterColor: document.getElementById("filter-color"),
+    sortBy: document.getElementById("sort-by"),
+    resultCount: document.getElementById("result-count"),
+    pager: document.getElementById("pager"),
+    pagerPrev: document.getElementById("pager-prev"),
+    pagerNext: document.getElementById("pager-next"),
+    pagerStatus: document.getElementById("pager-status"),
   };
 
   /* ---------------------------------------------------------------- data --- */
@@ -57,6 +121,22 @@
     }
   }
 
+  function colorFamily(color) {
+    var key = String(color).trim().toLowerCase();
+    if (!key) return COLOUR_UNSET;
+    return COLOUR_FAMILIES[key] || String(color).trim();
+  }
+
+  // Sorting reads the first figure in the price, so a range like
+  // "59.00 to 69.00 USD" orders on its lower bound. The list mixes GBP, EUR and
+  // USD, so this orders by the number printed rather than by real value.
+  function priceValue(price) {
+    var match = String(price)
+      .replace(/(\d),(\d)/g, "$1.$2")
+      .match(/\d+(\.\d+)?/);
+    return match ? parseFloat(match[0]) : Infinity;
+  }
+
   // Keeps only products that can actually be rendered, and gives every one of
   // them a stable id so Saved state has something to hold on to.
   function normalize(rawProducts) {
@@ -77,6 +157,8 @@
         while (seen[id]) id = id + "_" + index;
         seen[id] = true;
 
+        var color = raw.color ? String(raw.color) : "";
+
         return {
           id: id,
           name: String(raw.name),
@@ -84,10 +166,12 @@
           image: String(raw.image),
           url: String(raw.url),
           brand: raw.brand ? String(raw.brand) : "",
-          color: raw.color ? String(raw.color) : "",
+          color: color,
           note: raw.note ? String(raw.note) : "",
           logo: resolveLogo(raw),
           colors: normalizeColors(raw.colors),
+          colorFamily: colorFamily(color),
+          priceValue: priceValue(raw.price),
         };
       })
       .filter(Boolean);
@@ -279,14 +363,100 @@
       }, 180);
 
       updateSavedCount();
-      if (currentView() === VIEW_SAVED) render();
+      if (readState().view === VIEW_SAVED) render();
     });
 
     return node;
   }
 
-  function currentView() {
-    return window.location.hash === "#saved" ? VIEW_SAVED : VIEW_ALL;
+  /* --------------------------------------------------------------- state --- */
+
+  // Everything the visitor picks lives in the hash, so a filtered page can be
+  // sent to someone and the back button steps through it.
+  function readState() {
+    var raw = window.location.hash.replace(/^#/, "");
+    // Links made before the filters existed were just "#saved" or "#all".
+    if (raw === VIEW_SAVED || raw === VIEW_ALL) raw = "view=" + raw;
+
+    var state = {
+      view: VIEW_ALL,
+      sort: SORT_CURATED,
+      brand: ANY,
+      color: ANY,
+      page: 1,
+    };
+
+    raw.split("&").forEach(function (pair) {
+      if (!pair) return;
+      var split = pair.indexOf("=");
+      if (split === -1) return;
+      var key = decodeURIComponent(pair.slice(0, split));
+      var value = decodeURIComponent(pair.slice(split + 1));
+      if (!Object.prototype.hasOwnProperty.call(state, key)) return;
+      state[key] =
+        key === "page" ? Math.max(1, parseInt(value, 10) || 1) : value;
+    });
+
+    if (state.view !== VIEW_SAVED) state.view = VIEW_ALL;
+    if (state.sort !== SORT_PRICE_ASC && state.sort !== SORT_PRICE_DESC) {
+      state.sort = SORT_CURATED;
+    }
+    return state;
+  }
+
+  function stateToHash(state) {
+    // "view" is always written so the hash is never empty, which keeps
+    // hashchange firing predictably when the last filter is cleared.
+    var parts = ["view=" + state.view];
+    if (state.sort !== SORT_CURATED)
+      parts.push("sort=" + encodeURIComponent(state.sort));
+    if (state.brand) parts.push("brand=" + encodeURIComponent(state.brand));
+    if (state.color) parts.push("color=" + encodeURIComponent(state.color));
+    if (state.page > 1) parts.push("page=" + state.page);
+    return "#" + parts.join("&");
+  }
+
+  // Any change other than paging sends the visitor back to page one, since the
+  // page they were on may no longer exist once the list is filtered.
+  function updateState(changes) {
+    var state = readState();
+    Object.keys(changes).forEach(function (key) {
+      state[key] = changes[key];
+    });
+    if (!Object.prototype.hasOwnProperty.call(changes, "page")) state.page = 1;
+
+    var next = stateToHash(state);
+    if (next === window.location.hash) render();
+    else window.location.hash = next;
+  }
+
+  /* ------------------------------------------------------------ selecting --- */
+
+  function matchesFilters(product, state) {
+    if (state.brand && product.brand !== state.brand) return false;
+    if (state.color && product.colorFamily !== state.color) return false;
+    return true;
+  }
+
+  function sortProducts(list, sort) {
+    if (sort === SORT_CURATED) return list;
+    var sorted = list.slice();
+    sorted.sort(function (a, b) {
+      return sort === SORT_PRICE_ASC
+        ? a.priceValue - b.priceValue
+        : b.priceValue - a.priceValue;
+    });
+    return sorted;
+  }
+
+  function selectProducts(state) {
+    var base = state.view === VIEW_SAVED ? savedProducts() : products;
+    return sortProducts(
+      base.filter(function (product) {
+        return matchesFilters(product, state);
+      }),
+      state.sort,
+    );
   }
 
   function updateSavedCount() {
@@ -295,27 +465,133 @@
     dom.savedCount.hidden = count === 0;
   }
 
-  function render() {
-    var view = currentView();
-    var list = view === VIEW_SAVED ? savedProducts() : products;
-    var fragment = document.createDocumentFragment();
+  // Options are built from the products themselves, so adding a product with a
+  // new brand or colourway needs no change here.
+  function fillSelect(select, anyLabel, values, selected) {
+    select.textContent = "";
 
+    var any = document.createElement("option");
+    any.value = ANY;
+    any.textContent = anyLabel;
+    select.appendChild(any);
+
+    values.forEach(function (entry) {
+      var option = document.createElement("option");
+      option.value = entry.value;
+      option.textContent = entry.value + " (" + entry.count + ")";
+      select.appendChild(option);
+    });
+
+    // A filter the visitor picked is kept selectable even when the current
+    // view has none of it, otherwise the control would silently reset.
+    if (
+      selected &&
+      !values.some(function (e) {
+        return e.value === selected;
+      })
+    ) {
+      var orphan = document.createElement("option");
+      orphan.value = selected;
+      orphan.textContent = selected + " (0)";
+      select.appendChild(orphan);
+    }
+    select.value = selected;
+  }
+
+  function tally(list, key) {
+    var counts = Object.create(null);
     list.forEach(function (product) {
+      var value = product[key];
+      if (!value) return;
+      counts[value] = (counts[value] || 0) + 1;
+    });
+    return Object.keys(counts)
+      .sort()
+      .map(function (value) {
+        return { value: value, count: counts[value] };
+      });
+  }
+
+  function renderControls(state) {
+    // Counts describe the view being browsed, not the whole catalogue, so the
+    // numbers still make sense inside Saved.
+    var base = state.view === VIEW_SAVED ? savedProducts() : products;
+    fillSelect(
+      dom.filterBrand,
+      "All brands",
+      tally(base, "brand"),
+      state.brand,
+    );
+    fillSelect(
+      dom.filterColor,
+      "All colours",
+      tally(base, "colorFamily"),
+      state.color,
+    );
+    dom.sortBy.value = state.sort;
+  }
+
+  function renderPager(state, total, pages) {
+    dom.pager.hidden = pages <= 1;
+    dom.pagerPrev.disabled = state.page <= 1;
+    dom.pagerNext.disabled = state.page >= pages;
+    dom.pagerStatus.textContent =
+      pages > 1 ? "Page " + state.page + " of " + pages : "";
+    dom.resultCount.textContent = total === 1 ? "1 piece" : total + " pieces";
+  }
+
+  function render() {
+    var state = readState();
+    var list = selectProducts(state);
+    var pages = Math.max(1, Math.ceil(list.length / PAGE_SIZE));
+    // Deleting a filter, or unsaving the last piece on a page, can leave the
+    // visitor past the end of the list.
+    var page = Math.min(state.page, pages);
+    var slice = list.slice((page - 1) * PAGE_SIZE, page * PAGE_SIZE);
+
+    var fragment = document.createDocumentFragment();
+    slice.forEach(function (product) {
       fragment.appendChild(buildProduct(product));
     });
 
     dom.grid.textContent = "";
     dom.grid.appendChild(fragment);
 
-    dom.emptyMessage.hidden = !(view === VIEW_SAVED && list.length === 0);
+    if (list.length === 0) {
+      dom.emptyMessage.textContent =
+        state.brand || state.color
+          ? "Nothing here matches those filters."
+          : "No saved pieces yet.";
+      dom.emptyMessage.hidden = false;
+    } else {
+      dom.emptyMessage.hidden = true;
+    }
+
     dom.navAll.setAttribute(
       "aria-current",
-      view === VIEW_ALL ? "page" : "false",
+      state.view === VIEW_ALL ? "page" : "false",
     );
     dom.navSaved.setAttribute(
       "aria-current",
-      view === VIEW_SAVED ? "page" : "false",
+      state.view === VIEW_SAVED ? "page" : "false",
     );
+    dom.navAll.href = stateToHash({
+      view: VIEW_ALL,
+      sort: state.sort,
+      brand: state.brand,
+      color: state.color,
+      page: 1,
+    });
+    dom.navSaved.href = stateToHash({
+      view: VIEW_SAVED,
+      sort: state.sort,
+      brand: state.brand,
+      color: state.color,
+      page: 1,
+    });
+
+    renderControls(state);
+    renderPager({ view: state.view, page: page }, list.length, pages);
     updateSavedCount();
   }
 
@@ -332,6 +608,25 @@
   // assigning to it silently does nothing at all.
   if (collection.wordmark === true) dom.mark.removeAttribute("hidden");
   else dom.mark.setAttribute("hidden", "");
+
+  dom.filterBrand.addEventListener("change", function () {
+    updateState({ brand: dom.filterBrand.value });
+  });
+  dom.filterColor.addEventListener("change", function () {
+    updateState({ color: dom.filterColor.value });
+  });
+  dom.sortBy.addEventListener("change", function () {
+    updateState({ sort: dom.sortBy.value });
+  });
+
+  dom.pagerPrev.addEventListener("click", function () {
+    updateState({ page: Math.max(1, readState().page - 1) });
+    window.scrollTo(0, 0);
+  });
+  dom.pagerNext.addEventListener("click", function () {
+    updateState({ page: readState().page + 1 });
+    window.scrollTo(0, 0);
+  });
 
   window.addEventListener("hashchange", render);
   // Saved state stays in step when the site is open in more than one tab.

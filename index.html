@@ -72,8 +72,40 @@
     </header>
 
     <main>
+      <div class="controls">
+        <div class="controls__filters">
+          <div class="controls__group">
+            <label class="controls__label" for="filter-brand">Brand</label>
+            <select class="controls__select" id="filter-brand"></select>
+          </div>
+          <div class="controls__group">
+            <label class="controls__label" for="filter-color">Colour</label>
+            <select class="controls__select" id="filter-color"></select>
+          </div>
+          <div class="controls__group">
+            <label class="controls__label" for="sort-by">Sort</label>
+            <select class="controls__select" id="sort-by">
+              <option value="curated">Curated</option>
+              <option value="price-asc">Price low to high</option>
+              <option value="price-desc">Price high to low</option>
+            </select>
+          </div>
+        </div>
+        <p class="controls__count" id="result-count"></p>
+      </div>
+
       <p class="feedback" id="empty-message" hidden>No saved pieces yet.</p>
       <div class="grid" id="grid"></div>
+
+      <nav class="pager" id="pager" aria-label="Pages" hidden>
+        <button class="pager__button" id="pager-prev" type="button">
+          Previous
+        </button>
+        <p class="pager__status" id="pager-status" aria-live="polite"></p>
+        <button class="pager__button" id="pager-next" type="button">
+          Next
+        </button>
+      </nav>
     </main>
 
     <p class="status" id="status" role="status" aria-live="polite"></p>

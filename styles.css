@@ -203,6 +203,112 @@ a {
 }
 
 /* --------------------------------------------------------------------------
+   Controls
+   -------------------------------------------------------------------------- */
+.controls {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 1rem 2rem;
+  padding-bottom: 2rem;
+}
+
+.controls__filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem 1.75rem;
+}
+
+.controls__group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.controls__label {
+  color: var(--ink-soft);
+  text-transform: uppercase;
+  letter-spacing: var(--track);
+}
+
+/* Native selects, styled down to a single rule so they stay keyboard and
+   screen reader friendly without importing anything. */
+.controls__select {
+  appearance: none;
+  min-width: 10rem;
+  margin: 0;
+  padding: 0.3rem 1.5rem 0.3rem 0;
+  border: 0;
+  border-bottom: 1px solid var(--ink);
+  border-radius: 0;
+  background: transparent;
+  background-image:
+    linear-gradient(45deg, transparent 50%, var(--ink) 50%),
+    linear-gradient(135deg, var(--ink) 50%, transparent 50%);
+  background-position:
+    right 0.5rem center,
+    right 0.25rem center;
+  background-size:
+    5px 5px,
+    5px 5px;
+  background-repeat: no-repeat;
+  color: var(--ink);
+  font: inherit;
+  text-transform: uppercase;
+  letter-spacing: var(--track);
+  cursor: pointer;
+}
+
+.controls__count {
+  color: var(--ink-soft);
+  text-transform: uppercase;
+  letter-spacing: var(--track);
+  font-variant-numeric: tabular-nums;
+}
+
+/* --------------------------------------------------------------------------
+   Pager
+   -------------------------------------------------------------------------- */
+.pager {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+  padding-top: 4rem;
+}
+
+.pager[hidden] {
+  display: none;
+}
+
+.pager__button {
+  margin: 0;
+  padding: 0.4rem 0;
+  border: 0;
+  border-bottom: 1px solid var(--ink);
+  background: none;
+  color: var(--ink);
+  font: inherit;
+  text-transform: uppercase;
+  letter-spacing: var(--track);
+  cursor: pointer;
+}
+
+.pager__button:disabled {
+  border-bottom-color: transparent;
+  color: var(--ink-soft);
+  cursor: default;
+}
+
+.pager__status {
+  color: var(--ink-soft);
+  text-transform: uppercase;
+  letter-spacing: var(--track);
+  font-variant-numeric: tabular-nums;
+}
+
+/* --------------------------------------------------------------------------
    Grid
    -------------------------------------------------------------------------- */
 .grid {

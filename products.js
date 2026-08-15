@@ -405,4 +405,514 @@ window.PRODUCTS = [
       "https://static.zara.net/assets/public/0ee9/40c0/15cf45d1972a/81e1dd0c7a9e/00706923800-p/00706923800-p.jpg?ts=1786091483445&w=1024",
     url: "https://www.zara.com/uk/en/relaxed-fit-flowing-shirt-p04364653.html?v1=545412607&v2=2431994",
   },
+  {
+    id: "springfield-polo-estructura-moulinee-kaki",
+    name: "Polo estructura moulinee",
+    brand: "Springfield",
+    price: "12.99 EUR",
+    color: "Kaki",
+    image:
+      "https://myspringfield.com/on/demandware.static/-/Sites-gc-spf-master-catalog/default/dw7101f7cb/images/hi-res/P_142426193FM.jpg",
+    url: "https://myspringfield.com/es/es/hombre/polos/polo-estructura-moulinee/1424261.html?dwvar_1424261_color=93",
+  },
+  {
+    id: "springfield-camisa-manga-corta-vuelta-verde",
+    name: "Camisa manga corta vuelta",
+    brand: "Springfield",
+    price: "12.99 EUR",
+    color: "Verde",
+    image:
+      "https://myspringfield.com/on/demandware.static/-/Sites-gc-spf-master-catalog/default/dw51f55a92/images/hi-res/P_034404323FM.jpg",
+    url: "https://myspringfield.com/es/es/hombre/camisas/camisa-manga-corta-vuelta/0344043.html?dwvar_0344043_color=23",
+  },
+  {
+    id: "springfield-camiseta-color-block-naranja",
+    name: "Camiseta color block",
+    brand: "Springfield",
+    price: "9.99 EUR",
+    color: "Naranja",
+    image:
+      "https://myspringfield.com/on/demandware.static/-/Sites-gc-spf-master-catalog/default/dw92f684f8/images/hi-res/P_026421465FM.jpg",
+    url: "https://myspringfield.com/es/es/hombre/camisetas/camiseta-color-block/0264214.html?dwvar_0264214_color=65",
+  },
+  {
+    id: "springfield-camiseta-waffle-doble-azul",
+    name: "Camiseta waffle doble",
+    brand: "Springfield",
+    price: "9.99 EUR",
+    color: "Azul",
+    image:
+      "https://myspringfield.com/on/demandware.static/-/Sites-gc-spf-master-catalog/default/dw56f2c299/images/hi-res/P_328435511FM.jpg",
+    url: "https://myspringfield.com/es/es/hombre/camisetas/camiseta-waffle-doble/3284355.html?dwvar_3284355_color=11",
+  },
+  {
+    id: "springfield-camiseta-waffle-doble-blanco",
+    name: "Camiseta waffle doble",
+    brand: "Springfield",
+    price: "9.99 EUR",
+    color: "Blanco",
+    image:
+      "https://myspringfield.com/on/demandware.static/-/Sites-gc-spf-master-catalog/default/dw2b8494ba/images/hi-res/P_328435597FM.jpg",
+    url: "https://myspringfield.com/es/es/hombre/camisetas/camiseta-waffle-doble/3284355.html?dwvar_3284355_color=97",
+  },
+  {
+    id: "springfield-bermuda-tecnica-wide-relaxed-fit-azul",
+    name: "Bermuda técnica wide & relaxed fit",
+    brand: "Springfield",
+    price: "12.99 EUR",
+    color: "Azul",
+    image:
+      "https://myspringfield.com/on/demandware.static/-/Sites-gc-spf-master-catalog/default/dwd0be3dd2/images/hi-res/P_043425615FM.jpg",
+    url: "https://myspringfield.com/es/es/hombre/pantalones/bermudas/bermuda-tecnica-wide-relaxed-fit/0434256.html?dwvar_0434256_color=15",
+  },
+  {
+    id: "springfield-camiseta-pique-manga-larga-bloques-azul",
+    name: "Camiseta piqué manga larga bloques",
+    brand: "Springfield",
+    price: "16.09 EUR",
+    color: "Azul",
+    image:
+      "https://myspringfield.com/on/demandware.static/-/Sites-gc-spf-master-catalog/default/dw082e5ca9/images/hi-res/P_883433411FM.jpg",
+    url: "https://myspringfield.com/es/es/hombre/camisetas/camiseta-pique-manga-larga-bloques/8834334.html?dwvar_8834334_color=11",
+  },
+  {
+    id: "springfield-sudadera-bici-caja-burdeos",
+    name: "Sudadera bici caja",
+    brand: "Springfield",
+    price: "23.09 EUR",
+    color: "Burdeos",
+    image:
+      "https://myspringfield.com/on/demandware.static/-/Sites-gc-spf-master-catalog/default/dwe18823b9/images/hi-res/P_009458168FM.jpg",
+    url: "https://myspringfield.com/es/es/hombre/sudaderas/sudadera-bici-caja/0094581.html?dwvar_0094581_color=68",
+  },
+  {
+    id: "springfield-camisa-manga-corta-beige",
+    name: "Camisa manga corta",
+    brand: "Springfield",
+    price: "14.99 EUR",
+    color: "Beige",
+    image:
+      "https://myspringfield.com/on/demandware.static/-/Sites-gc-spf-master-catalog/default/dwc92f985f/images/hi-res/P_235011250FM.jpg",
+    url: "https://myspringfield.com/es/es/hombre/camisas/camisa-manga-corta/2350112.html?dwvar_2350112_color=50",
+  },
+  {
+    id: "springfield-camisa-vaquera-regular-fit-gris",
+    name: "Camisa vaquera regular fit",
+    brand: "Springfield",
+    price: "39.99 EUR",
+    color: "Gris",
+    image:
+      "https://myspringfield.com/on/demandware.static/-/Sites-gc-spf-master-catalog/default/dw11ef6c64/images/hi-res/P_285038747FM.jpg",
+    url: "https://myspringfield.com/es/es/hombre/camisas/camisa-vaquera-regular-fit/2850387.html?dwvar_2850387_color=47",
+  },
+  {
+    id: "springfield-camisa-lisa-negro",
+    name: "Camisa Lisa",
+    brand: "Springfield",
+    price: "26.99 EUR",
+    color: "Negro",
+    image:
+      "https://myspringfield.com/on/demandware.static/-/Sites-gc-spf-master-catalog/default/dw1bc90df1/images/hi-res/P_285030801FM.jpg",
+    url: "https://myspringfield.com/es/es/hombre/camisas/camisa-lisa/2850308.html?dwvar_2850308_color=01",
+  },
+  {
+    id: "springfield-camisa-manga-corta-rayas-azul",
+    name: "Camisa manga corta rayas",
+    brand: "Springfield",
+    price: "20.99 EUR",
+    color: "Azul",
+    image:
+      "https://myspringfield.com/on/demandware.static/-/Sites-gc-spf-master-catalog/default/dw0c0da9ab/images/hi-res/P_235004914FM.jpg",
+    url: "https://myspringfield.com/es/es/hombre/camisas/camisa-manga-corta-rayas/2350049.html?dwvar_2350049_color=14",
+  },
+  {
+    id: "springfield-camisa-manga-corta-bowling-lino-tostado",
+    name: "Camisa manga corta bowling lino",
+    brand: "Springfield",
+    price: "9.99 EUR",
+    color: "Tostado",
+    image:
+      "https://myspringfield.com/on/demandware.static/-/Sites-gc-spf-master-catalog/default/dw16f21c87/images/swatch/P_054302566C.jpg",
+    url: "https://myspringfield.com/es/es/hombre/camisas/camisa-manga-corta-bowling-lino/0543025.html?dwvar_0543025_color=35",
+  },
+  {
+    id: "springfield-pantalon-chino-slim-fit-beige",
+    name: "Pantalón chino slim fit",
+    brand: "Springfield",
+    price: "27.99 EUR",
+    color: "Beige",
+    image:
+      "https://myspringfield.com/on/demandware.static/-/Sites-gc-spf-master-catalog/default/dw9355042c/images/hi-res/P_155493651FM.jpg",
+    url: "https://myspringfield.com/es/es/hombre/pantalones/pantalon-chino-slim-fit/1554936.html?dwvar_1554936_color=51",
+  },
+  {
+    id: "springfield-pantalon-chino-comfort-knit-beige",
+    name: "Pantalón chino comfort knit",
+    brand: "Springfield",
+    price: "27.99 EUR",
+    color: "Beige",
+    image:
+      "https://myspringfield.com/on/demandware.static/-/Sites-gc-spf-master-catalog/default/dw948f4523/images/hi-res/P_155494951FM.jpg",
+    url: "https://myspringfield.com/es/es/hombre/pantalones/pantalon-chino-comfort-knit/1554949.html?dwvar_1554949_color=51",
+  },
+  {
+    id: "springfield-bermuda-tecnica-wide-relaxed-fit-estampado",
+    name: "Bermuda técnica wide & relaxed fit",
+    brand: "Springfield",
+    price: "12.99 EUR",
+    color: "Estampado",
+    image:
+      "https://myspringfield.com/on/demandware.static/-/Sites-gc-spf-master-catalog/default/dwa81b98b8/images/hi-res/P_043425629FM.jpg",
+    url: "https://myspringfield.com/es/es/hombre/pantalones/bermudas/bermuda-tecnica-wide-relaxed-fit/0434256.html?dwvar_0434256_color=29",
+  },
+  {
+    id: "springfield-bermuda-comfort-fit-nude",
+    name: "Bermuda comfort fit",
+    brand: "Springfield",
+    price: "12.99 EUR",
+    color: "Nude",
+    image:
+      "https://myspringfield.com/on/demandware.static/-/Sites-gc-spf-master-catalog/default/dwfa380c59/images/hi-res/P_043425738FM.jpg",
+    url: "https://myspringfield.com/es/es/hombre/pantalones/bermudas/bermuda-comfort-fit/0434257.html?dwvar_0434257_color=38",
+  },
+  {
+    id: "springfield-bermuda-comfort-fit-azul",
+    name: "Bermuda comfort fit",
+    brand: "Springfield",
+    price: "12.99 EUR",
+    color: "Azul",
+    image:
+      "https://myspringfield.com/on/demandware.static/-/Sites-gc-spf-master-catalog/default/dw5aaf8007/images/hi-res/P_043425716FM.jpg",
+    url: "https://myspringfield.com/es/es/hombre/pantalones/bermudas/bermuda-comfort-fit/0434257.html?dwvar_0434257_color=16",
+  },
+  {
+    id: "springfield-bermuda-5-bolsillos-lavada-straight-fit-azul",
+    name: "Bermuda 5 bolsillos lavada straight fit",
+    brand: "Springfield",
+    price: "9.99 EUR",
+    color: "Azul",
+    image:
+      "https://myspringfield.com/on/demandware.static/-/Sites-gc-spf-master-catalog/default/dw89eb05f6/images/hi-res/P_713300612FM.jpg",
+    url: "https://myspringfield.com/es/es/hombre/pantalones/bermudas/bermuda-5-bolsillos-lavada-straight-fit/7133006.html?dwvar_7133006_color=12",
+  },
+  {
+    id: "springfield-bermuda-ligera-popelin-regular-beige",
+    name: "Bermuda ligera popelín regular",
+    brand: "Springfield",
+    price: "19.90 EUR",
+    color: "Beige",
+    image:
+      "https://myspringfield.com/on/demandware.static/-/Sites-gc-ooto-master-catalog/default/dw3886bcf7/images/hi-res/P_161400155FM.jpg",
+    url: "https://myspringfield.com/es/es/hombre/pantalones/bermudas/bermuda-ligera-popelin-regular/1614001.html?dwvar_1614001_color=55",
+  },
+  {
+    id: "springfield-short-jogger-algodon-azul",
+    name: "Short jogger algodón",
+    brand: "Springfield",
+    price: "22.49 EUR",
+    color: "Azul",
+    image:
+      "https://myspringfield.com/on/demandware.static/-/Sites-gc-spf-master-catalog/default/dw191c0da0/images/hi-res/P_779315510FM.jpg",
+    url: "https://myspringfield.com/es/es/hombre/pantalones/bermudas/short-jogger-algodon/7793155.html?dwvar_7793155_color=10",
+  },
+  {
+    id: "springfield-short-chandal-negro",
+    name: "Short chandal",
+    brand: "Springfield",
+    price: "9.99 EUR",
+    color: "Negro",
+    image:
+      "https://myspringfield.com/on/demandware.static/-/Sites-gc-spf-master-catalog/default/dwe8ed2fc9/images/hi-res/P_407022401FM.jpg",
+    url: "https://myspringfield.com/es/es/hombre/pantalones/bermudas/short-chandal/4070224.html?dwvar_4070224_color=01",
+  },
+  {
+    id: "springfield-bermuda-textura-negro",
+    name: "Bermuda textura",
+    brand: "Springfield",
+    price: "10.99 EUR",
+    color: "Negro",
+    image:
+      "https://myspringfield.com/on/demandware.static/-/Sites-gc-spf-master-catalog/default/dwc1fb88b1/images/hi-res/P_779325701FM.jpg",
+    url: "https://myspringfield.com/es/es/hombre/pantalones/bermudas/bermuda-textura/7793257.html?dwvar_7793257_color=01",
+  },
+  {
+    id: "springfield-short-jogger-lino-azul",
+    name: "Short jogger lino",
+    brand: "Springfield",
+    price: "19.99 EUR",
+    color: "Azul",
+    image:
+      "https://myspringfield.com/on/demandware.static/-/Sites-gc-spf-master-catalog/default/dw0846bfe7/images/hi-res/P_407023610FM.jpg",
+    url: "https://myspringfield.com/es/es/hombre/pantalones/bermudas/short-jogger-lino/4070236.html?dwvar_4070236_color=10",
+  },
+  {
+    id: "carhartt-ebbert-sweatshirt-black-white",
+    name: "Ebbert Sweatshirt, Black / White",
+    brand: "Carhartt WIP",
+    price: "138.00 USD",
+    image:
+      "https://cdn.shopify.com/s/files/1/2193/5809/files/I037113_0D2_XX-ST-01.jpg?v=1784914359&width=1400",
+    url: "https://us.carhartt-wip.com/en-us/products/ebbett-sweatshirt-black-white-162?Size=S",
+  },
+  {
+    id: "carhartt-oakland-shirt-jacket-blue-dark-navy-worn-used-wash",
+    name: "Oakland Shirt Jacket, Blue / Dark Navy (worn used wash)",
+    brand: "Carhartt WIP",
+    price: "248.00 USD",
+    image:
+      "https://cdn.shopify.com/s/files/1/2193/5809/files/I037532_453_4Q-ST-01.jpg?v=1784309484&width=1400",
+    url: "https://us.carhartt-wip.com/en-us/products/oakland-shirt-jac-blue-dark-navy-worn-used-wash-43?Size=S",
+  },
+  {
+    id: "carhartt-lambert-t-shirt-raven",
+    name: "Lambert T Shirt, Raven",
+    brand: "Carhartt WIP",
+    price: "65.00 USD",
+    image:
+      "https://cdn.shopify.com/s/files/1/2193/5809/files/I037016_3T6_FQ-ST-01.jpg?v=1784741567&width=1400",
+    url: "https://us.carhartt-wip.com/en-us/products/s-s-lambert-t-shirt-raven-moon-wash-674?Size=S",
+  },
+  {
+    id: "carhartt-brandon-pant-black-marble-used-wash",
+    name: "Brandon Pant, Black (marble used wash)",
+    brand: "Carhartt WIP",
+    price: "188.00 USD",
+    image:
+      "https://cdn.shopify.com/s/files/1/2193/5809/files/I035893_89_7X-ST-01_7517a856-259c-48b7-b832-5e1d7e9f06de.jpg?v=1782408833&width=1400",
+    url: "https://us.carhartt-wip.com/en-us/products/brandon-pant-black-marble-used-wash-572?Size=XS",
+  },
+  {
+    id: "carhartt-vista-t-shirt-dark-scarab",
+    name: "Vista T Shirt, Dark Scarab",
+    brand: "Carhartt WIP",
+    price: "68.00 USD",
+    image:
+      "https://cdn.shopify.com/s/files/1/2193/5809/files/I030780_3U0_GD-ST-01.jpg?v=1784741564&width=1400",
+    url: "https://us.carhartt-wip.com/en-us/products/s-s-vista-t-shirt-dark-scarab-garment-dyed-1379?Size=S",
+  },
+  {
+    id: "carhartt-blackletter-t-shirt-black",
+    name: "Blackletter T Shirt, Black",
+    brand: "Carhartt WIP",
+    price: "58.00 USD",
+    image:
+      "https://cdn.shopify.com/s/files/1/2193/5809/files/I037245_89_XX-ST-01.jpg?v=1784914355&width=1400",
+    url: "https://us.carhartt-wip.com/en-us/products/s-s-blackletter-script-t-shirt-black-212?Size=S",
+  },
+  {
+    id: "carhartt-long-sleeve-blackletter-waffle-t-shirt-black-white",
+    name: "Long Sleeve Blackletter Waffle T Shirt, Black / White",
+    brand: "Carhartt WIP",
+    price: "95.00 USD",
+    image:
+      "https://cdn.shopify.com/s/files/1/2193/5809/files/I037270_0D2_XX-ST-01.jpg?v=1783099874&width=1400",
+    url: "https://us.carhartt-wip.com/en-us/products/l-s-blackletter-waffle-t-shirt-black-white-136?Size=S",
+  },
+  {
+    id: "carhartt-brandon-pant-black-tobacco-used-wash",
+    name: "Brandon Pant, Black (tobacco used wash)",
+    brand: "Carhartt WIP",
+    price: "188.00 USD",
+    image:
+      "https://cdn.shopify.com/s/files/1/2193/5809/files/I035893_89_0R-OF-03.jpg?v=1783445482&width=1400",
+    url: "https://us.carhartt-wip.com/en-us/products/brandon-pant-black-marble-dark-worn-573?Size=XS",
+  },
+  {
+    id: "ami-white-cotton-t-shirt-with-ami-de-coeur-arrow",
+    name: "White cotton t shirt with Ami de Coeur arrow",
+    brand: "Ami Paris",
+    price: "230.00 USD",
+    image:
+      "https://cdn.shopify.com/s/files/1/0774/7865/8352/files/HTS411.JE0270_160eb8f1-5bd3-4f72-a2e2-5acc009e646c.jpg?width=1400",
+    url: "https://www.amiparis.com/en-us/products/white-cotton-t-shirt-with-ami-de-coeur-arrow-hts411je0270100",
+  },
+  {
+    id: "ami-white-cotton-t-shirt-with-ami-de-coeur",
+    name: "White cotton t shirt with Ami de Coeur",
+    brand: "Ami Paris",
+    price: "190.00 USD",
+    image:
+      "https://cdn.shopify.com/s/files/1/0774/7865/8352/files/BFUTS035.724_22f9e4e7-93bf-4923-9867-50b8e1b03d30.jpg?width=1400",
+    url: "https://www.amiparis.com/en-us/products/white-cotton-red-ami-de-coeur-t-shirt-bfuts035724100",
+  },
+  {
+    id: "ami-black-cotton-t-shirt-with-ami-de-coeur",
+    name: "Black cotton t shirt with Ami de Coeur",
+    brand: "Ami Paris",
+    price: "190.00 USD",
+    image:
+      "https://cdn.shopify.com/s/files/1/0774/7865/8352/files/BFUTS035.724_fcc51069-a0b6-4f43-b1c8-34b4f5911721.jpg?width=1400",
+    url: "https://www.amiparis.com/en-us/products/black-cotton-red-ami-de-coeur-t-shirt-bfuts035724001",
+  },
+  {
+    id: "ami-black-contrasted-cotton-t-shirt-with-ami-de-coeur",
+    name: "Black contrasted cotton t shirt with Ami de Coeur",
+    brand: "Ami Paris",
+    price: "240.00 USD",
+    image:
+      "https://cdn.shopify.com/s/files/1/0774/7865/8352/files/HTS412.JE0246.jpg?width=1400",
+    url: "https://www.amiparis.com/en-us/products/black-contrasted-cotton-t-shirt-with-ami-de-coeur-hts412je0246044",
+  },
+  {
+    id: "ami-blue-cotton-t-shirt-with-ami-de-coeur",
+    name: "Blue cotton t shirt with Ami de Coeur",
+    brand: "Ami Paris",
+    price: "190.00 USD",
+    image:
+      "https://cdn.shopify.com/s/files/1/0774/7865/8352/files/BFUTS035.724_e55187fb-81c1-4fa9-b97d-c16b52a8a04d.jpg?width=1400",
+    url: "https://www.amiparis.com/en-us/products/blue-cotton-red-ami-de-coeur-t-shirt-bfuts035724430",
+  },
+  {
+    id: "ami-blue-cotton-boxy-embroidered-ami-de-coeur-shirt",
+    name: "Blue Cotton Boxy Embroidered Ami De Coeur Shirt",
+    brand: "Ami Paris",
+    price: "440.00 USD",
+    image:
+      "https://cdn.shopify.com/s/files/1/0774/7865/8352/files/HSH822.CO0221_79017bbc-c0b5-440a-867a-289f1b2ef0a0.jpg?width=1400",
+    url: "https://www.amiparis.com/en-us/products/blue-cotton-boxy-embroidered-ami-de-coeur-shirt-hsh822co0221484",
+  },
+  {
+    id: "ami-black-cotton-sweatshirt-with-ami-de-coeur",
+    name: "Black cotton sweatshirt with Ami de Coeur",
+    brand: "Ami Paris",
+    price: "360.00 USD",
+    image:
+      "https://cdn.shopify.com/s/files/1/0774/7865/8352/files/BFUSW035.730_953dfd9b-8cf6-437e-8e03-6f08840c7db7.jpg?width=1400",
+    url: "https://www.amiparis.com/en-us/products/black-cotton-red-ami-de-coeur-sweatshirt-bfusw035730001",
+  },
+  {
+    id: "ami-white-wool-ami-de-coeur-crewneck-sweater",
+    name: "White Wool Ami De Coeur Crewneck Sweater",
+    brand: "Ami Paris",
+    price: "550.00 USD",
+    image:
+      "https://cdn.shopify.com/s/files/1/0774/7865/8352/files/UKS838.018_e4049d34-cb5c-495a-a0ce-baf3b0a1dca2.jpg?width=1400",
+    url: "https://www.amiparis.com/en-us/products/white-wool-ami-de-coeur-crewneck-sweater-uks838018151",
+  },
+  {
+    id: "ami-natural-crewneck-wool-sweater-with-ami-de-coeur",
+    name: "Natural crewneck wool sweater with Ami de Coeur",
+    brand: "Ami Paris",
+    price: "550.00 USD",
+    image:
+      "https://cdn.shopify.com/s/files/1/0774/7865/8352/files/UKS838.018_53441b5e-19e2-4cdc-b5ca-4b0dce0263c9.jpg?width=1400",
+    url: "https://www.amiparis.com/en-us/products/white-wool-ami-de-coeur-crewneck-sweater-uks838018154",
+  },
+  {
+    id: "ami-blue-crewneck-wool-sweater-with-ami-de-coeur",
+    name: "Blue crewneck wool sweater with Ami de Coeur",
+    brand: "Ami Paris",
+    price: "440.00 USD",
+    image:
+      "https://cdn.shopify.com/s/files/1/0774/7865/8352/files/HKS826.001_13407a27-dd88-491d-aadd-aef746700d10.jpg?width=1400",
+    url: "https://www.amiparis.com/en-us/products/blue-wool-ami-de-coeur-crewneck-sweater-hks826001414",
+  },
+  {
+    id: "uniqlo-super-non-iron-jersey-slim-shirt-regular-collar-white",
+    name: "Super Non Iron Jersey Slim Shirt, Regular Collar",
+    brand: "UNIQLO",
+    price: "49.90 USD",
+    color: "White",
+    image:
+      "https://image.uniqlo.com/UQ/ST3/WesternCommon/imagesgoods/473535/item/goods_00_473535_3x4.jpg",
+    url: "https://www.uniqlo.com/us/en/products/E473535-000/00?colorDisplayCode=00&sizeDisplayCode=004",
+  },
+  {
+    id: "uniqlo-washable-knitted-skipper-polo-sweater-dark-purple",
+    name: "Washable Knitted Skipper Polo Sweater",
+    brand: "UNIQLO",
+    price: "39.90 USD",
+    color: "Dark Purple",
+    image:
+      "https://image.uniqlo.com/UQ/ST3/us/imagesgoods/482328/item/usgoods_79_482328_3x4.jpg",
+    url: "https://www.uniqlo.com/us/en/products/E482328-000/00?colorDisplayCode=79&sizeDisplayCode=003",
+  },
+  {
+    id: "uniqlo-flannel-shirt-black",
+    name: "Flannel Shirt",
+    brand: "UNIQLO",
+    price: "49.90 USD",
+    color: "Black",
+    image:
+      "https://image.uniqlo.com/UQ/ST3/us/imagesgoods/470182/item/usgoods_09_470182_3x4.jpg",
+    url: "https://www.uniqlo.com/us/en/products/E470182-000/00?colorDisplayCode=09&sizeDisplayCode=003",
+  },
+  {
+    id: "uniqlo-washable-milano-ribbed-skipper-polo-sweater-gray",
+    name: "Washable Milano Ribbed Skipper Polo Sweater",
+    brand: "UNIQLO",
+    price: "49.90 USD",
+    color: "Gray",
+    image:
+      "https://image.uniqlo.com/UQ/ST3/us/imagesgoods/482325/item/usgoods_07_482325_3x4.jpg",
+    url: "https://www.uniqlo.com/us/en/products/E482325-000/00?colorDisplayCode=07&sizeDisplayCode=003",
+  },
+  {
+    id: "uniqlo-airism-cotton-pique-full-open-polo-shirt-white",
+    name: "AIRism Cotton Pique Full Open Polo Shirt",
+    brand: "UNIQLO",
+    price: "19.90 USD",
+    color: "White",
+    image:
+      "https://image.uniqlo.com/UQ/ST3/us/imagesgoods/482303/item/usgoods_00_482303_3x4.jpg",
+    url: "https://www.uniqlo.com/us/en/products/E482303-000/00?colorDisplayCode=00&sizeDisplayCode=003",
+  },
+  {
+    id: "uniqlo-boxy-cropped-t-shirt-white",
+    name: "Boxy Cropped T Shirt",
+    brand: "UNIQLO",
+    price: "19.90 USD",
+    color: "White",
+    image:
+      "https://image.uniqlo.com/UQ/ST3/us/imagesgoods/487962/item/usgoods_00_487962_3x4.jpg",
+    url: "https://www.uniqlo.com/us/en/products/E487962-000/00?colorDisplayCode=00&sizeDisplayCode=003",
+  },
+  {
+    id: "uniqlo-airism-cotton-oversized-t-shirt-half-sleeve-white",
+    name: "AIRism Cotton Oversized T Shirt, Half Sleeve",
+    brand: "UNIQLO",
+    price: "24.90 USD",
+    color: "White",
+    image:
+      "https://image.uniqlo.com/UQ/ST3/us/imagesgoods/465185/item/usgoods_00_465185_3x4.jpg",
+    url: "https://www.uniqlo.com/us/en/products/E465185-000/00?colorDisplayCode=00&sizeDisplayCode=003",
+  },
+  {
+    id: "uniqlo-airism-cotton-t-shirt-sleeveless-green",
+    name: "AIRism Cotton T Shirt, Sleeveless",
+    brand: "UNIQLO",
+    price: "19.90 USD",
+    color: "Green",
+    image:
+      "https://image.uniqlo.com/UQ/ST3/us/imagesgoods/457517/item/usgoods_53_457517_3x4.jpg",
+    url: "https://www.uniqlo.com/us/en/products/E457517-000/00?colorDisplayCode=53&sizeDisplayCode=003",
+  },
+  {
+    id: "uniqlo-dry-waffle-henley-t-shirt-natural",
+    name: "DRY Waffle Henley T Shirt",
+    brand: "UNIQLO",
+    price: "19.90 USD",
+    color: "Natural",
+    image:
+      "https://image.uniqlo.com/UQ/ST3/us/imagesgoods/483924/item/usgoods_30_483924_3x4.jpg",
+    url: "https://www.uniqlo.com/us/en/products/E483924-000/00?colorDisplayCode=30&sizeDisplayCode=003",
+  },
+  {
+    id: "barbour-cotton-quarter-zip-jumper",
+    name: "Cotton Quarter Zip Jumper",
+    brand: "Barbour",
+    price: "140.00 USD",
+    image:
+      "https://www.barbour.com/dw/image/v2/blcl_prd/on/demandware.static/-/Sites-master-catalog/default/dwc8dff084/images/MKN1074OL91/MKN1074OL91_01front.jpg?sw=1500&q=70&strip=false",
+    url: "https://www.barbour.com/us/cotton-quarter-zip-jumper-MKN1074OL91.html",
+  },
+  {
+    id: "barbour-pima-cotton-crew-neck-jumper",
+    name: "Pima Cotton Crew Neck Jumper",
+    brand: "Barbour",
+    price: "120.00 USD",
+    image:
+      "https://www.barbour.com/dw/image/v2/blcl_prd/on/demandware.static/-/Sites-master-catalog/default/dwec80fdd8/images/MKN0932GN34/MKN0932GN34_01front.jpg?sw=1500&q=70&strip=false",
+    url: "https://www.barbour.com/us/pima-cotton-crew-neck-jumper-MKN0932GN34.html",
+  },
 ];

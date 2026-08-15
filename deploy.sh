@@ -29,6 +29,17 @@ git add -A
 git commit -m "$MESSAGE"
 git push origin main
 
+# The mirror is a second remote rather than a second copy of the files, so the
+# two repos are the same commits and cannot drift. A mirror that is missing or
+# unreachable must never stop the published site from updating.
+if git remote get-url mirror >/dev/null 2>&1; then
+  if git push mirror main; then
+    echo "Mirrored to $(git remote get-url mirror)"
+  else
+    echo "WARNING: push to mirror failed. origin is published and up to date." >&2
+  fi
+fi
+
 # Read off the remote so these cannot go stale if the repo is ever renamed.
 REMOTE="$(git remote get-url origin)"
 OWNER="$(basename "$(dirname "$REMOTE")")"
