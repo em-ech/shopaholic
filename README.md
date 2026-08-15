@@ -34,6 +34,12 @@ no basket to reconcile, no jumping between sites to compare.
 the colours it also comes in. Nothing else. No reviews to wade through, no
 recommendations, no upsell, nothing asking for an email address.
 
+**Reads in one language and one currency.** A shirt from a Spanish store is
+titled in English, with the shop's own wording underneath so it can still be
+found on the site. A price in euros or pounds leads with roughly what it costs
+in dollars, with the real figure underneath. Everything on the page can be
+compared at a glance, and sorting by price actually means something.
+
 **Lets them narrow it down fast.** Filter by brand or by colour, sort by price,
 twenty at a time. Someone who only wants to see what is under fifty, in blue,
 gets there in two taps.
@@ -129,9 +135,14 @@ back button steps through it:
 
 Colourways arrive in whatever language and vocabulary the retailer uses, so
 `COLOUR_FAMILIES` in `app.js` groups them for the filter while each card still
-shows the colourway as written. Sorting reads the first figure in the price,
-which orders by the number printed rather than by real value, because a list
-can mix GBP, EUR and USD.
+shows the colourway as written.
+
+Prices are converted to USD through `RATES_TO_BASE` in `app.js`, and sorting
+compares those converted figures rather than the numbers printed. The rates are
+a dated snapshot, not a live feed, which is why the card says "about"; refresh
+them with `curl -s https://open.er-api.com/v6/latest/USD` and take
+`1 / rates[CODE]`. A price in a currency with no rate is shown as written and
+sorts on its own figure, with a console warning rather than a silent guess.
 
 ### Saved state
 

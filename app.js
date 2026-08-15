@@ -65,6 +65,26 @@
 
   var COLOUR_UNSET = "Unspecified";
 
+  /* ------------------------------------------------------------ currency --- */
+
+  // A list can hold pieces priced in different currencies, which makes the
+  // prices impossible to compare and impossible to sort honestly. Every price
+  // is converted to one currency for sorting, and the card shows both the
+  // retailer's own figure and the converted one.
+  //
+  // These rates are a snapshot, not a live feed. Taken from
+  // exchangerate-api.com on 15 August 2026. They drift, which is why the card
+  // says "about". To refresh them, replace the numbers and the date below:
+  //   curl -s https://open.er-api.com/v6/latest/USD
+  // and use 1 / rates[CODE] for each currency.
+  var BASE_CURRENCY = "USD";
+  var RATES_AS_OF = "15 August 2026";
+  var RATES_TO_BASE = {
+    USD: 1,
+    EUR: 1.1566,
+    GBP: 1.3535,
+  };
+
   var collection = window.COLLECTION || {};
 
   // Every list on this site shares one origin, and localStorage is keyed by
@@ -127,14 +147,45 @@
     return COLOUR_FAMILIES[key] || String(color).trim();
   }
 
-  // Sorting reads the first figure in the price, so a range like
-  // "59.00 to 69.00 USD" orders on its lower bound. The list mixes GBP, EUR and
-  // USD, so this orders by the number printed rather than by real value.
+  // Reads the first figure in the price, so a range like "59.00 to 69.00 USD"
+  // is treated as its lower bound.
   function priceValue(price) {
     var match = String(price)
       .replace(/(\d),(\d)/g, "$1.$2")
       .match(/\d+(\.\d+)?/);
     return match ? parseFloat(match[0]) : Infinity;
+  }
+
+  function priceCurrency(price) {
+    var match = String(price).match(/\b([A-Z]{3})\b/);
+    return match ? match[1] : "";
+  }
+
+  // A price in a currency with no rate keeps its own figure rather than being
+  // dropped or guessed at, and says so in the console so it gets noticed.
+  function baseValue(price) {
+    var value = priceValue(price);
+    var currency = priceCurrency(price);
+    var rate = RATES_TO_BASE[currency];
+    if (rate) return value * rate;
+    console.warn(
+      "No " +
+        BASE_CURRENCY +
+        " rate for " +
+        (currency || "an unlabelled currency") +
+        ", so this price sorts on its own figure: " +
+        price,
+    );
+    return value;
+  }
+
+  // Shown under the retailer's own price. Nothing is shown when the price is
+  // already in the base currency, or when there is no rate to convert it with.
+  function convertedLabel(price) {
+    var currency = priceCurrency(price);
+    if (!currency || currency === BASE_CURRENCY) return "";
+    if (!RATES_TO_BASE[currency]) return "";
+    return "about " + baseValue(price).toFixed(2) + " " + BASE_CURRENCY;
   }
 
   // Keeps only products that can actually be rendered, and gives every one of
@@ -158,6 +209,7 @@
         seen[id] = true;
 
         var color = raw.color ? String(raw.color) : "";
+        var converted = convertedLabel(raw.price);
 
         return {
           id: id,
@@ -170,8 +222,17 @@
           note: raw.note ? String(raw.note) : "",
           logo: resolveLogo(raw),
           colors: normalizeColors(raw.colors),
+          // A retailer writing in its own language gets translated for the
+          // card, and its own wording is kept and shown underneath.
+          nameOriginal: raw.nameOriginal ? String(raw.nameOriginal) : "",
           colorFamily: colorFamily(color),
-          priceValue: priceValue(raw.price),
+          // Sorting compares one currency, so it compares this, not the
+          // figure printed on the card.
+          baseValue: baseValue(raw.price),
+          // The converted figure leads and the retailer's own follows it, so
+          // everything on the page can be scanned against one currency.
+          priceLead: converted || String(raw.price),
+          priceOriginal: converted ? String(raw.price) : "",
         };
       })
       .filter(Boolean);
@@ -338,7 +399,10 @@
 
     fillBrand(node, product);
     fillColors(node, product);
-    node.querySelector(".product__price").textContent = product.price;
+    node.querySelector(".product__original").textContent = product.nameOriginal;
+    node.querySelector(".product__price").textContent = product.priceLead;
+    node.querySelector(".product__price-original").textContent =
+      product.priceOriginal;
     node.querySelector(".product__meta").textContent = metaText(product);
     node.querySelector(".product__note").textContent = product.note;
 
@@ -443,8 +507,8 @@
     var sorted = list.slice();
     sorted.sort(function (a, b) {
       return sort === SORT_PRICE_ASC
-        ? a.priceValue - b.priceValue
-        : b.priceValue - a.priceValue;
+        ? a.baseValue - b.baseValue
+        : b.baseValue - a.baseValue;
     });
     return sorted;
   }

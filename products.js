@@ -407,7 +407,8 @@ window.PRODUCTS = [
   },
   {
     id: "springfield-polo-estructura-moulinee-kaki",
-    name: "Polo estructura moulinee",
+    name: "Moulinee Texture Polo Shirt",
+    nameOriginal: "Polo estructura moulinee",
     brand: "Springfield",
     price: "12.99 EUR",
     color: "Kaki",
@@ -417,7 +418,8 @@ window.PRODUCTS = [
   },
   {
     id: "springfield-camisa-manga-corta-vuelta-verde",
-    name: "Camisa manga corta vuelta",
+    name: "Short Sleeve Turn Up Shirt",
+    nameOriginal: "Camisa manga corta vuelta",
     brand: "Springfield",
     price: "12.99 EUR",
     color: "Verde",
@@ -427,7 +429,8 @@ window.PRODUCTS = [
   },
   {
     id: "springfield-camiseta-color-block-naranja",
-    name: "Camiseta color block",
+    name: "Colour Block T Shirt",
+    nameOriginal: "Camiseta color block",
     brand: "Springfield",
     price: "9.99 EUR",
     color: "Naranja",
@@ -437,7 +440,8 @@ window.PRODUCTS = [
   },
   {
     id: "springfield-camiseta-waffle-doble-azul",
-    name: "Camiseta waffle doble",
+    name: "Double Waffle T Shirt",
+    nameOriginal: "Camiseta waffle doble",
     brand: "Springfield",
     price: "9.99 EUR",
     color: "Azul",
@@ -447,7 +451,8 @@ window.PRODUCTS = [
   },
   {
     id: "springfield-camiseta-waffle-doble-blanco",
-    name: "Camiseta waffle doble",
+    name: "Double Waffle T Shirt",
+    nameOriginal: "Camiseta waffle doble",
     brand: "Springfield",
     price: "9.99 EUR",
     color: "Blanco",
@@ -457,7 +462,8 @@ window.PRODUCTS = [
   },
   {
     id: "springfield-bermuda-tecnica-wide-relaxed-fit-azul",
-    name: "Bermuda técnica wide & relaxed fit",
+    name: "Technical Wide Relaxed Fit Shorts",
+    nameOriginal: "Bermuda técnica wide & relaxed fit",
     brand: "Springfield",
     price: "12.99 EUR",
     color: "Azul",
@@ -467,7 +473,8 @@ window.PRODUCTS = [
   },
   {
     id: "springfield-camiseta-pique-manga-larga-bloques-azul",
-    name: "Camiseta piqué manga larga bloques",
+    name: "Long Sleeve Pique Colour Block T Shirt",
+    nameOriginal: "Camiseta piqué manga larga bloques",
     brand: "Springfield",
     price: "16.09 EUR",
     color: "Azul",
@@ -477,7 +484,8 @@ window.PRODUCTS = [
   },
   {
     id: "springfield-sudadera-bici-caja-burdeos",
-    name: "Sudadera bici caja",
+    name: "Boxed Bike Sweatshirt",
+    nameOriginal: "Sudadera bici caja",
     brand: "Springfield",
     price: "23.09 EUR",
     color: "Burdeos",
@@ -487,7 +495,8 @@ window.PRODUCTS = [
   },
   {
     id: "springfield-camisa-manga-corta-beige",
-    name: "Camisa manga corta",
+    name: "Short Sleeve Shirt",
+    nameOriginal: "Camisa manga corta",
     brand: "Springfield",
     price: "14.99 EUR",
     color: "Beige",
@@ -497,7 +506,8 @@ window.PRODUCTS = [
   },
   {
     id: "springfield-camisa-vaquera-regular-fit-gris",
-    name: "Camisa vaquera regular fit",
+    name: "Regular Fit Denim Shirt",
+    nameOriginal: "Camisa vaquera regular fit",
     brand: "Springfield",
     price: "39.99 EUR",
     color: "Gris",
@@ -507,7 +517,8 @@ window.PRODUCTS = [
   },
   {
     id: "springfield-camisa-lisa-negro",
-    name: "Camisa Lisa",
+    name: "Plain Shirt",
+    nameOriginal: "Camisa Lisa",
     brand: "Springfield",
     price: "26.99 EUR",
     color: "Negro",
@@ -517,7 +528,8 @@ window.PRODUCTS = [
   },
   {
     id: "springfield-camisa-manga-corta-rayas-azul",
-    name: "Camisa manga corta rayas",
+    name: "Striped Short Sleeve Shirt",
+    nameOriginal: "Camisa manga corta rayas",
     brand: "Springfield",
     price: "20.99 EUR",
     color: "Azul",
@@ -527,7 +539,8 @@ window.PRODUCTS = [
   },
   {
     id: "springfield-camisa-manga-corta-bowling-lino-tostado",
-    name: "Camisa manga corta bowling lino",
+    name: "Linen Bowling Short Sleeve Shirt",
+    nameOriginal: "Camisa manga corta bowling lino",
     brand: "Springfield",
     price: "9.99 EUR",
     color: "Tostado",
@@ -537,7 +550,8 @@ window.PRODUCTS = [
   },
   {
     id: "springfield-pantalon-chino-slim-fit-beige",
-    name: "Pantalón chino slim fit",
+    name: "Slim Fit Chinos",
+    nameOriginal: "Pantalón chino slim fit",
     brand: "Springfield",
     price: "27.99 EUR",
     color: "Beige",
@@ -547,7 +561,8 @@ window.PRODUCTS = [
   },
   {
     id: "springfield-pantalon-chino-comfort-knit-beige",
-    name: "Pantalón chino comfort knit",
+    name: "Comfort Knit Chinos",
+    nameOriginal: "Pantalón chino comfort knit",
     brand: "Springfield",
     price: "27.99 EUR",
     color: "Beige",
@@ -557,7 +572,8 @@ window.PRODUCTS = [
   },
   {
     id: "springfield-bermuda-tecnica-wide-relaxed-fit-estampado",
-    name: "Bermuda técnica wide & relaxed fit",
+    name: "Technical Wide Relaxed Fit Shorts",
+    nameOriginal: "Bermuda técnica wide & relaxed fit",
     brand: "Springfield",
     price: "12.99 EUR",
     color: "Estampado",
@@ -567,7 +583,8 @@ window.PRODUCTS = [
   },
   {
     id: "springfield-bermuda-comfort-fit-nude",
-    name: "Bermuda comfort fit",
+    name: "Comfort Fit Shorts",
+    nameOriginal: "Bermuda comfort fit",
     brand: "Springfield",
     price: "12.99 EUR",
     color: "Nude",
@@ -577,7 +594,8 @@ window.PRODUCTS = [
   },
   {
     id: "springfield-bermuda-comfort-fit-azul",
-    name: "Bermuda comfort fit",
+    name: "Comfort Fit Shorts",
+    nameOriginal: "Bermuda comfort fit",
     brand: "Springfield",
     price: "12.99 EUR",
     color: "Azul",
@@ -587,7 +605,8 @@ window.PRODUCTS = [
   },
   {
     id: "springfield-bermuda-5-bolsillos-lavada-straight-fit-azul",
-    name: "Bermuda 5 bolsillos lavada straight fit",
+    name: "Washed Five Pocket Straight Fit Shorts",
+    nameOriginal: "Bermuda 5 bolsillos lavada straight fit",
     brand: "Springfield",
     price: "9.99 EUR",
     color: "Azul",
@@ -597,7 +616,8 @@ window.PRODUCTS = [
   },
   {
     id: "springfield-bermuda-ligera-popelin-regular-beige",
-    name: "Bermuda ligera popelín regular",
+    name: "Lightweight Poplin Regular Shorts",
+    nameOriginal: "Bermuda ligera popelín regular",
     brand: "Springfield",
     price: "19.90 EUR",
     color: "Beige",
@@ -607,7 +627,8 @@ window.PRODUCTS = [
   },
   {
     id: "springfield-short-jogger-algodon-azul",
-    name: "Short jogger algodón",
+    name: "Cotton Jogger Shorts",
+    nameOriginal: "Short jogger algodón",
     brand: "Springfield",
     price: "22.49 EUR",
     color: "Azul",
@@ -617,7 +638,8 @@ window.PRODUCTS = [
   },
   {
     id: "springfield-short-chandal-negro",
-    name: "Short chandal",
+    name: "Track Shorts",
+    nameOriginal: "Short chandal",
     brand: "Springfield",
     price: "9.99 EUR",
     color: "Negro",
@@ -627,7 +649,8 @@ window.PRODUCTS = [
   },
   {
     id: "springfield-bermuda-textura-negro",
-    name: "Bermuda textura",
+    name: "Textured Shorts",
+    nameOriginal: "Bermuda textura",
     brand: "Springfield",
     price: "10.99 EUR",
     color: "Negro",
@@ -637,7 +660,8 @@ window.PRODUCTS = [
   },
   {
     id: "springfield-short-jogger-lino-azul",
-    name: "Short jogger lino",
+    name: "Linen Jogger Shorts",
+    nameOriginal: "Short jogger lino",
     brand: "Springfield",
     price: "19.99 EUR",
     color: "Azul",

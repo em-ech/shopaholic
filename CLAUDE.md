@@ -19,7 +19,9 @@ instruction), do all of this without asking for more detail:
    person, or the message is clearly about someone else's list, use theirs. If
    the person has no list yet, ask before creating one.
 2. Open the product page and pull:
-   - `name` (the product title as the retailer writes it)
+   - `name` (the product title **in English**)
+   - `nameOriginal` (the title as the retailer writes it, only when that is not
+     already English. It shows under the name so the source is never lost.)
    - `price` (current price, including currency, e.g. `790.00 USD`)
    - `brand` (retailer or label)
    - `image` (main product photo, full resolution remote URL)
@@ -55,6 +57,24 @@ the product URL.
 
 Known: lululemon returns 403 to both `WebFetch` and `curl`. It needs the
 browser tools or Em reading the price off the page.
+
+## Prices in other currencies
+
+Every price is converted to USD so the list can be compared and sorted as one.
+The card leads with the converted figure and puts the retailer's own underneath.
+
+Write `price` in the retailer's own currency, e.g. `12.99 EUR`. The conversion
+is worked out at render time from `RATES_TO_BASE` in `app.js`.
+
+Those rates are a snapshot, not a live feed, and they drift. To refresh them:
+
+```sh
+curl -s https://open.er-api.com/v6/latest/USD
+```
+
+Use `1 / rates[CODE]` for each currency, then update the numbers, `RATES_AS_OF`
+and the date in the comment above them. A currency with no rate is never
+guessed at: the card shows the price as written and the console says why.
 
 ## Colourways
 

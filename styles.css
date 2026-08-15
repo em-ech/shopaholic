@@ -412,14 +412,24 @@ a {
   color: var(--ink);
 }
 
+/* The retailer's own wording, kept under the translated name and the converted
+   price so the source is never lost. */
+.product__original,
+.product__price-original,
 .product__meta,
 .product__note {
   color: var(--ink-soft);
 }
 
+.product__original:empty,
+.product__price-original:empty,
 .product__meta:empty,
 .product__note:empty {
   display: none;
+}
+
+.product__original {
+  margin-bottom: 0.25rem;
 }
 
 .product__note {
