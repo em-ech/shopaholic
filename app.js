@@ -37,6 +37,7 @@
   // swallowed, it just shows up untranslated and gets added here.
   var COLOURS = {
     black: { family: "Black" },
+    "black and beige": { family: "Black" },
     negro: { label: "Black", family: "Black" },
 
     white: { family: "White" },
@@ -57,6 +58,7 @@
     kaki: { label: "Khaki", family: "Beige" },
     "dark khaki": { family: "Beige" },
     sycamore: { family: "Beige" },
+    "ecru and black": { family: "Beige" },
     "cream stripe": { family: "Beige" },
     "oak": { family: "Beige" },
     "beige marl": { family: "Beige" },
@@ -106,6 +108,7 @@
     verde: { label: "Green", family: "Green" },
     "dark green": { family: "Green" },
     "light green": { family: "Green" },
+    "olive": { family: "Green" },
     "forest": { family: "Green" },
     "grey green": { family: "Green" },
     "sea green": { family: "Green" },
@@ -114,6 +117,7 @@
     brown: { family: "Brown" },
     "light brown": { family: "Brown" },
     "dark brown": { family: "Brown" },
+    "clay": { family: "Brown" },
     "brown and ecru": { family: "Brown" },
     "brown and taupe": { family: "Brown" },
     "brown stripe": { family: "Brown" },
