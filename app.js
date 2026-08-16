@@ -37,6 +37,7 @@
   // swallowed, it just shows up untranslated and gets added here.
   var COLOURS = {
     black: { family: "Black" },
+    "polo black": { family: "Black" },
     "black and beige": { family: "Black" },
     negro: { label: "Black", family: "Black" },
 
@@ -44,6 +45,9 @@
     blanco: { label: "White", family: "White" },
     "oyster-white": { label: "Oyster white", family: "White" },
     ivory: { family: "White" },
+    "ceramic white": { family: "White" },
+    "white and navy": { family: "White" },
+    "white and refined navy": { family: "White" },
     "white with red": { family: "White" },
     "oyster white": { family: "White" },
 
@@ -78,6 +82,12 @@
     "navy blue": { family: "Blue" },
     "navy checked": { family: "Blue" },
     "light blue": { family: "Blue" },
+    "classic chairman navy": { family: "Blue" },
+    "hunter navy": { family: "Blue" },
+    "new iris blue and white": { family: "Blue" },
+    "newport navy": { family: "Blue" },
+    "office blue": { family: "Blue" },
+    "refined navy": { family: "Blue" },
     "dark indigo": { family: "Blue" },
     "indigo print": { family: "Blue" },
     "maritime blue": { family: "Blue" },
@@ -98,6 +108,7 @@
     charcoal: { family: "Grey" },
     shadow: { family: "Grey" },
     "grey melange": { family: "Grey" },
+    "chalk heather and nevis": { family: "Grey" },
     "ash heather": { family: "Grey" },
     "anthracite grey": { family: "Grey" },
     "light grey": { family: "Grey" },
@@ -108,6 +119,8 @@
     verde: { label: "Green", family: "Green" },
     "dark green": { family: "Green" },
     "light green": { family: "Green" },
+    "company olive": { family: "Green" },
+    "fern green heather": { family: "Green" },
     "olive": { family: "Green" },
     "forest": { family: "Green" },
     "grey green": { family: "Green" },
