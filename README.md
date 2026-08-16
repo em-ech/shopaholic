@@ -27,9 +27,9 @@ the store that sells it.
 
 **Pulls many stores into one page.** A list can hold pieces from Zara, UNIQLO,
 COS, Carhartt WIP, Ami Paris, Springfield, Barbour, lululemon, Arte Antwerp,
-Staple, Daily Paper, Stüssy, Percival, Kardo, Comme des Garçons and anywhere
-else at the same time, sitting side by side and read the same way. No account
-anywhere, no basket to reconcile, no jumping between sites to compare.
+Staple, Daily Paper, Stüssy, Percival, Kardo, Wax London, Comme des Garçons and
+anywhere else at the same time, sitting side by side and read the same way. No
+account anywhere, no basket to reconcile, no jumping between sites to compare.
 
 **Shows only what matters.** A photo, the brand, the price, the colourway, and
 the colours it also comes in. Nothing else. No reviews to wade through, no
@@ -144,7 +144,7 @@ They are glyphs rather than the numbers 2, 3 and 4 because bare numbers above a
 pager read as page numbers. Below 900px the grid picks its own columns, so the
 control is hidden there rather than offered and ignored.
 
-How much of the list is on screen is printed under the pager, as `20 of 178
+How much of the list is on screen is printed under the pager, as `20 of 186
 pieces`, and drops the "of" once everything fits on one page.
 
 Colourways arrive in whatever language and vocabulary the retailer uses, so
@@ -225,7 +225,7 @@ Garçons, [eme studios](https://emestudios.com), [Kardo](https://kardo.co),
 [lululemon](https://shop.lululemon.com),
 [Nude Project](https://nude-project.com), [Percival](https://www.percivalclo.com),
 [Springfield](https://myspringfield.com), [Staple](https://www.staplepigeon.com),
-[Stüssy](https://www.stussy.com),
+[Stüssy](https://www.stussy.com), [Wax London](https://waxlondon.com),
 [UNIQLO](https://www.uniqlo.com) and
 [Zara](https://www.zara.com). Retailer icons are served by Google's public
 favicon endpoint. Exchange rates come from

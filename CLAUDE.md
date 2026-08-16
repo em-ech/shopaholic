@@ -86,7 +86,26 @@ been made here once.
 
 Plain Shopify, so `/products/<handle>.js` works with `curl`: **Arte Antwerp**
 (EUR), **Staple** (USD), **Daily Paper** (EUR), **Stüssy** (USD), **Percival**
-(GBP). Read `Shopify.currency` off the homepage before trusting a price.
+(GBP), **Wax London** (GBP). Read `Shopify.currency` off the homepage before
+trusting a price.
+
+**UNIQLO** answers its own commerce API, but only with a client id header:
+
+```sh
+curl -H "x-fr-clientid: uq.es.web-spa" \
+  "https://www.uniqlo.com/es/api/commerce/v5/en/products?productIds=E487328-000&withPrices=true&withStocks=true&httpFailure=true"
+```
+
+Without the header it returns "invalid or missing client id". Swap `es` for the
+region in the url. One call gives the name, price, every colour with its
+`displayCode` and name, and the image per colour. The `colorDisplayCode` in a
+product url is what picks the colourway, so keep it and drop `sizeDisplayCode`.
+
+**Ralph Lauren cannot be read, by fetching or by browser.** It answers `curl`
+with a 307 loop and answers the browser with a "Press and Hold to confirm you
+are a human" wall. Do not try to work around that. Ask Em for the price, the
+colourway and the image url, or for a screenshot, the same as any other piece
+that cannot be read.
 **Kardo** is WooCommerce, also fetchable, with JSON-LD on the product page, but
 it publishes no colourway and reuses one style name across several prints, so
 the colour and a distinguishing word for the name have to be read off the
