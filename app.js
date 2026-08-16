@@ -55,11 +55,13 @@
     kaki: { label: "Khaki", family: "Beige" },
     "dark khaki": { family: "Beige" },
     sycamore: { family: "Beige" },
+    stone: { family: "Beige" },
 
     blue: { family: "Blue" },
     azul: { label: "Blue", family: "Blue" },
     navy: { family: "Blue" },
     "navy blue": { family: "Blue" },
+    "navy checked": { family: "Blue" },
     "light blue": { family: "Blue" },
 
     grey: { family: "Grey" },
@@ -67,15 +69,21 @@
     gris: { label: "Grey", family: "Grey" },
     charcoal: { family: "Grey" },
     shadow: { family: "Grey" },
+    "grey melange": { family: "Grey" },
 
     green: { family: "Green" },
     verde: { label: "Green", family: "Green" },
+    "dark green": { family: "Green" },
+    "light green": { family: "Green" },
 
     brown: { family: "Brown" },
+    "light brown": { family: "Brown" },
+    "dark brown": { family: "Brown" },
     naranja: { label: "Orange", family: "Orange" },
     burdeos: { label: "Burgundy", family: "Red" },
     "dark purple": { family: "Purple" },
     estampado: { label: "Print", family: "Multi" },
+    "yellow and white stripe": { family: "Multi" },
   };
 
   var COLOUR_UNSET = "Unspecified";
