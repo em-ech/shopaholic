@@ -1,0 +1,11 @@
+{
+  "name": "shopaholic",
+  "private": true,
+  "description": "Test only. The published site is vanilla HTML, CSS and JS and loads nothing from here.",
+  "scripts": {
+    "test": "node test.js"
+  },
+  "devDependencies": {
+    "jsdom": "^26.0.0"
+  }
+}

@@ -55,8 +55,42 @@ Prefer the largest clean product image. Strip resize parameters that shrink it
 below roughly 1000px wide. Strip tracking query strings from both the image and
 the product URL.
 
-Known: lululemon returns 403 to both `WebFetch` and `curl`. It needs the
-browser tools or Em reading the price off the page.
+### Retailers that need a specific approach
+
+**lululemon** returns 403 to both `WebFetch` and `curl`. It needs the browser
+tools or Em reading the price off the page.
+
+**COS** also returns 403 to fetching, and no screenshot is needed. Open one
+product page with the Chrome tools. It serves a "THANK YOU FOR YOUR PATIENCE"
+throttle page, so wait about five seconds and click Refresh once. From then on,
+run `fetch()` from inside that cos.com page for every other product: same
+origin, so no CORS, and the JSON-LD `Product` block parses straight out of the
+returned HTML with `DOMParser`. Any plausible category path redirects to the
+canonical one, so a URL can be rebuilt from the slug alone as
+`/en-us/men/menswear/t-shirts/product/<slug>`. The whole colour range is the
+set of product links whose id shares the first seven digits of the sku.
+
+**Dover Street Market**, which is where Comme des Garçons comes from, runs two
+Shopify stores in different currencies. **Use the US one.**
+
+| Store                              | Currency |
+| ---------------------------------- | -------- |
+| `shop-us.doverstreetmarket.com`    | USD      |
+| `shop.doverstreetmarket.com`       | GBP      |
+
+Both serve `/products.json?limit=250&page=N` and `/products/<handle>.js`, so
+there is nothing to scrape. `products.json` returns a bare number with no
+currency attached, so read `Shopify.currency` out of the homepage HTML before
+trusting a price. Reading GBP figures as dollars is a mistake that has already
+been made here once.
+
+### Swatch hexes
+
+Prefer measuring a hex to matching one by eye. Download the colourway photo and
+take the per channel median of the part of the frame the garment fills. A
+median ignores highlights and shadows in a way a mean does not. Check the crop
+landed on fabric rather than skin, backdrop or a printed graphic before
+trusting the figure, because a bad crop still returns a plausible colour.
 
 ## Prices in other currencies
 
@@ -92,14 +126,41 @@ colour selector, not the product title.
 The slug is the folder, the URL and the Saved hearts storage key. It can never
 change once published.
 
+## Tests
+
+```sh
+npm install   # once, pulls jsdom
+npm test
+```
+
+Run it before deploying anything that touches `app.js`, `index.html` or
+`styles.css`. `test.js` opens the real page in jsdom and drives it, once per
+list, so Jared's list is covered too.
+
+Add a case whenever you change behaviour. Assert the invariant, never a
+snapshot: no product counts, no specific prices. The lists change constantly
+and a test that has to be edited every time a shirt is added stops being run.
+Follow an interaction with `await tick()` before asserting, because
+`hashchange` fires on a later task.
+
+Two things print at the end as notes rather than failures, and both are meant
+to: colourways with no family in `COLOURS`, and swatches carrying a hex but no
+name because the retailer only names the colourway being viewed.
+
 ## Rules
 
 - A `products.js` is the only file that changes when adding a product.
 - No hyphens or dashes in any copy that a visitor reads.
-- Do not add frameworks, build steps, dependencies, or a backend.
+- Do not add frameworks, build steps, dependencies, or a backend. jsdom is the
+  single exception and it exists only for `test.js`. Nothing the visitor loads
+  may ever come from a package.
 - Do not add a "NEW" label, cards, borders, shadows, or promotional copy.
-- Keep the layout as it is: image first, three columns on desktop, one on
-  phones, product information directly beneath the photo.
+- Keep the layout as it is: image first, product information directly beneath
+  the photo. On desktop the visitor picks two, three or four across and the
+  default is four; below 900px the grid decides for itself.
+- The per row control is three glyphs drawing the columns they produce, with
+  PER ROW beside them. It was bare numbers once and Em rejected that: sitting
+  above a pager they read as page numbers. Do not go back to numbers.
 - Never edit a `<name>/index.html`. They are generated from the root
   `index.html` by `sync-lists.sh` and any edit is overwritten on the next
   deploy.

@@ -26,9 +26,10 @@ the store that sells it.
 ## What it does
 
 **Pulls many stores into one page.** A list can hold pieces from Zara, UNIQLO,
-Carhartt WIP, Ami Paris, Springfield, Barbour, lululemon and anywhere else at
-the same time, sitting side by side and read the same way. No account anywhere,
-no basket to reconcile, no jumping between sites to compare.
+COS, Carhartt WIP, Ami Paris, Springfield, Barbour, lululemon, Comme des
+Garçons and anywhere else at the same time, sitting side by side and read the
+same way. No account anywhere, no basket to reconcile, no jumping between sites
+to compare.
 
 **Shows only what matters.** A photo, the brand, the price, the colourway, and
 the colours it also comes in. Nothing else. No reviews to wade through, no
@@ -65,8 +66,9 @@ or hunts for an image.
 
 ## For developers
 
-Vanilla HTML, CSS and JavaScript. No framework, no build step, no dependencies,
-no backend. Open `index.html` and it runs.
+Vanilla HTML, CSS and JavaScript. No framework, no build step, no backend, and
+nothing the visitor loads comes from a package. Open `index.html` and it runs.
+The one dependency in the repo is jsdom, which only `test.js` uses.
 
 ### Layout
 
@@ -80,6 +82,7 @@ no backend. Open `index.html` and it runs.
 | `new-list.sh`        | Creates a list for another person.                  |
 | `sync-lists.sh`      | Copies the shell into every list folder.            |
 | `deploy.sh`          | Syncs, commits, pushes to both remotes.             |
+| `test.js`            | The whole suite, run against every list.            |
 
 Every list is published from `main`. Em's sits at the site root, everyone else
 in a folder named after them.
@@ -112,11 +115,12 @@ the full range the style comes in and draws the small squares under the price.
 ### Adding a person
 
 ```sh
-./new-list.sh jared "Jared's Dress Code"
+./new-list.sh sam "Sam's Picks"
 ```
 
-Creates `jared/`, seeds `jared/products.js`, generates `jared/index.html`. The
-slug becomes the URL and the storage key, so pick it once and keep it.
+Creates `sam/`, seeds `sam/products.js`, generates `sam/index.html`. The slug
+becomes the URL and the storage key, so pick it once and keep it. The title
+above it can be changed whenever you like; the slug cannot.
 
 ### Editing the page shell
 
@@ -133,9 +137,21 @@ back button steps through it:
 #view=saved&brand=UNIQLO&color=Blue&sort=price-asc&page=2
 ```
 
+Filters live in a drawer that slides over the page: brand, type and colour as
+multiselect checkboxes with counts, plus the sort. Density sits in the toolbar
+instead, on the right, as three glyphs drawing two, three and four columns.
+They are glyphs rather than the numbers 2, 3 and 4 because bare numbers above a
+pager read as page numbers. Below 900px the grid picks its own columns, so the
+control is hidden there rather than offered and ignored.
+
+How much of the list is on screen is printed under the pager, as `20 of 93
+pieces`, and drops the "of" once everything fits on one page.
+
 Colourways arrive in whatever language and vocabulary the retailer uses, so
-`COLOUR_FAMILIES` in `app.js` groups them for the filter while each card still
-shows the colourway as written.
+`COLOURS` in `app.js` groups them into families for the filter while each card
+still shows the colourway as written. A colourway missing from that table is
+never swallowed: it keeps the retailer's wording and becomes its own family,
+and `test.js` lists the ones in that state at the end of a run.
 
 Prices are converted to USD through `RATES_TO_BASE` in `app.js`, and sorting
 compares those converted figures rather than the numbers printed. The rates are
@@ -169,13 +185,45 @@ python3 -m http.server 8899
 
 Em's list at http://localhost:8899 and Jared's at http://localhost:8899/jared/
 
+### Tests
+
+```sh
+npm install   # once, pulls jsdom
+npm test
+```
+
+`test.js` opens the real `index.html` in jsdom, evaluates the real `app.js` and
+a real `products.js`, and drives the page the way a visitor would. It runs the
+whole suite once per list, so a second person's list is covered rather than
+assumed fine because Em's passes.
+
+It checks the data first, that ids are unique and kebab case, that prices carry
+a currency there is a rate for, that every swatch has a hex, that types are
+known ones. Then the page: what renders, the per row glyphs and their labelling,
+filters, both sort directions asserted on the converted figure rather than the
+printed one, paging including a page past the end, and hearting a piece through
+to the Saved view and back out. Last it checks that each generated
+`<name>/index.html` has not drifted from the root shell.
+
+Nothing in it asserts a product count or a price. A test that has to be edited
+every time a shirt is added stops being run, so the expected figures are worked
+out from whatever the list holds at the time. Two things print at the end as
+notes rather than failures, because both are deliberate: colourways with no
+family, and swatches that carry a hex but no name because the retailer only
+names the colourway being viewed.
+
 ## Credits
 
 Product photography, names and prices belong to the retailers linked from each
 product: [Ami Paris](https://www.amiparis.com),
 [Barbour](https://www.barbour.com), [Carhartt WIP](https://us.carhartt-wip.com),
-[eme studios](https://emestudios.com), [lululemon](https://shop.lululemon.com),
+[COS](https://www.cos.com),
+[Dover Street Market](https://shop-us.doverstreetmarket.com), for Comme des
+Garçons, [eme studios](https://emestudios.com),
+[lululemon](https://shop.lululemon.com),
 [Nude Project](https://nude-project.com),
 [Springfield](https://myspringfield.com), [UNIQLO](https://www.uniqlo.com) and
 [Zara](https://www.zara.com). Retailer icons are served by Google's public
-favicon endpoint.
+favicon endpoint. Exchange rates come from
+[the Exchange Rate API](https://open.er-api.com). Tests run on
+[jsdom](https://github.com/jsdom/jsdom).

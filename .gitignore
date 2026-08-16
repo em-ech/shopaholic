@@ -1,0 +1,4 @@
+# Test only. jsdom is what test.js opens index.html with. Nothing the visitor
+# loads comes from here, so it is never published.
+node_modules/
+package-lock.json
