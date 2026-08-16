@@ -108,6 +108,32 @@
     return "";
   }
 
+  // Shops that give each colourway its own page print no "Color:" line at all,
+  // because there is nothing to switch between. The colour is usually the tail
+  // of the url instead: .../court-sweatshirt-light-ivory. This is a guess, so
+  // it is labelled as one in the panel and sits in a field you can overwrite.
+  var COLOUR_WORDS =
+    "black white ivory cream ecru beige sand stone clay tan brown chocolate " +
+    "navy blue indigo denim teal green olive khaki forest pine sage grey gray " +
+    "charcoal silver red burgundy wine pink rose purple lilac yellow mustard " +
+    "orange gold natural bone oat oak taupe mink havana gunmetal heather " +
+    "melange faded washed light dark pale deep bright";
+
+  function colourFromUrl() {
+    var slug = location.pathname.replace(/\/$/, "").split("/").pop() || "";
+    var words = slug.split("-").filter(Boolean);
+    var known = COLOUR_WORDS.split(" ");
+    var tail = [];
+    // Walk back from the end for as long as the words are colour words.
+    for (var i = words.length - 1; i >= 0; i--) {
+      if (known.indexOf(words[i].toLowerCase()) === -1) break;
+      tail.unshift(words[i]);
+    }
+    if (!tail.length) return "";
+    var text = tail.join(" ");
+    return text.charAt(0).toUpperCase() + text.slice(1).toLowerCase();
+  }
+
   // Biggest image actually rendered on the page, which is nearly always the
   // product shot. Falls back to whatever the page nominated for sharing.
   function biggestImage() {
@@ -155,7 +181,8 @@
       brand: brand || meta("og:site_name") || "",
       price: String(offer.price || priceFromPage() || ""),
       currency: offer.priceCurrency || currencyFromPage(),
-      colour: shownColour(),
+      colour: shownColour() || colourFromUrl(),
+      colourGuessed: !shownColour() && !!colourFromUrl(),
       image: asUrl(node && node.image) || biggestImage() || meta("og:image"),
       url: location.href,
       stock: String(offer.availability || "").split("/").pop(),
@@ -281,11 +308,11 @@
   var missing = ["name", "brand", "price", "colour", "image"].filter(function (id) {
     return !el(id).value;
   });
-  note.textContent = missing.length
-    ? "Could not read: " + missing.join(", ") + ". Fill those in."
-    : found.stock && found.stock !== "InStock"
-      ? "Read everything. The page says this is " + found.stock + "."
-      : "Read everything off the page.";
+  var lines = [];
+  if (missing.length) lines.push("Could not read: " + missing.join(", ") + ".");
+  if (found.colourGuessed) lines.push("Colourway is a guess from the link, check it.");
+  if (found.stock && found.stock !== "InStock") lines.push("The page says this is " + found.stock + ".");
+  note.textContent = lines.length ? lines.join(" ") : "Read everything off the page.";
 
   function currentId() {
     return kebab(
