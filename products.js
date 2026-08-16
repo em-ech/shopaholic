@@ -2383,7 +2383,7 @@ window.PRODUCTS = [
     name: "Didcot Abstract Applique Short Sleeve Shirt, Black and beige",
     brand: "Wax London",
     type: "Short sleeve",
-    price: "136.50 USD",
+    price: "81.25 GBP",
     color: "Black and beige",
     colors: [{ name: "Black and beige", hex: "#2A2724" }],
     image:
@@ -2395,7 +2395,7 @@ window.PRODUCTS = [
     name: "Curzon Grid Applique Short Sleeve Shirt, Navy",
     brand: "Wax London",
     type: "Short sleeve",
-    price: "117.00 USD",
+    price: "75.00 GBP",
     color: "Navy",
     colors: [{ name: "Navy", hex: "#232C43" }],
     image:
@@ -2407,7 +2407,7 @@ window.PRODUCTS = [
     name: "Atwood Textured Organic Cotton Polo Shirt, Clay",
     brand: "Wax London",
     type: "Short sleeve",
-    price: "63.75 USD",
+    price: "41.25 GBP",
     color: "Clay",
     colors: [{ name: "Clay", hex: "#B08D77" }],
     image:
@@ -2419,7 +2419,7 @@ window.PRODUCTS = [
     name: "Didcot Grid Flower Short Sleeve Shirt, Ecru and navy",
     brand: "Wax London",
     type: "Short sleeve",
-    price: "230.00 USD",
+    price: "145.00 GBP",
     color: "Ecru and navy",
     colors: [{ name: "Ecru and navy", hex: "#E7E0CD" }],
     image:
@@ -2431,7 +2431,7 @@ window.PRODUCTS = [
     name: "Didcot Border Applique Short Sleeve Shirt, Ecru and black",
     brand: "Wax London",
     type: "Short sleeve",
-    price: "195.00 USD",
+    price: "125.00 GBP",
     color: "Ecru and black",
     colors: [{ name: "Ecru and black", hex: "#E7E0CD" }],
     image:
