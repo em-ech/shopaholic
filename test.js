@@ -98,7 +98,7 @@ function open(list) {
 
 /* -------------------------------------------------------------- shared --- */
 
-const TYPES = ["Long sleeve", "Short sleeve", "Shorts", "Pants", "Outerwear", "Shoes"];
+const TYPES = ["Long sleeve", "Short sleeve", "Shorts", "Pants", "Outerwear", "Shoes", "Accessories"];
 const HEX = /^#[0-9A-Fa-f]{6}$/;
 // A range is allowed and is deliberate: some retailers price a style by size,
 // and app.js sorts such a piece on the lower figure.

@@ -37,6 +37,7 @@
   // swallowed, it just shows up untranslated and gets added here.
   var COLOURS = {
     black: { family: "Black" },
+    "black and grey": { family: "Black" },
     "polo black": { family: "Black" },
     "black and beige": { family: "Black" },
     negro: { label: "Black", family: "Black" },
@@ -108,6 +109,7 @@
     charcoal: { family: "Grey" },
     shadow: { family: "Grey" },
     "grey melange": { family: "Grey" },
+    "shiny gunmetal": { family: "Grey" },
     "chalk heather and nevis": { family: "Grey" },
     "ash heather": { family: "Grey" },
     "anthracite grey": { family: "Grey" },
@@ -130,6 +132,7 @@
     brown: { family: "Brown" },
     "light brown": { family: "Brown" },
     "dark brown": { family: "Brown" },
+    "dark havana": { family: "Brown" },
     "clay": { family: "Brown" },
     "brown and ecru": { family: "Brown" },
     "brown and taupe": { family: "Brown" },

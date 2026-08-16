@@ -2672,4 +2672,40 @@ window.PRODUCTS = [
       "https://dtcralphlauren.scene7.com/is/image/PoloGSI/s7-AI710717115025_alternate10?wid=1200&qlt=80",
     url: "https://www.ralphlauren.com/men-clothing-rugby-shirts/the-iconic-rugby-shirt/589979.html",
   },
+  {
+    id: "boss-57mm-navigator-sunglasses-black",
+    name: "57mm Navigator Sunglasses, Black and grey",
+    brand: "BOSS",
+    type: "Accessories",
+    price: "150.00 USD",
+    color: "Black and grey",
+    colors: [{ name: "Black and grey", hex: "#2B2B2E" }],
+    image:
+      "https://n.nordstrommedia.com/it/03101d36-04b1-4a27-ac58-8af5bcccc635.jpeg",
+    url: "https://www.nordstrom.com/s/57mm-navigator-sunglasses/8386079?color=black/+grey",
+  },
+  {
+    id: "tom-ford-60mm-navigator-sunglasses-gunmetal",
+    name: "60mm Navigator Sunglasses, Shiny gunmetal",
+    brand: "Tom Ford",
+    type: "Accessories",
+    price: "550.00 USD",
+    color: "Shiny gunmetal",
+    colors: [{ name: "Shiny gunmetal", hex: "#6E7275" }],
+    image:
+      "https://n.nordstrommedia.com/it/687e3159-9cd0-4026-8894-e276feae2f39.jpeg",
+    url: "https://www.nordstrom.com/s/60mm-navigator-sunglasses/9075853?color=shiny+gunmetal+/+smoke+lens",
+  },
+  {
+    id: "lacoste-l992s-sunglasses-dark-havana",
+    name: "L992S 51mm Square Sunglasses, Dark havana",
+    brand: "Lacoste",
+    type: "Accessories",
+    price: "185.00 USD",
+    color: "Dark havana",
+    colors: [{ name: "Dark havana", hex: "#4A2E1E" }],
+    image:
+      "https://dimg.dillards.com/is/image/DillardsZoom/main/lacoste-mens-l992s-51mm-dark-havana-rectangle-sunglasses/00000000_zi_7959dcf9-4f3f-4e55-b29d-38b0ce014643.jpg",
+    url: "https://www.dillards.com/p/lacoste-mens-l992s-51mm-dark-havana-rectangle-sunglasses/517969757",
+  },
 ];

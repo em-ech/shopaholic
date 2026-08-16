@@ -21,7 +21,7 @@
       rel="icon"
       href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='-18 120 360 360'%3E%3Crect x='-18' y='120' width='360' height='360' fill='%230d1f3c'/%3E%3Cg fill='%23fff'%3E%3Ccircle cx='28' cy='228' r='11'/%3E%3Ccircle cx='64' cy='228' r='11'/%3E%3Ccircle cx='100' cy='228' r='11'/%3E%3Ccircle cx='28' cy='264' r='11'/%3E%3Ccircle cx='28' cy='300' r='11'/%3E%3Ccircle cx='64' cy='300' r='11'/%3E%3Ccircle cx='100' cy='300' r='11'/%3E%3Ccircle cx='28' cy='336' r='11'/%3E%3Ccircle cx='28' cy='372' r='11'/%3E%3Ccircle cx='64' cy='372' r='11'/%3E%3Ccircle cx='100' cy='372' r='11'/%3E%3Ccircle cx='152' cy='300' r='11'/%3E%3Ccircle cx='188' cy='300' r='11'/%3E%3Ccircle cx='224' cy='300' r='11'/%3E%3Ccircle cx='260' cy='300' r='11'/%3E%3Ccircle cx='296' cy='300' r='11'/%3E%3Ccircle cx='152' cy='336' r='11'/%3E%3Ccircle cx='224' cy='336' r='11'/%3E%3Ccircle cx='296' cy='336' r='11'/%3E%3Ccircle cx='152' cy='372' r='11'/%3E%3Ccircle cx='224' cy='372' r='11'/%3E%3Ccircle cx='296' cy='372' r='11'/%3E%3C/g%3E%3C/svg%3E"
     />
-    <link rel="stylesheet" href="../styles.css?v=20260816035227" />
+    <link rel="stylesheet" href="../styles.css?v=20260816035523" />
   </head>
   <body>
     <a class="skip-link" href="#grid">Skip to products</a>
@@ -199,6 +199,18 @@
       </div>
 
       <div class="drawer__body">
+        <!-- Sort leads. It is one choice that always applies, where the three
+             facets below it are long lists that grow with the collection, so
+             putting it under them buried it. -->
+        <div class="facet">
+          <label class="facet__title" for="sort-by">Sort</label>
+          <select class="drawer__select" id="sort-by">
+            <option value="curated">Curated</option>
+            <option value="price-asc">Price low to high</option>
+            <option value="price-desc">Price high to low</option>
+          </select>
+        </div>
+
         <fieldset class="facet">
           <legend class="facet__title">Brand</legend>
           <div class="facet__options" id="facet-brand"></div>
@@ -213,15 +225,6 @@
           <legend class="facet__title">Colour</legend>
           <div class="facet__options" id="facet-color"></div>
         </fieldset>
-
-        <div class="facet">
-          <label class="facet__title" for="sort-by">Sort</label>
-          <select class="drawer__select" id="sort-by">
-            <option value="curated">Curated</option>
-            <option value="price-asc">Price low to high</option>
-            <option value="price-desc">Price high to low</option>
-          </select>
-        </div>
       </div>
 
       <div class="drawer__foot">
@@ -289,7 +292,7 @@
       </article>
     </template>
 
-    <script src="products.js?v=20260816035227"></script>
-    <script src="../app.js?v=20260816035227"></script>
+    <script src="products.js?v=20260816035523"></script>
+    <script src="../app.js?v=20260816035523"></script>
   </body>
 </html>
