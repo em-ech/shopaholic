@@ -182,11 +182,41 @@ a {
   gap: 1.75rem;
 }
 
-.toolbar__count {
+/* Below 900px the grid picks its own columns, so the control would be a set of
+   buttons that change nothing. It appears at the width where it starts to
+   matter, which is the same width the grid reads data-cols at. */
+.density {
+  display: none;
+  align-items: center;
+  gap: 1rem;
+}
+
+@media (min-width: 900px) {
+  .density {
+    display: flex;
+  }
+}
+
+.density__button {
+  margin: 0;
+  padding: 0 0 2px;
+  border: 0;
+  border-bottom: 1px solid transparent;
+  background: none;
   color: var(--ink-soft);
-  text-transform: uppercase;
-  letter-spacing: var(--track);
+  font: inherit;
   font-variant-numeric: tabular-nums;
+  letter-spacing: var(--track);
+  cursor: pointer;
+  transition:
+    color 0.2s ease,
+    border-color 0.2s ease;
+}
+
+.density__button[aria-pressed="true"] {
+  color: var(--ink);
+  border-bottom-color: var(--ink);
+  cursor: default;
 }
 
 .views {
@@ -457,6 +487,17 @@ body.has-drawer {
 
 .pager__status {
   color: var(--ink-soft);
+  text-transform: uppercase;
+  letter-spacing: var(--track);
+  font-variant-numeric: tabular-nums;
+}
+
+/* The last line under the list. It follows the pager, so on a filtered view the
+   visitor reads the page they are on and then how much there is in total. */
+.result-count {
+  padding-top: 2rem;
+  color: var(--ink-soft);
+  text-align: center;
   text-transform: uppercase;
   letter-spacing: var(--track);
   font-variant-numeric: tabular-nums;

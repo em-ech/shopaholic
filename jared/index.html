@@ -21,7 +21,7 @@
       rel="icon"
       href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='-18 120 360 360'%3E%3Crect x='-18' y='120' width='360' height='360' fill='%230d1f3c'/%3E%3Cg fill='%23fff'%3E%3Ccircle cx='28' cy='228' r='11'/%3E%3Ccircle cx='64' cy='228' r='11'/%3E%3Ccircle cx='100' cy='228' r='11'/%3E%3Ccircle cx='28' cy='264' r='11'/%3E%3Ccircle cx='28' cy='300' r='11'/%3E%3Ccircle cx='64' cy='300' r='11'/%3E%3Ccircle cx='100' cy='300' r='11'/%3E%3Ccircle cx='28' cy='336' r='11'/%3E%3Ccircle cx='28' cy='372' r='11'/%3E%3Ccircle cx='64' cy='372' r='11'/%3E%3Ccircle cx='100' cy='372' r='11'/%3E%3Ccircle cx='152' cy='300' r='11'/%3E%3Ccircle cx='188' cy='300' r='11'/%3E%3Ccircle cx='224' cy='300' r='11'/%3E%3Ccircle cx='260' cy='300' r='11'/%3E%3Ccircle cx='296' cy='300' r='11'/%3E%3Ccircle cx='152' cy='336' r='11'/%3E%3Ccircle cx='224' cy='336' r='11'/%3E%3Ccircle cx='296' cy='336' r='11'/%3E%3Ccircle cx='152' cy='372' r='11'/%3E%3Ccircle cx='224' cy='372' r='11'/%3E%3Ccircle cx='296' cy='372' r='11'/%3E%3C/g%3E%3C/svg%3E"
     />
-    <link rel="stylesheet" href="../styles.css?v=20260815033347" />
+    <link rel="stylesheet" href="../styles.css?v=20260816002010" />
   </head>
   <body>
     <a class="skip-link" href="#grid">Skip to products</a>
@@ -102,7 +102,14 @@
           </nav>
         </div>
 
-        <p class="toolbar__count" id="result-count"></p>
+        <!-- Density sits where the count used to. It only changes anything on
+             a wide screen, so it is hidden below the breakpoint that gives the
+             grid a choice of columns. -->
+        <div class="density" id="density" role="group" aria-label="Per row">
+          <button class="density__button" type="button" data-cols="2">2</button>
+          <button class="density__button" type="button" data-cols="3">3</button>
+          <button class="density__button" type="button" data-cols="4">4</button>
+        </div>
       </div>
 
       <p class="feedback" id="empty-message" hidden>No saved pieces yet.</p>
@@ -117,6 +124,8 @@
           Next
         </button>
       </nav>
+
+      <p class="result-count" id="result-count"></p>
     </main>
 
     <p class="status" id="status" role="status" aria-live="polite"></p>
@@ -154,15 +163,6 @@
             <option value="curated">Curated</option>
             <option value="price-asc">Price low to high</option>
             <option value="price-desc">Price high to low</option>
-          </select>
-        </div>
-
-        <div class="facet">
-          <label class="facet__title" for="per-row">Per row</label>
-          <select class="drawer__select" id="per-row">
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
           </select>
         </div>
       </div>
@@ -232,7 +232,7 @@
       </article>
     </template>
 
-    <script src="products.js?v=20260815033347"></script>
-    <script src="../app.js?v=20260815033347"></script>
+    <script src="products.js?v=20260816002010"></script>
+    <script src="../app.js?v=20260816002010"></script>
   </body>
 </html>

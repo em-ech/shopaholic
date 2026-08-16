@@ -124,7 +124,7 @@
     drawerClose: document.getElementById("drawer-close"),
     filtersClear: document.getElementById("filters-clear"),
     sortBy: document.getElementById("sort-by"),
-    perRow: document.getElementById("per-row"),
+    density: document.getElementById("density"),
     pager: document.getElementById("pager"),
     pagerPrev: document.getElementById("pager-prev"),
     pagerNext: document.getElementById("pager-next"),
@@ -134,6 +134,10 @@
   FACETS.forEach(function (facet) {
     facet.node = document.getElementById("facet-" + facet.key);
   });
+
+  var densityButtons = Array.prototype.slice.call(
+    dom.density.querySelectorAll(".density__button"),
+  );
 
   /* ---------------------------------------------------------------- data --- */
 
@@ -696,7 +700,12 @@
       renderFacet(facet, base, state[facet.key]);
     });
     dom.sortBy.value = state.sort;
-    dom.perRow.value = state.cols;
+    densityButtons.forEach(function (button) {
+      button.setAttribute(
+        "aria-pressed",
+        String(button.getAttribute("data-cols") === state.cols),
+      );
+    });
 
     var active = activeFilterCount(state);
     dom.filtersCount.textContent = active ? String(active) : "";
@@ -721,13 +730,22 @@
 
   /* ---------------------------------------------------------------- pager --- */
 
-  function renderPager(page, total, pages) {
+  function renderPager(page, shown, total, pages) {
     dom.pager.hidden = pages <= 1;
     dom.pagerPrev.disabled = page <= 1;
     dom.pagerNext.disabled = page >= pages;
     dom.pagerStatus.textContent =
       pages > 1 ? "Page " + page + " of " + pages : "";
-    dom.resultCount.textContent = total === 1 ? "1 piece" : total + " pieces";
+    dom.resultCount.textContent = resultCountLabel(shown, total);
+  }
+
+  // Says how much of the list is on screen. On a single page that is the whole
+  // of it, so the figure is not repeated back at the visitor.
+  function resultCountLabel(shown, total) {
+    if (total === 0) return "";
+    if (total === 1) return "1 piece";
+    if (shown === total) return total + " pieces";
+    return shown + " of " + total + " pieces";
   }
 
   function render() {
@@ -769,7 +787,7 @@
     dom.navSaved.href = stateToHash(viewLink(state, VIEW_SAVED));
 
     renderControls(state);
-    renderPager(page, list.length, pages);
+    renderPager(page, slice.length, list.length, pages);
     updateSavedCount();
   }
 
@@ -807,8 +825,10 @@
   dom.sortBy.addEventListener("change", function () {
     updateState({ sort: dom.sortBy.value });
   });
-  dom.perRow.addEventListener("change", function () {
-    updateState({ cols: dom.perRow.value });
+  dom.density.addEventListener("click", function (event) {
+    var button = event.target.closest(".density__button");
+    if (!button) return;
+    updateState({ cols: button.getAttribute("data-cols") });
   });
 
   dom.pagerPrev.addEventListener("click", function () {
