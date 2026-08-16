@@ -27,9 +27,9 @@ the store that sells it.
 
 **Pulls many stores into one page.** A list can hold pieces from Zara, UNIQLO,
 COS, Carhartt WIP, Ami Paris, Springfield, Barbour, lululemon, Arte Antwerp,
-Staple, Comme des Garçons and anywhere else at the same time, sitting side by
-side and read the same way. No account anywhere, no basket to reconcile, no
-jumping between sites to compare.
+Staple, Daily Paper, Stüssy, Percival, Kardo, Comme des Garçons and anywhere
+else at the same time, sitting side by side and read the same way. No account
+anywhere, no basket to reconcile, no jumping between sites to compare.
 
 **Shows only what matters.** A photo, the brand, the price, the colourway, and
 the colours it also comes in. Nothing else. No reviews to wade through, no
@@ -144,7 +144,7 @@ They are glyphs rather than the numbers 2, 3 and 4 because bare numbers above a
 pager read as page numbers. Below 900px the grid picks its own columns, so the
 control is hidden there rather than offered and ignored.
 
-How much of the list is on screen is printed under the pager, as `20 of 93
+How much of the list is on screen is printed under the pager, as `20 of 178
 pieces`, and drops the "of" once everything fits on one page.
 
 Colourways arrive in whatever language and vocabulary the retailer uses, so
@@ -197,9 +197,10 @@ a real `products.js`, and drives the page the way a visitor would. It runs the
 whole suite once per list, so a second person's list is covered rather than
 assumed fine because Em's passes.
 
-It checks the data first, that ids are unique and kebab case, that prices carry
-a currency there is a rate for, that every swatch has a hex, that types are
-known ones. Then the page: what renders, the per row glyphs and their labelling,
+It checks the data first, that ids are unique and kebab case, that no two
+pieces link to the same product page or repeat a brand, name and colourway,
+that prices carry a currency there is a rate for, that every swatch has a hex,
+that types are known ones. Then the page: what renders, the per row glyphs and their labelling,
 filters, both sort directions asserted on the converted figure rather than the
 printed one, paging including a page past the end, and hearting a piece through
 to the Saved view and back out. Last it checks that each generated
@@ -218,12 +219,13 @@ Product photography, names and prices belong to the retailers linked from each
 product: [Ami Paris](https://www.amiparis.com),
 [Arte Antwerp](https://arte-antwerp.com),
 [Barbour](https://www.barbour.com), [Carhartt WIP](https://us.carhartt-wip.com),
-[COS](https://www.cos.com),
+[COS](https://www.cos.com), [Daily Paper](https://dailypaperclothing.com),
 [Dover Street Market](https://shop-us.doverstreetmarket.com), for Comme des
-Garçons, [eme studios](https://emestudios.com),
+Garçons, [eme studios](https://emestudios.com), [Kardo](https://kardo.co),
 [lululemon](https://shop.lululemon.com),
-[Nude Project](https://nude-project.com),
+[Nude Project](https://nude-project.com), [Percival](https://www.percivalclo.com),
 [Springfield](https://myspringfield.com), [Staple](https://www.staplepigeon.com),
+[Stüssy](https://www.stussy.com),
 [UNIQLO](https://www.uniqlo.com) and
 [Zara](https://www.zara.com). Retailer icons are served by Google's public
 favicon endpoint. Exchange rates come from

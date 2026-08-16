@@ -84,6 +84,14 @@ currency attached, so read `Shopify.currency` out of the homepage HTML before
 trusting a price. Reading GBP figures as dollars is a mistake that has already
 been made here once.
 
+Plain Shopify, so `/products/<handle>.js` works with `curl`: **Arte Antwerp**
+(EUR), **Staple** (USD), **Daily Paper** (EUR), **Stüssy** (USD), **Percival**
+(GBP). Read `Shopify.currency` off the homepage before trusting a price.
+**Kardo** is WooCommerce, also fetchable, with JSON-LD on the product page, but
+it publishes no colourway and reuses one style name across several prints, so
+the colour and a distinguishing word for the name have to be read off the
+photograph, and the id should carry Kardo's own slug.
+
 **Zara** blocks `curl` and `WebFetch` with a bot check, and blocks same origin
 `fetch` too, so the COS trick does not work here: each product needs a real
 navigation with the Chrome tools. Wait about seven seconds, then read the
