@@ -405,6 +405,29 @@ async function testSaved(list, window) {
 
 /* ------------------------------------------------------------- shells --- */
 
+function testBookmarklet() {
+  section("the add to list bookmarklet");
+  const source = read("tools/add-to-list.js");
+  const page = read("tools/index.html");
+
+  // The install page builds the bookmarklet from the source file at runtime.
+  // If it ever inlines its own copy instead, the two drift and the button
+  // silently installs an old tool.
+  check("the install page builds from the source file", page.includes('fetch("add-to-list.js")'), true);
+  check("and holds no second copy of the tool", page.includes("attachShadow"), false);
+
+  // Types offered by the tool have to be the types the list accepts, or it
+  // hands you an entry that fails the data checks above.
+  const offered = (source.match(/var TYPES = \[([\s\S]*?)\]/) || [])[1] || "";
+  const names = [...offered.matchAll(/"([^"]+)"/g)].map((m) => m[1]);
+  check("it offers every type the list knows", names.slice().sort().join(", "), TYPES.slice().sort().join(", "));
+
+  // It writes entries, so it has to write them the way products.js reads them.
+  check("it writes a colors array with a hex", source.includes("colors: [{ name: "), true);
+  check("it strips dashes out of names, per the no hyphens rule", source.includes('replace(/[-–—]/g, " ")'), true);
+  check("it formats price as figure and currency", source.includes('n.toFixed(2) + " " + currency'), true);
+}
+
 function testShells() {
   section("the generated shells");
   const shell = read("index.html");
@@ -433,6 +456,7 @@ function testShells() {
     await testSaved(list, window);
     window.close();
   }
+  testBookmarklet();
   testShells();
 
   if (notes.length) {

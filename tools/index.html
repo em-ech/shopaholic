@@ -1,0 +1,217 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Add to list</title>
+    <meta name="robots" content="noindex" />
+    <meta name="theme-color" content="#0d1f3c" />
+    <style>
+      :root {
+        --ink: #12161d;
+        --ink-soft: #6b6b6b;
+        --navy: #0d1f3c;
+        --line: #d8d8d5;
+        --track: 0.14em;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        margin: 0;
+        padding: 0 0 5rem;
+        color: var(--ink);
+        background: #fff;
+        font: 15px/1.6 ui-sans-serif, -apple-system, "Segoe UI", Roboto, sans-serif;
+      }
+      header {
+        background: var(--navy);
+        color: #fff;
+        padding: 2.5rem 1.5rem;
+      }
+      h1 {
+        margin: 0;
+        font-size: clamp(1.6rem, 5vw, 2.4rem);
+        letter-spacing: 0.02em;
+      }
+      header p {
+        margin: 0.6rem 0 0;
+        opacity: 0.75;
+        max-width: 46ch;
+      }
+      main {
+        max-width: 60ch;
+        margin: 0 auto;
+        padding: 0 1.5rem;
+      }
+      h2 {
+        margin: 2.5rem 0 0.6rem;
+        font-size: 0.75rem;
+        letter-spacing: var(--track);
+        text-transform: uppercase;
+        color: var(--navy);
+      }
+      p {
+        margin: 0 0 0.9rem;
+      }
+      ol {
+        margin: 0 0 1rem;
+        padding-left: 1.2rem;
+      }
+      li {
+        margin-bottom: 0.4rem;
+      }
+      .drag {
+        display: inline-block;
+        margin: 0.5rem 0 0.4rem;
+        padding: 0.7rem 1.2rem;
+        background: var(--navy);
+        color: #fff;
+        text-decoration: none;
+        font-size: 0.75rem;
+        letter-spacing: var(--track);
+        text-transform: uppercase;
+        cursor: grab;
+      }
+      .hint {
+        color: var(--ink-soft);
+        font-size: 0.85rem;
+      }
+      textarea {
+        width: 100%;
+        height: 7rem;
+        border: 1px solid var(--line);
+        padding: 0.6rem;
+        font: 11px/1.5 ui-monospace, SFMono-Regular, Menlo, monospace;
+        background: #fafaf8;
+      }
+      button.copy {
+        margin-top: 0.5rem;
+        padding: 0.5rem 0.9rem;
+        border: 1px solid var(--navy);
+        background: #fff;
+        color: var(--navy);
+        font-size: 0.7rem;
+        letter-spacing: var(--track);
+        text-transform: uppercase;
+        cursor: pointer;
+      }
+      .fail {
+        color: #c0392b;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>Add to list</h1>
+      <p>
+        One button. Click it on any product page and it copies a finished entry
+        to your clipboard, ready to paste.
+      </p>
+    </header>
+
+    <main>
+      <h2>What it does</h2>
+      <p>
+        It reads what the shop publishes about the product, then shows you the
+        fields so you can correct anything before copying. It runs as you, in
+        your own browser, so shops that answer a script with a bot check answer
+        this with the product.
+      </p>
+      <p>
+        Nothing is guessed. A field it could not read is left empty and marked
+        in red.
+      </p>
+
+      <h2>Install: Chrome, Edge, Brave</h2>
+      <ol>
+        <li>Show the bookmarks bar if it is hidden, with Command Shift B.</li>
+        <li>Drag the button below onto it.</li>
+      </ol>
+      <p><a class="drag" id="drag" href="#">Add to list</a></p>
+      <p class="hint">
+        Clicking it here does nothing. It has to sit on the bar and be clicked
+        while you are on a product page.
+      </p>
+
+      <h2>Install: Arc, Safari, anything without a visible bar</h2>
+      <p>
+        Arc hides the bookmarks bar, so drag will not work. Add it by hand
+        instead, using the address below as the bookmark's URL.
+      </p>
+      <ol>
+        <li>Copy the address with the button under the box.</li>
+        <li>Open the bookmark manager, Command Option B in Arc.</li>
+        <li>Add a bookmark, name it anything, paste this as the address.</li>
+      </ol>
+      <textarea id="url" readonly spellcheck="false"></textarea>
+      <button class="copy" id="copyUrl">Copy the address</button>
+
+      <h2>Or skip bookmarks entirely</h2>
+      <p>
+        Open the developer console on the product page with Command Option J,
+        paste the code below and press return. Same result, nothing to install.
+      </p>
+      <textarea id="src" readonly spellcheck="false"></textarea>
+      <button class="copy" id="copySrc">Copy the code</button>
+
+      <h2>When it changes</h2>
+      <p>
+        A saved bookmark keeps the copy you saved. If the tool is updated, come
+        back and drag or paste it again.
+      </p>
+    </main>
+
+    <script>
+      // The bookmarklet is built from the real source file rather than being
+      // pasted in here as a second copy, so this page can never drift from the
+      // tool it installs.
+      (function () {
+        var urlBox = document.getElementById("url");
+        var srcBox = document.getElementById("src");
+        var drag = document.getElementById("drag");
+
+        fetch("add-to-list.js")
+          .then(function (r) {
+            if (!r.ok) throw new Error(r.status);
+            return r.text();
+          })
+          .then(function (source) {
+            var href = "javascript:" + encodeURIComponent(source);
+            drag.href = href;
+            urlBox.value = href;
+            srcBox.value = source;
+          })
+          .catch(function () {
+            urlBox.value = "";
+            srcBox.value = "";
+            document.querySelector("main").insertAdjacentHTML(
+              "afterbegin",
+              '<p class="fail">Could not load add-to-list.js from this folder. ' +
+                "Open this page over http rather than from the file system.</p>",
+            );
+          });
+
+        drag.addEventListener("click", function (e) {
+          e.preventDefault();
+        });
+
+        function copier(button, box, done) {
+          button.addEventListener("click", function () {
+            box.select();
+            navigator.clipboard.writeText(box.value).then(
+              function () {
+                button.textContent = done;
+              },
+              function () {
+                button.textContent = "Press Command C";
+              },
+            );
+          });
+        }
+        copier(document.getElementById("copyUrl"), urlBox, "Copied");
+        copier(document.getElementById("copySrc"), srcBox, "Copied");
+      })();
+    </script>
+  </body>
+</html>
