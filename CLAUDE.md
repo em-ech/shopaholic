@@ -84,10 +84,26 @@ currency attached, so read `Shopify.currency` out of the homepage HTML before
 trusting a price. Reading GBP figures as dollars is a mistake that has already
 been made here once.
 
-Plain Shopify, so `/products/<handle>.js` works with `curl`: **Arte Antwerp**
-(EUR), **Staple** (USD), **Daily Paper** (EUR), **Stüssy** (USD), **Percival**
-(GBP), **Wax London** (GBP). Read `Shopify.currency` off the homepage before
-trusting a price.
+Plain Shopify, so `/products/<handle>.js` works with `curl`: **Arte Antwerp**,
+**Staple**, **Daily Paper**, **Stüssy**, **Percival**, **Wax London**,
+**Les Deux** (which answers 404 on `.js`, so read the JSON-LD off the page
+instead; its `hasVariant` carries the offer).
+
+**A Shopify shop can charge Em a different price than its own base currency
+says.** `/products/<handle>.js` always answers in the shop's base currency, but
+a shop using Shopify Markets sets its own US prices rather than converting.
+Wax London lists a shirt at 125 GBP and charges a US visitor 195 USD, which is
+not 125 converted. So:
+
+```sh
+curl -s "https://<shop>/products/<handle>?country=US" | grep -o 'application/ld+json'
+```
+
+Fetch the page with `?country=US` and read the price out of its JSON-LD offer.
+That is what Em would actually pay, and it is the figure the card should carry.
+Do not infer it by grepping the page for dollar amounts: the recommended
+products at the bottom put their prices in the same HTML, and doing that got
+one of the five Wax London prices wrong before the JSON-LD was read properly.
 
 **UNIQLO** answers its own commerce API, but only with a client id header:
 
