@@ -152,6 +152,37 @@ function testData(list, window) {
   check("no two pieces share an id", duplicates.join(", ") || "none", "none");
 
   check("every id is kebab case", products.every((p) => /^[a-z0-9]+(-[a-z0-9]+)*$/.test(p.id)), "true");
+
+  // Two entries pointing at one product page is the duplicate that actually
+  // happens, because the same link gets pasted twice on different days. It is
+  // invisible on the page: two identical cards just look like two pieces.
+  const byUrl = {};
+  products.forEach((p) => { (byUrl[p.url] = byUrl[p.url] || []).push(p.id); });
+  const sameUrl = Object.entries(byUrl).filter(([, ids]) => ids.length > 1);
+  check("no two pieces link to the same page", sameUrl.map(([, ids]) => ids.join(" and ")).join("; ") || "none", "none");
+
+  // Same brand, same name and same colourway is a duplicate in all but the url.
+  // Colour has to be part of it: one style in two colourways is two pieces, and
+  // the older entries do not carry the colourway in the name.
+  const byLabel = {};
+  products.forEach((p) => {
+    const key = `${p.brand}|${p.name}|${p.color || ""}`.toLowerCase();
+    (byLabel[key] = byLabel[key] || []).push(p.id);
+  });
+  const sameLabel = Object.entries(byLabel).filter(([, ids]) => ids.length > 1);
+  check("no two pieces share a brand, a name and a colourway", sameLabel.map(([, ids]) => ids.join(" and ")).join("; ") || "none", "none");
+
+  // Not a failure, but two cards that read identically are hard to tell apart
+  // at a glance. Newer entries put the colourway in the name; older ones do not.
+  const byName = {};
+  products.forEach((p) => {
+    const key = `${p.brand}|${p.name}`.toLowerCase();
+    (byName[key] = byName[key] || []).push(p.id);
+  });
+  const sameName = Object.entries(byName).filter(([, ids]) => ids.length > 1);
+  if (sameName.length) {
+    note(`${list.products}: ${sameName.length} names are shared by pieces that differ only by colourway, so those cards read alike: ${sameName.map(([, ids]) => ids.join(" / ")).join("; ")}`);
+  }
   check("every image is https", products.every((p) => p.image.startsWith("https://")), "true");
   check("every url is https", products.every((p) => p.url.startsWith("https://")), "true");
 
