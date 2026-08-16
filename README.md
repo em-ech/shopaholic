@@ -26,10 +26,10 @@ the store that sells it.
 ## What it does
 
 **Pulls many stores into one page.** A list can hold pieces from Zara, UNIQLO,
-COS, Carhartt WIP, Ami Paris, Springfield, Barbour, lululemon, Comme des
-Garçons and anywhere else at the same time, sitting side by side and read the
-same way. No account anywhere, no basket to reconcile, no jumping between sites
-to compare.
+COS, Carhartt WIP, Ami Paris, Springfield, Barbour, lululemon, Arte Antwerp,
+Staple, Comme des Garçons and anywhere else at the same time, sitting side by
+side and read the same way. No account anywhere, no basket to reconcile, no
+jumping between sites to compare.
 
 **Shows only what matters.** A photo, the brand, the price, the colourway, and
 the colours it also comes in. Nothing else. No reviews to wade through, no
@@ -216,13 +216,15 @@ names the colourway being viewed.
 
 Product photography, names and prices belong to the retailers linked from each
 product: [Ami Paris](https://www.amiparis.com),
+[Arte Antwerp](https://arte-antwerp.com),
 [Barbour](https://www.barbour.com), [Carhartt WIP](https://us.carhartt-wip.com),
 [COS](https://www.cos.com),
 [Dover Street Market](https://shop-us.doverstreetmarket.com), for Comme des
 Garçons, [eme studios](https://emestudios.com),
 [lululemon](https://shop.lululemon.com),
 [Nude Project](https://nude-project.com),
-[Springfield](https://myspringfield.com), [UNIQLO](https://www.uniqlo.com) and
+[Springfield](https://myspringfield.com), [Staple](https://www.staplepigeon.com),
+[UNIQLO](https://www.uniqlo.com) and
 [Zara](https://www.zara.com). Retailer icons are served by Google's public
 favicon endpoint. Exchange rates come from
 [the Exchange Rate API](https://open.er-api.com). Tests run on

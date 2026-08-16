@@ -84,13 +84,42 @@ currency attached, so read `Shopify.currency` out of the homepage HTML before
 trusting a price. Reading GBP figures as dollars is a mistake that has already
 been made here once.
 
+**Zara** blocks `curl` and `WebFetch` with a bot check, and blocks same origin
+`fetch` too, so the COS trick does not work here: each product needs a real
+navigation with the Chrome tools. Wait about seven seconds, then read the
+JSON-LD, which is a `ProductGroup` rather than a `Product`. `hasVariant` holds
+every size and colour combination, so the colour range is the distinct
+`color` values and the price is on the first variant's `offers`. The colourway
+being shown is in `document.title`, as `NAME - Colour | ZARA ...`.
+
+Use the **US** store, `/us/en/`, which prices in USD. The `/uk/en/` store
+prices in GBP and some older entries still point there.
+
+Keep `v1` and `v2` on a Zara url. They look like tracking but `v1` selects the
+colourway: two links to one product with different `v1` values are two
+different colours.
+
+Zara image urls carry a `ts` cache stamp that can be dropped. Append `?w=1024`
+instead; the bare url serves a 2048px original that is heavier than the page
+needs. Hitting the image CDN in a tight loop returns the odd 403, which is rate
+limiting rather than a broken url, so retry once before believing it.
+
 ### Swatch hexes
 
-Prefer measuring a hex to matching one by eye. Download the colourway photo and
-take the per channel median of the part of the frame the garment fills. A
-median ignores highlights and shadows in a way a mean does not. Check the crop
-landed on fabric rather than skin, backdrop or a printed graphic before
-trusting the figure, because a bad crop still returns a plausible colour.
+Measure the hex when the shot allows it, otherwise read the colourway name.
+
+Measuring works when the retailer lays the garment flat on white, as COS, Arte
+Antwerp and Dover Street Market do. Download the photo, crop to the part of the
+frame the garment fills, take the per channel median. A median ignores
+highlights and shadows in a way a mean does not.
+
+It does not work on Zara, which photographs on a model in a styled outfit: a
+crop catches the backdrop, the model's legs and whatever else they are
+wearing. Sampling a red sneaker that way returned a dark grey. For Zara the
+colourway name is the more accurate source, because Zara names them plainly.
+
+Whichever way, look at the swatch against the photo before trusting it. A bad
+crop still returns a plausible colour.
 
 ## Prices in other currencies
 
