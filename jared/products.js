@@ -10,7 +10,7 @@
 window.COLLECTION = {
   // Saved hearts are stored against this id. Never change it once published.
   id: "jared",
-  title: "Jared's Intervention",
+  title: "Jared's Picks",
   // Set to false to show brand names as plain text instead of retailer icons.
   autoLogos: true,
 };
