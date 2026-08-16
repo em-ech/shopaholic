@@ -123,6 +123,7 @@
     verde: { label: "Green", family: "Green" },
     "dark green": { family: "Green" },
     "light green": { family: "Green" },
+    oregano: { family: "Green" },
     "pine green": { family: "Green" },
     "company olive": { family: "Green" },
     "fern green heather": { family: "Green" },
