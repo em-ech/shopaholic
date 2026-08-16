@@ -207,19 +207,30 @@ a {
 }
 
 .density__button {
+  display: flex;
   margin: 0;
-  padding: 0 0 2px;
+  padding: 0 0 4px;
   border: 0;
   border-bottom: 1px solid transparent;
   background: none;
   color: var(--ink-soft);
   font: inherit;
-  font-variant-numeric: tabular-nums;
-  letter-spacing: var(--track);
   cursor: pointer;
   transition:
     color 0.2s ease,
     border-color 0.2s ease;
+}
+
+/* Block, so the button is exactly as tall as the drawing and the underline
+   sits tight beneath it. An inline svg would carry a text baseline gap. */
+.density__icon {
+  display: block;
+  width: 16px;
+  height: 12px;
+  fill: currentColor;
+  /* The click belongs to the button. Without this the target of a click is a
+     rect inside the svg, and the handler has to walk back up to find it. */
+  pointer-events: none;
 }
 
 .density__button[aria-pressed="true"] {

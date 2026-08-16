@@ -18,7 +18,7 @@
       rel="icon"
       href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='-18 120 360 360'%3E%3Crect x='-18' y='120' width='360' height='360' fill='%230d1f3c'/%3E%3Cg fill='%23fff'%3E%3Ccircle cx='28' cy='228' r='11'/%3E%3Ccircle cx='64' cy='228' r='11'/%3E%3Ccircle cx='100' cy='228' r='11'/%3E%3Ccircle cx='28' cy='264' r='11'/%3E%3Ccircle cx='28' cy='300' r='11'/%3E%3Ccircle cx='64' cy='300' r='11'/%3E%3Ccircle cx='100' cy='300' r='11'/%3E%3Ccircle cx='28' cy='336' r='11'/%3E%3Ccircle cx='28' cy='372' r='11'/%3E%3Ccircle cx='64' cy='372' r='11'/%3E%3Ccircle cx='100' cy='372' r='11'/%3E%3Ccircle cx='152' cy='300' r='11'/%3E%3Ccircle cx='188' cy='300' r='11'/%3E%3Ccircle cx='224' cy='300' r='11'/%3E%3Ccircle cx='260' cy='300' r='11'/%3E%3Ccircle cx='296' cy='300' r='11'/%3E%3Ccircle cx='152' cy='336' r='11'/%3E%3Ccircle cx='224' cy='336' r='11'/%3E%3Ccircle cx='296' cy='336' r='11'/%3E%3Ccircle cx='152' cy='372' r='11'/%3E%3Ccircle cx='224' cy='372' r='11'/%3E%3Ccircle cx='296' cy='372' r='11'/%3E%3C/g%3E%3C/svg%3E"
     />
-    <link rel="stylesheet" href="styles.css?v=20260816021233" />
+    <link rel="stylesheet" href="styles.css?v=20260816021449" />
   </head>
   <body>
     <a class="skip-link" href="#grid">Skip to products</a>
@@ -105,9 +105,64 @@
              sitting above a pager read as page numbers. -->
         <div class="density" id="density" role="group" aria-label="Pieces per row">
           <span class="density__label" aria-hidden="true">Per row</span>
-          <button class="density__button" type="button" data-cols="2">2</button>
-          <button class="density__button" type="button" data-cols="3">3</button>
-          <button class="density__button" type="button" data-cols="4">4</button>
+
+          <!-- Each glyph is the layout it produces: two, three or four columns
+               drawn in the same 16 by 12 box the Filters icon uses. The bars
+               are written out rather than generated so what the markup says and
+               what the grid does can be read side by side. -->
+          <button
+            class="density__button"
+            type="button"
+            data-cols="2"
+            aria-label="Two per row"
+          >
+            <svg
+              class="density__icon"
+              viewBox="0 0 16 12"
+              aria-hidden="true"
+              focusable="false"
+            >
+              <rect x="0" y="0" width="7" height="12" />
+              <rect x="9" y="0" width="7" height="12" />
+            </svg>
+          </button>
+
+          <button
+            class="density__button"
+            type="button"
+            data-cols="3"
+            aria-label="Three per row"
+          >
+            <svg
+              class="density__icon"
+              viewBox="0 0 16 12"
+              aria-hidden="true"
+              focusable="false"
+            >
+              <rect x="0" y="0" width="4" height="12" />
+              <rect x="6" y="0" width="4" height="12" />
+              <rect x="12" y="0" width="4" height="12" />
+            </svg>
+          </button>
+
+          <button
+            class="density__button"
+            type="button"
+            data-cols="4"
+            aria-label="Four per row"
+          >
+            <svg
+              class="density__icon"
+              viewBox="0 0 16 12"
+              aria-hidden="true"
+              focusable="false"
+            >
+              <rect x="0" y="0" width="2.5" height="12" />
+              <rect x="4.5" y="0" width="2.5" height="12" />
+              <rect x="9" y="0" width="2.5" height="12" />
+              <rect x="13.5" y="0" width="2.5" height="12" />
+            </svg>
+          </button>
         </div>
       </div>
 
@@ -231,7 +286,7 @@
       </article>
     </template>
 
-    <script src="products.js?v=20260816021233"></script>
-    <script src="app.js?v=20260816021233"></script>
+    <script src="products.js?v=20260816021449"></script>
+    <script src="app.js?v=20260816021449"></script>
   </body>
 </html>
