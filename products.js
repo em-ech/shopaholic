@@ -1152,4 +1152,58 @@ window.PRODUCTS = [
       "https://media.cos.com/assets/001/d4/35/d4354ffacb346de64c10d1b1d751281881d51540_xxl-1.jpg",
     url: "https://www.cos.com/en-us/men/menswear/shorts/jersey/product/ribbed-cotton-jersey-shorts-black-1337298001",
   },
+  {
+    id: "cdg-play-mini-heart-t-shirt-white",
+    name: "Mini Heart T Shirt, White",
+    brand: "Comme des Garçons PLAY",
+    type: "Short sleeve",
+    price: "59.00 USD",
+    color: "White",
+    colors: [
+      { name: "White", hex: "#EBEBEB" },
+      { name: "Black", hex: "#141414" },
+    ],
+    image:
+      "https://cdn.shopify.com/s/files/1/0487/8188/5596/files/CDG_PLAY_1360000137680_0711_f8bf7707-59a0-4214-b630-e905cbbff4e6.jpg?v=1709038689&width=1600",
+    url: "https://shop.doverstreetmarket.com/products/play-comme-des-garcons-mini-heart-t-shirt-white",
+  },
+  {
+    id: "cdg-play-mini-heart-t-shirt-black",
+    name: "Mini Heart T Shirt, Black",
+    brand: "Comme des Garçons PLAY",
+    type: "Short sleeve",
+    price: "59.00 USD",
+    color: "Black",
+    colors: [
+      { name: "White", hex: "#EBEBEB" },
+      { name: "Black", hex: "#141414" },
+    ],
+    image:
+      "https://cdn.shopify.com/s/files/1/0487/8188/5596/files/CDG_PLAY_1360000132767_0702_6012c333-7bed-4d70-9fc2-9c9ba5fdc590.jpg?v=1709036373&width=1600",
+    url: "https://shop.doverstreetmarket.com/products/play-comme-des-garcons-mini-heart-t-shirt-black",
+  },
+  {
+    id: "cdg-nike-stacked-logo-t-shirt-black",
+    name: "Nike Stacked Logo T Shirt, Black",
+    brand: "Comme des Garçons",
+    type: "Short sleeve",
+    price: "95.00 USD",
+    color: "Black",
+    colors: [{ name: "Black", hex: "#151517" }],
+    image:
+      "https://cdn.shopify.com/s/files/1/0487/8188/5596/files/CDGBLACKCOLLECTION_3607937114861_1761.jpg?v=1786540279&width=1600",
+    url: "https://shop.doverstreetmarket.com/products/cdg-black-collection-mens-unisex-t-shirt-print-1-aw26-1r-t101-052",
+  },
+  {
+    id: "cdg-play-converse-chuck-70-low-white",
+    name: "Converse Chuck Taylor All Star 70 Low, Polka Dot White",
+    brand: "Comme des Garçons PLAY",
+    type: "Shoes",
+    price: "140.00 USD",
+    color: "White",
+    colors: [{ name: "White", hex: "#E7E3DB" }],
+    image:
+      "https://cdn.shopify.com/s/files/1/0487/8188/5596/products/Play-Comme-des-Garcons-x-Converse-Polka-Dot-Red-Heart-Chuck-Taylor-All-Star-_70-Low-_White.jpg?v=1647367547&width=1600",
+    url: "https://shop.doverstreetmarket.com/products/play-converse-polka-dot-chuck-taylor-all-star-70-low-white",
+  },
 ];
