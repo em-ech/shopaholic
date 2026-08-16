@@ -84,7 +84,7 @@ window.PRODUCTS = [
     name: "Relaxed Lightweight Cotton T Shirt, Beige",
     brand: "COS",
     type: "Short sleeve",
-    price: "39.00 USD",
+    price: "25.00 GBP",
     color: "Beige",
     colors: [
       { name: "Beige", hex: "#C5B79A" },
@@ -99,14 +99,14 @@ window.PRODUCTS = [
     ],
     image:
       "https://media.cos.com/assets/001/1a/d6/1ad6cfa8ec82c55b8925b0132f9b994e4b3a6692_xxl-1.jpg",
-    url: "https://www.cos.com/en-us/men/menswear/tshirts/relaxed-fit/product/relaxed-lightweight-cotton-t-shirt-beige-1294695021",
+    url: "https://www.cos.com/en-gb/men/menswear/tshirts/relaxed-fit/product/relaxed-lightweight-cotton-t-shirt-beige-1294695021",
   },
   {
     id: "cos-knitted-linen-polo-shirt-dark-green",
     name: "Knitted Linen Polo Shirt, Dark Green",
     brand: "COS",
     type: "Short sleeve",
-    price: "99.00 USD",
+    price: "65.00 GBP",
     color: "Dark green",
     colors: [
       { name: "Dark green", hex: "#3A4E45" },
@@ -114,14 +114,14 @@ window.PRODUCTS = [
     ],
     image:
       "https://media.cos.com/assets/001/98/76/9876568fac79be41bd0d2df182282223c750a8db_xxl-1.jpg",
-    url: "https://www.cos.com/en-us/men/menswear/poloshirts/linen/product/knitted-linen-polo-shirt-dark-green-1221749013",
+    url: "https://www.cos.com/en-gb/men/menswear/poloshirts/linen/product/knitted-linen-polo-shirt-dark-green-1221749013",
   },
   {
     id: "cos-double-faced-knitted-half-zip-sweater-white",
-    name: "Double Faced Knitted Half Zip Sweater, White",
+    name: "Double Faced Knitted Half Zip Jumper, White",
     brand: "COS",
     type: "Long sleeve",
-    price: "110.00 USD",
+    price: "75.00 GBP",
     color: "White",
     colors: [
       { name: "White", hex: "#EBE7E4" },
@@ -129,26 +129,26 @@ window.PRODUCTS = [
     ],
     image:
       "https://media.cos.com/assets/001/04/ae/04ae7d0df3c4bb09dbe8c73d9d0c5b92730ab163_xxl-1.jpg",
-    url: "https://www.cos.com/en-us/men/menswear/knitwear/jumpers/product/double-faced-knitted-half-zip-jumper-white-1363087002",
+    url: "https://www.cos.com/en-gb/men/menswear/knitwear/jumpers/product/double-faced-knitted-half-zip-jumper-white-1363087002",
   },
   {
     id: "cos-tailored-wool-zip-up-jacket-blue",
     name: "Tailored Wool Zip Up Jacket, Blue",
     brand: "COS",
     type: "Outerwear",
-    price: "249.00 USD",
+    price: "189.00 GBP",
     color: "Blue",
     colors: [{ name: "Blue", hex: "#21232C" }],
     image:
       "https://media.cos.com/assets/001/49/56/49562cd1d52ee37eee43d577cd04609f5e5b82a0_xxl-1.jpg",
-    url: "https://www.cos.com/en-us/men/menswear/coatsjackets/jackets/product/tailored-wool-zip-up-jacket-blue-1350618001",
+    url: "https://www.cos.com/en-gb/men/menswear/coatsjackets/jackets/product/tailored-wool-zip-up-jacket-blue-1350618001",
   },
   {
     id: "cos-relaxed-contrast-panel-shirt-black",
     name: "Relaxed Contrast Panel Shirt, Black",
     brand: "COS",
     type: "Long sleeve",
-    price: "99.00 USD",
+    price: "65.00 GBP",
     color: "Black",
     colors: [
       { name: "Black", hex: "#212224" },
@@ -156,26 +156,26 @@ window.PRODUCTS = [
     ],
     image:
       "https://media.cos.com/assets/001/22/f2/22f24e11de4591e04c1bb7d8c3a99dce2f2c17ba_xxl-1.jpg",
-    url: "https://www.cos.com/en-us/men/menswear/shirts/casualshirts/product/relaxed-contrast-panel-shirt-black-1336042001",
+    url: "https://www.cos.com/en-gb/men/menswear/shirts/casualshirts/product/relaxed-contrast-panel-shirt-black-1336042001",
   },
   {
     id: "cos-checked-jacquard-knit-polo-shirt-navy",
     name: "Checked Jacquard Knit Polo Shirt, Navy Checked",
     brand: "COS",
     type: "Short sleeve",
-    price: "110.00 USD",
+    price: "75.00 GBP",
     color: "Navy checked",
     colors: [{ name: "Navy checked", hex: "#1C232D" }],
     image:
       "https://media.cos.com/assets/001/6b/7b/6b7b5908bedf94a1947e6e3b6e2b94b8c19ad25a_xxl-1.jpg",
-    url: "https://www.cos.com/en-us/men/menswear/poloshirts/shortsleeves/product/checked-jacquard-knit-polo-shirt-navy-checked-1342032001",
+    url: "https://www.cos.com/en-gb/men/menswear/poloshirts/shortsleeves/product/checked-jacquard-knit-polo-shirt-navy-checked-1342032001",
   },
   {
     id: "cos-waffle-knit-cotton-polo-shirt-light-green",
     name: "Waffle Knit Cotton Polo Shirt, Light Green",
     brand: "COS",
     type: "Short sleeve",
-    price: "89.00 USD",
+    price: "55.00 GBP",
     color: "Light green",
     colors: [
       { name: "Light green", hex: "#B7B4B0" },
@@ -183,14 +183,14 @@ window.PRODUCTS = [
     ],
     image:
       "https://media.cos.com/assets/001/9b/5a/9b5adbef0df47c7cea8eba3b5b479f5882bbc21a_xxl-1.jpg",
-    url: "https://www.cos.com/en-us/men/menswear/poloshirts/shortsleeves/product/waffle-knit-cotton-polo-shirt-beige-1316741006",
+    url: "https://www.cos.com/en-gb/men/menswear/poloshirts/shortsleeves/product/waffle-knit-cotton-polo-shirt-beige-1316741006",
   },
   {
     id: "cos-textured-panel-cotton-polo-shirt-white",
     name: "Textured Panel Cotton Polo Shirt, White",
     brand: "COS",
     type: "Short sleeve",
-    price: "99.00 USD",
+    price: "65.00 GBP",
     color: "White",
     colors: [
       { name: "White", hex: "#D6D6D4" },
@@ -198,19 +198,19 @@ window.PRODUCTS = [
     ],
     image:
       "https://media.cos.com/assets/001/e2/6c/e26cb5644050939fcd9a798c6bf134efb874ea4d_xxl-1.jpg",
-    url: "https://www.cos.com/en-us/men/menswear/poloshirts/shortsleeves/product/textured-panel-cotton-polo-shirt-white-1319177001",
+    url: "https://www.cos.com/en-gb/men/menswear/poloshirts/shortsleeves/product/textured-panel-cotton-polo-shirt-white-1319177001",
   },
   {
     id: "cos-ribbed-cotton-jersey-shorts-black",
     name: "Ribbed Cotton Jersey Shorts, Black",
     brand: "COS",
     type: "Shorts",
-    price: "79.00 USD",
+    price: "45.00 GBP",
     color: "Black",
     colors: [{ name: "Black", hex: "#202022" }],
     image:
       "https://media.cos.com/assets/001/d4/35/d4354ffacb346de64c10d1b1d751281881d51540_xxl-1.jpg",
-    url: "https://www.cos.com/en-us/men/menswear/shorts/jersey/product/ribbed-cotton-jersey-shorts-black-1337298001",
+    url: "https://www.cos.com/en-gb/men/menswear/shorts/jersey/product/ribbed-cotton-jersey-shorts-black-1337298001",
   },
   {
     id: "cdg-play-red-heart-t-shirt-white",
@@ -963,7 +963,7 @@ window.PRODUCTS = [
     name: "Big A Side T Shirt, White",
     brand: "Arte Antwerp",
     type: "Short sleeve",
-    price: "65.00 EUR",
+    price: "60.00 GBP",
     color: "White",
     colors: [{ name: "White", hex: "#F2F0EA" }],
     image:
@@ -975,7 +975,7 @@ window.PRODUCTS = [
     name: "Cor T Shirt, White",
     brand: "Arte Antwerp",
     type: "Short sleeve",
-    price: "65.00 EUR",
+    price: "60.00 GBP",
     color: "White",
     colors: [{ name: "White", hex: "#F2F0EA" }],
     image:
@@ -987,7 +987,7 @@ window.PRODUCTS = [
     name: "Emblem T Shirt, Red",
     brand: "Arte Antwerp",
     type: "Short sleeve",
-    price: "65.00 EUR",
+    price: "60.00 GBP",
     color: "Red",
     colors: [{ name: "Red", hex: "#B22234" }],
     image:
@@ -999,7 +999,7 @@ window.PRODUCTS = [
     name: "Heart Logo T Shirt, Black",
     brand: "Arte Antwerp",
     type: "Short sleeve",
-    price: "65.00 EUR",
+    price: "60.00 GBP",
     color: "Black",
     colors: [{ name: "Black", hex: "#17171A" }],
     image:
@@ -1011,7 +1011,7 @@ window.PRODUCTS = [
     name: "Allover Circle Logo Knit, Navy",
     brand: "Arte Antwerp",
     type: "Long sleeve",
-    price: "235.00 EUR",
+    price: "205.00 GBP",
     color: "Navy",
     colors: [{ name: "Navy", hex: "#232C43" }],
     image:
