@@ -197,6 +197,15 @@ a {
   }
 }
 
+/* Says what the numbers do. Set apart from them so the group reads as one
+   label followed by three choices, not as four things in a row. */
+.density__label {
+  margin-right: 0.35rem;
+  color: var(--ink-soft);
+  text-transform: uppercase;
+  letter-spacing: var(--track);
+}
+
 .density__button {
   margin: 0;
   padding: 0 0 2px;
