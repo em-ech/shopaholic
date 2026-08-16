@@ -268,10 +268,10 @@ window.PRODUCTS = [
   },
   {
     id: "zara-fabric-sneakers-red",
-    name: "Fabric Sneakers, Red",
+    name: "Fabric Trainers, Red",
     brand: "Zara",
     type: "Shoes",
-    price: "55.90 USD",
+    price: "29.99 GBP",
     color: "Red",
     colors: [
       { name: "Red", hex: "#B22234" },
@@ -280,14 +280,14 @@ window.PRODUCTS = [
     ],
     image:
       "https://static.zara.net/assets/public/37db/d607/e75d439b8bfe/fa3bbbc5ba98/12205820600-a2/12205820600-a2.jpg?w=1024",
-    url: "https://www.zara.com/us/en/fabric-sneakers-p12205820.html?v1=545422184&v2=2436382",
+    url: "https://www.zara.com/uk/en/fabric-trainers-p12205820.html?v1=545422184&v2=2436382",
   },
   {
     id: "zara-casual-leather-loafers-taupe-grey",
     name: "Casual Leather Loafers, Taupe grey",
     brand: "Zara",
     type: "Shoes",
-    price: "109.00 USD",
+    price: "69.99 GBP",
     color: "Taupe grey",
     colors: [
       { name: "Taupe grey", hex: "#8A8178" },
@@ -295,14 +295,14 @@ window.PRODUCTS = [
     ],
     image:
       "https://static.zara.net/assets/public/b9b6/1c1f/7db944a28dfd/be2257f1becd/12684820131-a2/12684820131-a2.jpg?w=1024",
-    url: "https://www.zara.com/us/en/casual-leather-loafers-p12684820.html?v1=545466076&v2=2436382",
+    url: "https://www.zara.com/uk/en/casual-leather-loafers-p12684820.html?v1=545466076&v2=2436382",
   },
   {
     id: "zara-leather-boat-shoes-blue",
-    name: "Leather Boat Shoes, Blue",
+    name: "Leather Deck Shoes, Blue",
     brand: "Zara",
     type: "Shoes",
-    price: "89.90 USD",
+    price: "55.99 GBP",
     color: "Blue",
     colors: [
       { name: "Blue", hex: "#2F5C9E" },
@@ -310,38 +310,38 @@ window.PRODUCTS = [
     ],
     image:
       "https://static.zara.net/assets/public/c09e/d1b4/5d284247a522/890c4b737208/12456720400-a2/12456720400-a2.jpg?w=1024",
-    url: "https://www.zara.com/us/en/leather-boat-shoes-p12456720.html?v1=545422634&v2=2436382",
+    url: "https://www.zara.com/uk/en/leather-deck-shoes-p12456720.html?v1=545422634&v2=2436382",
   },
   {
     id: "zara-knit-fabric-espadrilles-ecru",
-    name: "Knit Fabric Espadrilles, Ecru",
+    name: "Knitted Espadrilles, Ecru",
     brand: "Zara",
     type: "Shoes",
-    price: "59.90 USD",
+    price: "35.99 GBP",
     color: "Ecru",
     colors: [{ name: "Ecru", hex: "#E8E0D0" }],
     image:
       "https://static.zara.net/assets/public/a7c5/71b5/a98e4e3f904b/792eac9b47ce/12740720719-a2/12740720719-a2.jpg?w=1024",
-    url: "https://www.zara.com/us/en/knit-fabric-espadrilles-p12740720.html?v1=545400714&v2=2436382",
+    url: "https://www.zara.com/uk/en/knitted-fabric-espadrilles-p12740720.html?v1=545400714&v2=2436382",
   },
   {
     id: "zara-sneakers-with-heel-detail-white",
-    name: "Sneakers with Heel Detail, White",
+    name: "Trainers with Heel Detail, White",
     brand: "Zara",
     type: "Shoes",
-    price: "59.90 USD",
+    price: "35.99 GBP",
     color: "White",
     colors: [{ name: "White", hex: "#F2F0EA" }],
     image:
       "https://static.zara.net/assets/public/c596/dd84/fbfd4024bca1/96245d0f83f7/12246720001-a2/12246720001-a2.jpg?w=1024",
-    url: "https://www.zara.com/us/en/sneakers-with-heel-detail-p12246720.html?v1=545490815&v2=2436382",
+    url: "https://www.zara.com/uk/en/trainers-with-heel-detail-p12246720.html?v1=545490815&v2=2436382",
   },
   {
     id: "zara-leather-sneakers-blue",
-    name: "Leather Sneakers, Blue",
+    name: "Leather Trainers, Blue",
     brand: "Zara",
     type: "Shoes",
-    price: "79.90 USD",
+    price: "49.99 GBP",
     color: "Blue",
     colors: [
       { name: "Blue", hex: "#2F5C9E" },
@@ -351,14 +351,14 @@ window.PRODUCTS = [
     ],
     image:
       "https://static.zara.net/assets/public/0e20/623e/776f40199b8e/68a48994feb9/12240720400-a2/12240720400-a2.jpg?w=1024",
-    url: "https://www.zara.com/us/en/leather-sneakers-p12240720.html?v1=545485824&v2=2436382",
+    url: "https://www.zara.com/uk/en/leather-trainers-p12240720.html?v1=545485824&v2=2436382",
   },
   {
     id: "zara-retro-leather-sneakers-red",
-    name: "Retro Leather Sneakers, Red",
+    name: "Retro Leather Trainers, Red",
     brand: "Zara",
     type: "Shoes",
-    price: "69.90 USD",
+    price: "49.99 GBP",
     color: "Red",
     colors: [
       { name: "Red", hex: "#B22234" },
@@ -367,14 +367,14 @@ window.PRODUCTS = [
     ],
     image:
       "https://static.zara.net/assets/public/345e/eafa/2047493885e9/e02f4de0e845/12301820600-031-p/12301820600-031-p.jpg?w=1024",
-    url: "https://www.zara.com/us/en/retro-leather-sneakers-p12301820.html?v1=576910947",
+    url: "https://www.zara.com/uk/en/leather-retro-trainers-p12301820.html?v1=576910947",
   },
   {
     id: "zara-contrast-waist-jogger-shorts-navy",
-    name: "Contrast Waist Jogger Shorts, Navy blue",
+    name: "Contrast Waist Jogger Bermuda Shorts, Navy blue",
     brand: "Zara",
     type: "Shorts",
-    price: "69.90 USD",
+    price: "39.99 GBP",
     color: "Navy blue",
     colors: [
       { name: "Navy blue", hex: "#2A323D" },
@@ -382,14 +382,14 @@ window.PRODUCTS = [
     ],
     image:
       "https://static.zara.net/assets/public/f54a/bdfa/8c4046b59c56/176fbe2e3b93/05584329401-p/05584329401-p.jpg?w=1024",
-    url: "https://www.zara.com/us/en/contrast-waist-jogger-shorts-p05584329.html?v1=548756785&v2=2432164",
+    url: "https://www.zara.com/uk/en/contrast-waist-jogger-bermuda-shorts-p05584329.html?v1=548756785&v2=2432164",
   },
   {
     id: "zara-contrast-waist-jogger-shorts-white",
-    name: "Contrast Waist Jogger Shorts, White",
+    name: "Combined Waist Jogger Bermuda Shorts, White",
     brand: "Zara",
     type: "Shorts",
-    price: "69.90 USD",
+    price: "39.99 GBP",
     color: "White",
     colors: [
       { name: "White", hex: "#F2F0EA" },
@@ -397,14 +397,14 @@ window.PRODUCTS = [
     ],
     image:
       "https://static.zara.net/assets/public/5256/7c4f/8d7f4791b37e/2ebda47b9a92/05584329250-p/05584329250-p.jpg?w=1024",
-    url: "https://www.zara.com/us/en/contrast-waist-jogger-shorts-p05584329.html?v1=548756786&v2=2432164",
+    url: "https://www.zara.com/uk/en/contrast-waist-jogger-bermuda-shorts-p05584329.html?v1=548756786&v2=2432164",
   },
   {
     id: "zara-cotton-linen-relaxed-fit-shorts-light-beige",
-    name: "Cotton Linen Relaxed Fit Shorts, Light beige",
+    name: "Cotton Linen Relaxed Fit Bermuda Shorts, Light beige",
     brand: "Zara",
     type: "Shorts",
-    price: "49.90 USD",
+    price: "29.99 GBP",
     color: "Light beige",
     colors: [
       { name: "Light beige", hex: "#E3D8C3" },
@@ -414,14 +414,14 @@ window.PRODUCTS = [
     ],
     image:
       "https://static.zara.net/assets/public/032c/dff6/d1944727a70a/1145b14183e3/04470421052-p/04470421052-p.jpg?w=1024",
-    url: "https://www.zara.com/us/en/cotton-linen-relaxed-fit-shorts-p04470421.html",
+    url: "https://www.zara.com/uk/en/cotton-linen-relaxed-fit-bermuda-shorts-p04470421.html",
   },
   {
     id: "zara-geometric-jacquard-regular-fit-shorts-black",
-    name: "Geometric Jacquard Regular Fit Shorts, Black",
+    name: "Geometric Jacquard Regular Fit Bermuda Shorts, Black",
     brand: "Zara",
     type: "Shorts",
-    price: "59.90 USD",
+    price: "35.99 GBP",
     color: "Black",
     colors: [
       { name: "Black", hex: "#17171A" },
@@ -429,14 +429,14 @@ window.PRODUCTS = [
     ],
     image:
       "https://static.zara.net/assets/public/a877/1cb6/2056478b882d/0f3eda5c83de/01450301800-p/01450301800-p.jpg?w=1024",
-    url: "https://www.zara.com/us/en/geometric-jacquard-regular-fit-shorts-p01450301.html?v1=545470528&v2=2432164",
+    url: "https://www.zara.com/uk/en/geometric-jacquard-regular-fit-bermuda-shorts-p01450301.html?v1=545470528&v2=2432164",
   },
   {
     id: "zara-basic-training-shorts-black",
     name: "Basic Training Shorts 7 Inch, Black",
     brand: "Zara",
     type: "Shorts",
-    price: "39.90 USD",
+    price: "25.99 GBP",
     color: "Black",
     colors: [
       { name: "Black", hex: "#17171A" },
@@ -447,26 +447,26 @@ window.PRODUCTS = [
     ],
     image:
       "https://static.zara.net/assets/public/74bc/0b7b/b8ca438fa5bd/45f8c6d69bea/01943310800-p/01943310800-p.jpg?w=1024",
-    url: "https://www.zara.com/us/en/basic-training-shorts-p01943310.html?v1=545479357&v2=2432164",
+    url: "https://www.zara.com/uk/en/basic-training-shorts-p01943310.html?v1=545479357&v2=2432164",
   },
   {
     id: "zara-corduroy-regular-fit-bermuda-shorts-ecru",
     name: "Regular Fit Corduroy Bermuda Shorts, Ecru",
     brand: "Zara",
     type: "Shorts",
-    price: "69.90 USD",
+    price: "39.99 GBP",
     color: "Ecru",
     colors: [{ name: "Ecru", hex: "#E8E0D0" }],
     image:
       "https://static.zara.net/assets/public/42cf/8c1f/91bc4185b39d/1919cb682d27/04514403712-p/04514403712-p.jpg?w=1024",
-    url: "https://www.zara.com/us/en/corduroy-regular-fit-bermuda-shorts-p04514403.html?v1=551645037&v2=2432164",
+    url: "https://www.zara.com/uk/en/regular-fit-corduroy-bermuda-shorts-p04514403.html?v1=551645037&v2=2432164",
   },
   {
     id: "zara-comfort-technical-shorts-navy",
-    name: "Comfort Technical Shorts, Navy blue",
+    name: "Comfort Technical Bermuda Shorts, Navy blue",
     brand: "Zara",
     type: "Shorts",
-    price: "59.90 USD",
+    price: "35.99 GBP",
     color: "Navy blue",
     colors: [
       { name: "Navy blue", hex: "#2A323D" },
@@ -476,38 +476,38 @@ window.PRODUCTS = [
     ],
     image:
       "https://static.zara.net/assets/public/efc6/1251/f1234135806a/e4f86a8fbc3b/04853405401-p/04853405401-p.jpg?w=1024",
-    url: "https://www.zara.com/us/en/comfort-technical-shorts-p04853405.html?v1=545412662&v2=2432164",
+    url: "https://www.zara.com/uk/en/comfort-technical-bermuda-shorts-p04853405.html?v1=545412662&v2=2432164",
   },
   {
     id: "zara-relaxed-fit-pleated-chino-denim-shorts-indigo",
-    name: "Relaxed Fit Pleated Chino Denim Shorts, Indigo",
+    name: "Pleated Relaxed Fit Denim Chino Bermuda Shorts, Indigo",
     brand: "Zara",
     type: "Shorts",
-    price: "79.90 USD",
+    price: "39.99 GBP",
     color: "Indigo",
     colors: [{ name: "Indigo", hex: "#2E3A5C" }],
     image:
       "https://static.zara.net/assets/public/90d8/3b1a/8e3f425cbbc2/d55ba0bdfa16/05585327405-p/05585327405-p.jpg?w=1024",
-    url: "https://www.zara.com/us/en/relaxed-fit-pleated-denim-chino-shorts-p05585327.html?v1=547823550&v2=2432164",
+    url: "https://www.zara.com/uk/en/pleated-relaxed-fit-denim-chino-bermuda-shorts-p05585327.html?v1=547823550&v2=2432164",
   },
   {
     id: "zara-striped-pleated-relaxed-fit-shorts-black",
-    name: "Striped Pleated Relaxed Fit Shorts, Black",
+    name: "Striped Relaxed Fit Pleated Bermuda Shorts, Black",
     brand: "Zara",
     type: "Shorts",
-    price: "69.90 USD",
+    price: "39.99 GBP",
     color: "Black",
     colors: [{ name: "Black", hex: "#17171A" }],
     image:
       "https://static.zara.net/assets/public/38b6/00e4/148a4b63bf00/e4884d6febd8/06861873800-p/06861873800-p.jpg?w=1024",
-    url: "https://www.zara.com/us/en/relaxed-fit-striped-pleated-shorts-p06861873.html?v1=545494504&v2=2432164",
+    url: "https://www.zara.com/uk/en/striped-relaxed-fit-pleated-bermuda-shorts-p06861873.html?v1=545494504&v2=2432164",
   },
   {
     id: "zara-9-inch-training-shorts-black",
     name: "Training Shorts 9 Inch, Black",
     brand: "Zara",
     type: "Shorts",
-    price: "45.90 USD",
+    price: "29.99 GBP",
     color: "Black",
     colors: [
       { name: "Black", hex: "#17171A" },
@@ -516,38 +516,38 @@ window.PRODUCTS = [
     ],
     image:
       "https://static.zara.net/assets/public/5b92/4e91/fd3a4203a15b/4ac47c0bf711/05582300800-p/05582300800-p.jpg?w=1024",
-    url: "https://www.zara.com/us/en/9--training-shorts-p05582300.html?v1=545490499&v2=2432164",
+    url: "https://www.zara.com/uk/en/9--training-shorts-p05582300.html?v1=545490499&v2=2432164",
   },
   {
     id: "zara-checked-relaxed-fit-shorts-light-beige",
-    name: "Checked Relaxed Fit Shorts, Light beige",
+    name: "Checked Relaxed Fit Bermuda Shorts, Light beige",
     brand: "Zara",
     type: "Shorts",
-    price: "69.90 USD",
+    price: "39.99 GBP",
     color: "Light beige",
     colors: [{ name: "Light beige", hex: "#E3D8C3" }],
     image:
       "https://static.zara.net/assets/public/2ca9/c091/6fb443e09a5d/77e9ae378a99/01024907052-p/01024907052-p.jpg?w=1024",
-    url: "https://www.zara.com/us/en/relaxed-fit-checkered-shorts-p01024907.html?v1=553606719&v2=2432164",
+    url: "https://www.zara.com/uk/en/checked-relaxed-fit-bermuda-shorts-p01024907.html?v1=553606719&v2=2432164",
   },
   {
     id: "zara-relaxed-fit-pleated-striped-shorts-blue",
-    name: "Relaxed Fit Pleated Striped Shorts, Blue",
+    name: "Striped Pleated Relaxed Fit Bermuda Shorts, Blue",
     brand: "Zara",
     type: "Shorts",
-    price: "79.90 USD",
+    price: "39.99 GBP",
     color: "Blue",
     colors: [{ name: "Blue", hex: "#2F5C9E" }],
     image:
       "https://static.zara.net/assets/public/43ee/a598/cf7d4d439ae2/39877e4f1683/03991391400-p/03991391400-p.jpg?w=1024",
-    url: "https://www.zara.com/us/en/striped-pleated-relaxed-fit-shorts-p03991391.html?v1=558342563&v2=2432164",
+    url: "https://www.zara.com/uk/en/striped-pleated-relaxed-fit-bermuda-shorts-p03991391.html?v1=558342563&v2=2432164",
   },
   {
     id: "zara-viscose-linen-blend-relaxed-fit-shorts-black",
-    name: "Viscose Linen Blend Relaxed Fit Shorts, Black",
+    name: "Relaxed Fit Viscose Linen Bermuda Shorts, Black",
     brand: "Zara",
     type: "Shorts",
-    price: "49.90 USD",
+    price: "29.99 GBP",
     color: "Black",
     colors: [
       { name: "Black", hex: "#17171A" },
@@ -557,26 +557,26 @@ window.PRODUCTS = [
     ],
     image:
       "https://static.zara.net/assets/public/f240/4107/fdbe495bb0fa/9d10ded84e2c/01437404800-p/01437404800-p.jpg?w=1024",
-    url: "https://www.zara.com/us/en/viscose-linen-blend-relaxed-fit-shorts-p01437404.html?v1=545470422&v2=2432164",
+    url: "https://www.zara.com/uk/en/relaxed-fit-viscose-linen-bermuda-shorts-p01437404.html?v1=545470422&v2=2432164",
   },
   {
     id: "zara-fish-embroidery-shorts-navy",
-    name: "Fish Embroidery Shorts, Navy blue",
+    name: "Fish Embroidery Bermuda Shorts, Navy blue",
     brand: "Zara",
     type: "Shorts",
-    price: "59.90 USD",
+    price: "35.99 GBP",
     color: "Navy blue",
     colors: [{ name: "Navy blue", hex: "#2A323D" }],
     image:
       "https://static.zara.net/assets/public/148c/4197/30c3438491cc/bab341b58d14/07200321401-p/07200321401-p.jpg?w=1024",
-    url: "https://www.zara.com/us/en/fish-embroidery-shorts-p07200321.html?v1=545479703&v2=2432164",
+    url: "https://www.zara.com/uk/en/fish-embroidery-bermuda-shorts-p07200321.html?v1=545479703&v2=2432164",
   },
   {
     id: "zara-relaxed-fit-flowy-shorts-navy",
-    name: "Relaxed Fit Flowy Shorts, Navy blue",
+    name: "Relaxed Fit Flowing Bermuda Shorts, Navy blue",
     brand: "Zara",
     type: "Shorts",
-    price: "59.90 USD",
+    price: "35.99 GBP",
     color: "Navy blue",
     colors: [
       { name: "Navy blue", hex: "#2A323D" },
@@ -585,14 +585,14 @@ window.PRODUCTS = [
     ],
     image:
       "https://static.zara.net/assets/public/0e3c/7a97/2d3e4d0bb51b/e4e1e95ed3f3/03715223401-p/03715223401-p.jpg?w=1024",
-    url: "https://www.zara.com/us/en/relaxed-fit-flowy-shorts-p03715223.html?v1=545410135&v2=2432164",
+    url: "https://www.zara.com/uk/en/relaxed-fit-flowing-bermuda-shorts-p03715223.html?v1=545410135&v2=2432164",
   },
   {
     id: "zara-comfort-regular-fit-shorts-black",
-    name: "Comfort Regular Fit Shorts, Black",
+    name: "Comfort Regular Fit Bermuda Shorts, Black",
     brand: "Zara",
     type: "Shorts",
-    price: "49.90 USD",
+    price: "29.99 GBP",
     color: "Black",
     colors: [
       { name: "Black", hex: "#17171A" },
@@ -603,7 +603,7 @@ window.PRODUCTS = [
     ],
     image:
       "https://static.zara.net/assets/public/e53c/cf7f/c5884e1c9c7b/e7f8dfafeecf/00347891800-p/00347891800-p.jpg?w=1024",
-    url: "https://www.zara.com/us/en/comfort-regular-fit-shorts-p00347891.html?v1=545486297&v2=2432164",
+    url: "https://www.zara.com/uk/en/comfort-regular-fit-bermuda-shorts-p00347891.html?v1=545486297&v2=2432164",
   },
   {
     id: "zara-textured-relaxed-fit-shorts-light-khaki",
@@ -623,10 +623,10 @@ window.PRODUCTS = [
   },
   {
     id: "zara-100-linen-regular-fit-shorts-black",
-    name: "Linen Regular Fit Shorts, Black",
+    name: "Linen Regular Fit Bermuda Shorts, Black",
     brand: "Zara",
     type: "Shorts",
-    price: "59.90 USD",
+    price: "35.99 GBP",
     color: "Black",
     colors: [
       { name: "Black", hex: "#17171A" },
@@ -636,26 +636,26 @@ window.PRODUCTS = [
     ],
     image:
       "https://static.zara.net/assets/public/1ecf/8e33/e51347508687/d9c9036f57d4/01957121800-p/01957121800-p.jpg?w=1024",
-    url: "https://www.zara.com/us/en/100-linen-regular-fit-shorts-p01957121.html?v1=545422382&v2=2432164",
+    url: "https://www.zara.com/uk/en/100-linen-regular-fit-bermuda-shorts-p01957121.html?v1=545422382&v2=2432164",
   },
   {
     id: "zara-relaxed-fit-striped-patch-bermuda-shorts-blue",
-    name: "Relaxed Fit Striped Patch Bermuda Shorts, Blue and white",
+    name: "Relaxed Fit Striped Bermuda Shorts with Patches, Blue and white",
     brand: "Zara",
     type: "Shorts",
-    price: "59.90 USD",
+    price: "35.99 GBP",
     color: "Blue and white",
     colors: [{ name: "Blue and white", hex: "#4A6FA5" }],
     image:
       "https://static.zara.net/assets/public/9cad/eb4f/53e84e0f9553/e6dc8f1d8ff3/01165313044-p/01165313044-p.jpg?w=1024",
-    url: "https://www.zara.com/us/en/striped-patchwork-relaxed-fit-bermuda-shorts-p01165313.html?v1=557347178&v2=2432164",
+    url: "https://www.zara.com/uk/en/relaxed-fit-striped-bermuda-shorts-with-patches-p01165313.html?v1=557347178&v2=2432164",
   },
   {
     id: "zara-comfort-textured-shorts-dark-brown",
-    name: "Comfort Textured Shorts, Dark brown",
+    name: "Comfort Textured Bermuda Shorts, Dark brown",
     brand: "Zara",
     type: "Shorts",
-    price: "49.90 USD",
+    price: "29.99 GBP",
     color: "Dark brown",
     colors: [
       { name: "Dark brown", hex: "#3E2C22" },
@@ -665,26 +665,26 @@ window.PRODUCTS = [
     ],
     image:
       "https://static.zara.net/assets/public/e5ce/c7d1/8c1440c9845a/14c72ee992fa/07484401716-p/07484401716-p.jpg?w=1024",
-    url: "https://www.zara.com/us/en/comfort-textured-shorts-p07484401.html?v1=545485742&v2=2432164",
+    url: "https://www.zara.com/uk/en/comfort-textured-bermuda-shorts-p07484401.html?v1=545485742&v2=2432164",
   },
   {
     id: "zara-wide-fit-striped-pleated-shorts-ecru",
-    name: "Wide Fit Striped Pleated Shorts, Ecru",
+    name: "Striped Pleated Wide Leg Bermuda Shorts, Ecru",
     brand: "Zara",
     type: "Shorts",
-    price: "59.90 USD",
+    price: "35.99 GBP",
     color: "Ecru",
     colors: [{ name: "Ecru", hex: "#E8E0D0" }],
     image:
       "https://static.zara.net/assets/public/5394/43be/ec514598990f/b0d6bf0a156d/07223381712-p/07223381712-p.jpg?w=1024",
-    url: "https://www.zara.com/us/en/striped-wide-fit-pleated-shorts-p07223381.html?v1=545474839&v2=2432164",
+    url: "https://www.zara.com/uk/en/wide-leg-striped-pleated-bermuda-shorts-p07223381.html?v1=545474839&v2=2432164",
   },
   {
     id: "zara-relaxed-fit-interlock-track-shorts-black",
-    name: "Relaxed Fit Interlock Track Shorts, Black",
+    name: "Relaxed Fit Interlock Jogging Bermuda Shorts, Black",
     brand: "Zara",
     type: "Shorts",
-    price: "49.90 USD",
+    price: "29.99 GBP",
     color: "Black",
     colors: [
       { name: "Black", hex: "#17171A" },
@@ -695,14 +695,14 @@ window.PRODUCTS = [
     ],
     image:
       "https://static.zara.net/assets/public/fef3/7da5/29e84176af8f/8b9a47b61a63/00761491800-p/00761491800-p.jpg?w=1024",
-    url: "https://www.zara.com/us/en/relaxed-fit-interlock-sweatshorts-p00761491.html?v1=545423074&v2=2432164",
+    url: "https://www.zara.com/uk/en/relaxed-fit-interlock-jogger-bermuda-shorts-p00761491.html?v1=545423074&v2=2432164",
   },
   {
     id: "zara-100-linen-relaxed-fit-shorts-brown-taupe",
-    name: "Linen Relaxed Fit Shorts, Brown and taupe",
+    name: "Linen Relaxed Fit Bermuda Shorts, Brown and taupe",
     brand: "Zara",
     type: "Shorts",
-    price: "59.90 USD",
+    price: "35.99 GBP",
     color: "Brown and taupe",
     colors: [
       { name: "Brown and taupe", hex: "#7A6552" },
@@ -714,14 +714,14 @@ window.PRODUCTS = [
     ],
     image:
       "https://static.zara.net/assets/public/e005/81e4/9fed41cebd6a/028af03dd092/04410903737-p/04410903737-p.jpg?w=1024",
-    url: "https://www.zara.com/us/en/100-linen-relaxed-fit-shorts-p05070903.html?v1=545461024&v2=2432164",
+    url: "https://www.zara.com/uk/en/100-linen-relaxed-fit-bermuda-shorts-p05070903.html?v1=545461024&v2=2432164",
   },
   {
     id: "zara-100-linen-relaxed-fit-pants-brown-taupe",
-    name: "Linen Relaxed Fit Pants, Brown and taupe",
+    name: "Linen Relaxed Fit Trousers, Brown and taupe",
     brand: "Zara",
     type: "Pants",
-    price: "79.90 USD",
+    price: "39.99 GBP",
     color: "Brown and taupe",
     colors: [
       { name: "Brown and taupe", hex: "#7A6552" },
@@ -732,14 +732,14 @@ window.PRODUCTS = [
     ],
     image:
       "https://static.zara.net/assets/public/a325/10fd/8ae5478e8579/c70aabc8d037/02634325737-p/02634325737-p.jpg?w=1024",
-    url: "https://www.zara.com/us/en/100-linen-relaxed-fit-pants-p02634325.html?v1=545447697&v2=2432096",
+    url: "https://www.zara.com/uk/en/100-linen-relaxed-fit-trousers-p02634325.html?v1=545447697&v2=2432096",
   },
   {
     id: "zara-comfort-structured-chino-pants-dark-navy",
-    name: "Comfort Structured Chino Pants, Dark navy",
+    name: "Comfort Textured Chino Trousers, Dark navy",
     brand: "Zara",
     type: "Pants",
-    price: "59.90 USD",
+    price: "35.99 GBP",
     color: "Dark navy",
     colors: [
       { name: "Dark navy", hex: "#1B2437" },
@@ -751,14 +751,14 @@ window.PRODUCTS = [
     ],
     image:
       "https://static.zara.net/assets/public/c92c/b264/00684677a198/9b573edd4420/00706650422-p/00706650422-p.jpg?w=1024",
-    url: "https://www.zara.com/us/en/comfort-structured-chino-pants-p00706650.html?v1=545470292&v2=2432096",
+    url: "https://www.zara.com/uk/en/comfort-textured-chino-trousers-p00706650.html?v1=545470292&v2=2432096",
   },
   {
     id: "zara-100-linen-regular-fit-pants-navy",
-    name: "Linen Regular Fit Pants, Navy blue",
+    name: "Linen Regular Fit Trousers, Navy blue",
     brand: "Zara",
     type: "Pants",
-    price: "79.90 USD",
+    price: "39.99 GBP",
     color: "Navy blue",
     colors: [
       { name: "Navy blue", hex: "#2A323D" },
@@ -770,14 +770,14 @@ window.PRODUCTS = [
     ],
     image:
       "https://static.zara.net/assets/public/ebfd/2e7d/0e6044a0824c/ef7ebb0d6078/04410012401-p/04410012401-p.jpg?w=1024",
-    url: "https://www.zara.com/us/en/100-linen-regular-fit-pants-p05070012.html?v1=545456679&v2=2432096",
+    url: "https://www.zara.com/uk/en/100-linen-regular-fit-trousers-p05070012.html?v1=545456679&v2=2432096",
   },
   {
     id: "zara-pleated-relaxed-fit-trousers-ecru-khaki",
-    name: "Pleated Relaxed Fit Trousers, Ecru and khaki",
+    name: "Relaxed Fit Pleated Trousers, Ecru and khaki",
     brand: "Zara",
     type: "Pants",
-    price: "79.90 USD",
+    price: "39.99 GBP",
     color: "Ecru and khaki",
     colors: [
       { name: "Ecru and khaki", hex: "#C8BE9C" },
@@ -786,14 +786,14 @@ window.PRODUCTS = [
     ],
     image:
       "https://static.zara.net/assets/public/be81/4066/0eb44f10a0bf/b92d31cfe31d/00706740071-p/00706740071-p.jpg?w=1024",
-    url: "https://www.zara.com/us/en/pleated-relaxed-fit-trousers-p00706740.html?v1=551789037&v2=2432096",
+    url: "https://www.zara.com/uk/en/relaxed-fit-pleated-trousers-p00706740.html?v1=551789037&v2=2432096",
   },
   {
     id: "zara-structured-relaxed-fit-pleated-pants-white",
-    name: "Structured Relaxed Fit Pleated Pants, White",
+    name: "Relaxed Fit Textured Pleated Trousers, White",
     brand: "Zara",
     type: "Pants",
-    price: "79.90 USD",
+    price: "39.99 GBP",
     color: "White",
     colors: [
       { name: "White", hex: "#F2F0EA" },
@@ -802,14 +802,14 @@ window.PRODUCTS = [
     ],
     image:
       "https://static.zara.net/assets/public/ecf8/6e77/2a4546599adb/e6bfc1116365/00706920250-p/00706920250-p.jpg?w=1024",
-    url: "https://www.zara.com/us/en/structured-relaxed-fit-pleated-pants-p00706920.html?v1=548761352&v2=2432096",
+    url: "https://www.zara.com/uk/en/relaxed-fit-textured-pleated-trousers-p00706920.html?v1=548761352&v2=2432096",
   },
   {
     id: "zara-contrast-seersucker-relaxed-fit-pants-navy",
-    name: "Contrast Seersucker Relaxed Fit Pants, Navy and white",
+    name: "Contrast Seersucker Relaxed Fit Trousers, Navy and white",
     brand: "Zara",
     type: "Pants",
-    price: "59.90 USD",
+    price: "35.99 GBP",
     color: "Navy and white",
     colors: [
       { name: "Navy and white", hex: "#3C4A6B" },
@@ -817,14 +817,14 @@ window.PRODUCTS = [
     ],
     image:
       "https://static.zara.net/assets/public/651d/51df/19f9454abf9b/9d58952b1f95/04092351043-p/04092351043-p.jpg?w=1024",
-    url: "https://www.zara.com/us/en/contrast-seersucker-relaxed-fit-pants-p04092351.html?v1=547312182&v2=2432096",
+    url: "https://www.zara.com/uk/en/contrast-seersucker-relaxed-fit-trousers-p04092351.html?v1=547312182&v2=2432096",
   },
   {
     id: "zara-cotton-linen-pleated-chino-trousers-khaki",
     name: "Cotton Linen Pleated Chino Trousers, Khaki",
     brand: "Zara",
     type: "Pants",
-    price: "79.90 USD",
+    price: "39.99 GBP",
     color: "Khaki",
     colors: [
       { name: "Khaki", hex: "#6E6A4C" },
@@ -832,14 +832,14 @@ window.PRODUCTS = [
     ],
     image:
       "https://static.zara.net/assets/public/da76/a1b7/a2df473fbede/4378d6fa47b4/00706777505-p/00706777505-p.jpg?w=1024",
-    url: "https://www.zara.com/us/en/cotton-linen-pleated-chino-trousers-p00706777.html?v1=560807112&v2=2432096",
+    url: "https://www.zara.com/uk/en/cotton-linen-pleated-chino-trousers-p00706777.html?v1=560807112&v2=2432096",
   },
   {
     id: "zara-cotton-linen-pleated-chino-trousers-sea-green",
     name: "Cotton Linen Pleated Chino Trousers, Sea green",
     brand: "Zara",
     type: "Pants",
-    price: "79.90 USD",
+    price: "39.99 GBP",
     color: "Sea green",
     colors: [
       { name: "Sea green", hex: "#4A7C6F" },
@@ -847,14 +847,14 @@ window.PRODUCTS = [
     ],
     image:
       "https://static.zara.net/assets/public/3e1b/608a/fc3f4b55b425/fa8e0b4da703/00706777982-p/00706777982-p.jpg?w=1024",
-    url: "https://www.zara.com/us/en/cotton-linen-pleated-chino-trousers-p00706777.html?v1=560807111&v2=2432096",
+    url: "https://www.zara.com/uk/en/cotton-linen-pleated-chino-trousers-p00706777.html?v1=560807111&v2=2432096",
   },
   {
     id: "zara-comfort-regular-fit-trousers-black",
     name: "Comfort Regular Fit Trousers, Black",
     brand: "Zara",
     type: "Pants",
-    price: "59.90 USD",
+    price: "35.99 GBP",
     color: "Black",
     colors: [
       { name: "Black", hex: "#17171A" },
@@ -865,14 +865,14 @@ window.PRODUCTS = [
     ],
     image:
       "https://static.zara.net/assets/public/e0a6/7dc7/c98b4cabbaa7/e0bec9a37e9c/07484300800-p/07484300800-p.jpg?w=1024",
-    url: "https://www.zara.com/us/en/comfort-regular-fit-trousers-p07484300.html?v1=558595905&v2=2432096",
+    url: "https://www.zara.com/uk/en/comfort-regular-fit-trousers-p07484300.html?v1=558595905&v2=2432096",
   },
   {
     id: "zara-relaxed-fit-pleated-chino-pants-light-beige",
-    name: "Relaxed Fit Pleated Chino Pants, Light beige",
+    name: "Relaxed Fit Pleated Chino Trousers, Light beige",
     brand: "Zara",
     type: "Pants",
-    price: "99.90 USD",
+    price: "49.99 GBP",
     color: "Light beige",
     colors: [
       { name: "Light beige", hex: "#E3D8C3" },
@@ -880,14 +880,14 @@ window.PRODUCTS = [
     ],
     image:
       "https://static.zara.net/assets/public/f9bc/ab5f/39f4481b8f7c/1f5ff727b1f8/04015640721-p/04015640721-p.jpg?w=1024",
-    url: "https://www.zara.com/us/en/relaxed-fit-pleated-chino-trousers-p04015640.html?v1=564048201&v2=2432096",
+    url: "https://www.zara.com/uk/en/relaxed-fit-pleated-chino-trousers-p04015640.html?v1=564048201&v2=2432096",
   },
   {
     id: "zara-comfort-relaxed-fit-pants-ecru",
-    name: "Comfort Relaxed Fit Pants, Ecru",
+    name: "Comfort Relaxed Fit Trousers, Ecru",
     brand: "Zara",
     type: "Pants",
-    price: "99.90 USD",
+    price: "49.99 GBP",
     color: "Ecru",
     colors: [
       { name: "Ecru", hex: "#E8E0D0" },
@@ -895,14 +895,14 @@ window.PRODUCTS = [
     ],
     image:
       "https://static.zara.net/assets/public/a395/4a1d/f4794e3482bd/aaf4c2cef682/04004010712-p/04004010712-p.jpg?w=1024",
-    url: "https://www.zara.com/us/en/comfort-relaxed-fit-pants-p04004010.html?v1=560284679&v2=2432096",
+    url: "https://www.zara.com/uk/en/comfort-relaxed-fit-trousers-p04004010.html?v1=560284679&v2=2432096",
   },
   {
     id: "zara-stretch-suit-pants-black",
-    name: "Stretch Suit Pants, Black",
+    name: "Comfort Suit Trousers, Black",
     brand: "Zara",
     type: "Pants",
-    price: "69.90 USD",
+    price: "39.99 GBP",
     color: "Black",
     colors: [
       { name: "Black", hex: "#17171A" },
@@ -914,14 +914,14 @@ window.PRODUCTS = [
     ],
     image:
       "https://static.zara.net/assets/public/e5fa/1d2e/d46b4b9fa28d/16f08c8aab30/01564201800-p/01564201800-p.jpg?w=1024",
-    url: "https://www.zara.com/us/en/comfort-suit-pants-p04457999.html?v1=545490258&v2=2432096",
+    url: "https://www.zara.com/uk/en/comfort-suit-trousers-p04457999.html?v1=545490258&v2=2432096",
   },
   {
     id: "zara-100-linen-relaxed-fit-pants-light-beige",
-    name: "Relaxed Fit Linen Pants, Light beige",
+    name: "Linen Relaxed Fit Trousers, Light beige",
     brand: "Zara",
     type: "Pants",
-    price: "79.90 USD",
+    price: "39.99 GBP",
     color: "Light beige",
     colors: [
       { name: "Light beige", hex: "#E3D8C3" },
@@ -932,31 +932,31 @@ window.PRODUCTS = [
     ],
     image:
       "https://static.zara.net/assets/public/28c5/0069/bfed47cf8033/390ed304e893/05070902052-1-p/05070902052-1-p.jpg?w=1024",
-    url: "https://www.zara.com/us/en/100-linen-relaxed-fit-pants-p05070902.html?v1=545461145&v2=2432096",
+    url: "https://www.zara.com/uk/en/100-linen-relaxed-fit-trousers-p05070902.html?v1=545461145&v2=2432096",
   },
   {
     id: "zara-aaron-levine-regular-fit-chinos-navy",
     name: "Aaron Levine x Zara Regular Fit Chinos, Navy blue",
     brand: "Zara",
     type: "Pants",
-    price: "79.90 USD",
+    price: "39.99 GBP",
     color: "Navy blue",
     colors: [{ name: "Navy blue", hex: "#2A323D" }],
     image:
       "https://static.zara.net/assets/public/6c01/f3ad/0aab4cdba455/1aab365b358e/04025158401-p/04025158401-p.jpg?w=1024",
-    url: "https://www.zara.com/us/en/aaron-levine-x-zara-regular-fit-chino-pants-p04025158.html?v1=555174282&v2=2432096",
+    url: "https://www.zara.com/uk/en/aaron-levine-x-zara-regular-fit-chinos-p04025158.html?v1=555174282&v2=2432096",
   },
   {
     id: "zara-striped-tapered-wide-fit-jeans-blue",
-    name: "Striped Tapered Wide Fit Jeans, Blue and white",
+    name: "Striped Tapered Wide Leg Jeans, Blue and white",
     brand: "Zara",
     type: "Pants",
-    price: "59.90 USD",
+    price: "35.99 GBP",
     color: "Blue and white",
     colors: [{ name: "Blue and white", hex: "#4A6FA5" }],
     image:
       "https://static.zara.net/assets/public/e99a/ccd9/8011448fb5a3/008519fe1a46/09794350044-p/09794350044-p.jpg?w=1024",
-    url: "https://www.zara.com/us/en/striped-tapered-wide-fit-jeans-p09794450.html?v1=551789003&v2=2432131",
+    url: "https://www.zara.com/uk/en/striped-tapered-wide-leg-jeans-p09794450.html?v1=551789003&v2=2432131",
   },
   {
     id: "arte-big-a-side-t-shirt-white",
