@@ -240,6 +240,13 @@ name because the retailer only names the colourway being viewed.
 - The per row control is three glyphs drawing the columns they produce, with
   PER ROW beside them. It was bare numbers once and Em rejected that: they read
   as page numbers. Do not go back to numbers.
+- **The default order is a brand mix, not the file order.** `mixBrands()` in
+  `app.js` gives each brand a slot roughly every list length over n, then
+  `separateNeighbours()` breaks up any pair of the same brand left over. Both
+  are pure functions of the list with no clock and no randomness, so the order
+  is the same on every load and a shared link opens on what the sender saw.
+  **Keep writing `products.js` grouped by store**, a shop at a time, because
+  that is how the links get pasted in and the page no longer cares.
 - The whole list renders on one page. The pager was removed on 2026-08-17
   because a 232 piece list looked like an 80 piece one until you found Next. Do
   not reintroduce paging without being asked. Card images are `loading="lazy"`,

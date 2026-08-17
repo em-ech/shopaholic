@@ -572,8 +572,76 @@
     });
   }
 
+  // The default order. Pieces are added a shop at a time, so products.js arrives
+  // grouped by retailer and reads as one long Zara block, then one long COS
+  // block. This spreads each brand evenly across whatever is on screen instead:
+  // a brand holding n of the pieces gets a slot roughly every length / n. The
+  // file itself is left grouped by store, which is how the pieces get pasted in,
+  // so adding a shop tomorrow does not re-clump the page.
+  //
+  // Pure function of the list it is given, with no clock and no randomness, so
+  // the order is the same on every load and a link opens on what the sender saw.
+  // It runs after filtering, so narrowing to two brands interleaves those two.
+  function mixBrands(list) {
+    var totals = {};
+    var ranked = list.map(function (product, index) {
+      var brand = product.brand || "";
+      totals[brand] = (totals[brand] || 0) + 1;
+      return {
+        product: product,
+        brand: brand,
+        // Where this piece sits within its own brand, in the order it was added.
+        rank: totals[brand] - 1,
+        index: index,
+      };
+    });
+
+    ranked.forEach(function (entry) {
+      // Halfway into the piece's share of its brand's run, so a brand with one
+      // piece lands in the middle of the page rather than at either end.
+      entry.score = (entry.rank + 0.5) / totals[entry.brand];
+    });
+
+    ranked.sort(function (a, b) {
+      if (a.score !== b.score) return a.score - b.score;
+      // Brands of the same size score identically. Ordering those by name keeps
+      // the result the same on every load, and they are different brands, which
+      // is the whole point of the mix.
+      if (a.brand !== b.brand) return a.brand < b.brand ? -1 : 1;
+      return a.index - b.index;
+    });
+
+    return separateNeighbours(
+      ranked.map(function (entry) {
+        return entry.product;
+      }),
+    );
+  }
+
+  // Spreading each brand over its own share still leaves the odd pair of
+  // neighbours from one brand when that brand holds a big slice of the view,
+  // Zara being a quarter of the list here. This walks the order once, left to
+  // right, and where two neighbours match it pulls the nearest later piece of
+  // some other brand into the gap. Everything to the left of the cursor is
+  // settled, so one pass is enough and nothing already placed moves again.
+  //
+  // Where there is nothing left to pull in, because every remaining piece is
+  // that same brand, the pair is left alone. That is the honest answer rather
+  // than shuffling forever, and it is what a view filtered to one brand does.
+  function separateNeighbours(list) {
+    for (var i = 1; i < list.length; i++) {
+      if (list[i].brand !== list[i - 1].brand) continue;
+      for (var j = i + 1; j < list.length; j++) {
+        if (list[j].brand === list[i - 1].brand) continue;
+        list.splice(i, 0, list.splice(j, 1)[0]);
+        break;
+      }
+    }
+    return list;
+  }
+
   function sortProducts(list, sort) {
-    if (sort === SORT_CURATED) return list;
+    if (sort === SORT_CURATED) return mixBrands(list);
     var sorted = list.slice();
     sorted.sort(function (a, b) {
       return sort === SORT_PRICE_ASC

@@ -349,7 +349,7 @@ async function testFilterAndSort(list, window) {
   const brand = Object.keys(brands).sort((a, b) => brands[a] - brands[b])[0];
   if (brand) {
     await go(`#brand=${encodeURIComponent(brand)}`);
-    check(`filtering to ${brand} shows its pieces`, shown(), Math.min(20, brands[brand]));
+    check(`filtering to ${brand} shows its pieces`, shown(), brands[brand]);
   }
 
   await go("#brand=NoSuchBrandExists");
@@ -376,6 +376,55 @@ async function testFilterAndSort(list, window) {
   }
 
   await go("#all");
+}
+
+/* --------------------------------------------------- the default order --- */
+
+// products.js is written a shop at a time, so it arrives grouped by retailer
+// and would read as one long block per store. The default order spreads the
+// brands across the page instead. These assert the shape of that order and
+// never a particular sequence, so adding a shop cannot break them.
+async function testDefaultOrder(list, window) {
+  const doc = window.document;
+  const products = window.PRODUCTS;
+  const byUrl = new Map(products.map((p) => [p.url, p]));
+  const go = async (hash) => {
+    window.location.hash = hash;
+    await tick();
+  };
+  const order = () => [...doc.querySelectorAll("#grid .product__link")].map((a) => byUrl.get(a.href));
+  section(`${list.products}: the default order`);
+
+  await go("#all");
+  const shown = order();
+  check("every piece is in it, exactly once", new Set(shown.map((p) => p.id)).size, products.length);
+
+  // Two neighbours may share a brand only where there was nothing else left to
+  // put between them, which is what a view holding one brand runs into.
+  const brands = shown.map((p) => p.brand);
+  const avoidable = brands.filter((b, i) => i > 0 && b === brands[i - 1] && brands.slice(i + 1).some((rest) => rest !== b));
+  check("no two neighbours share a brand while another brand is still to place", avoidable.length, 0);
+
+  // Mixing is only worth doing if it actually breaks up the blocks the file is
+  // written in, so the file order itself must not survive.
+  if (new Set(products.map((p) => p.brand)).size > 1) {
+    check("the page is not just the file order", shown.map((p) => p.id).join() === products.map((p) => p.id).join(), false);
+  }
+
+  // Within a brand the pieces keep the order they were added, so a shop's own
+  // run still reads the way it was pasted in. Mixing decides where a brand's
+  // pieces land on the page, never how they are ordered among themselves.
+  const resequenced = [...new Set(products.map((p) => p.brand))].filter((brand) => {
+    const on = (from) => from.filter((p) => p.brand === brand).map((p) => p.id).join();
+    return on(shown) !== on(products);
+  });
+  check("every brand keeps the order it was added in", resequenced.join(", ") || "none", "none");
+
+  // No clock and no randomness in it, so a link opens on what the sender saw.
+  const first = shown.map((p) => p.id).join();
+  await go("#sort=price-desc");
+  await go("#all");
+  check("the order survives a round trip through another sort", order().map((p) => p.id).join(), first);
 }
 
 /* ------------------------------------------------------ the whole list --- */
@@ -559,6 +608,7 @@ function testShells() {
     testRender(list, window);
     await testPerRow(list, window);
     await testFilterAndSort(list, window);
+    await testDefaultOrder(list, window);
     await testWholeList(list, window);
     await testSaved(list, window);
     await testAbsorbedSaves(list, window);

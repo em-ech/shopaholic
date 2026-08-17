@@ -145,6 +145,14 @@ They are glyphs rather than the numbers 2, 3 and 4 because bare numbers there
 read as page numbers. Below 900px the grid picks its own columns, so the
 control is hidden there rather than offered and ignored.
 
+The default order is a mix of brands. Pieces are added a shop at a time, so
+`products.js` is grouped by retailer and would otherwise read as one long Zara
+block followed by one long COS block. `mixBrands()` gives each brand a slot
+roughly every list length over n, and `separateNeighbours()` breaks up whatever
+pair of the same brand is left over. Neither uses a clock or a random number,
+so the order is identical on every load and a link opens on what the sender
+saw. Sorting by price still sorts by price.
+
 The whole list renders at once. There was a pager taking twenty at a time until
 2026-08-17, and it was removed because a 232 piece list read as an 80 piece one
 until you found the Next button. Card images carry `loading="lazy"`, so a long
