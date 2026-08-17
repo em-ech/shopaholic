@@ -376,7 +376,7 @@ window.PRODUCTS = [
     ],
     image:
       "https://static.zara.net/assets/public/ebfd/2e7d/0e6044a0824c/ef7ebb0d6078/04410012401-p/04410012401-p.jpg?ts=1772728967979&w=1024",
-    url: "https://www.zara.com/uk/en/100-linen-regular-fit-trousers-p05070012.html?v1=545456679",
+    url: "https://www.zara.com/uk/en/100-linen-regular-fit-trousers-p05070012.html?v1=545456679&v2=2432096",
   },
   {
     id: "zara-textured-relaxed-fit-pleated-trousers-light-beige",
@@ -1768,25 +1768,6 @@ window.PRODUCTS = [
     image:
       "https://static.zara.net/assets/public/c92c/b264/00684677a198/9b573edd4420/00706650422-p/00706650422-p.jpg?w=1024",
     url: "https://www.zara.com/uk/en/comfort-textured-chino-trousers-p00706650.html?v1=545470292&v2=2432096",
-  },
-  {
-    id: "zara-100-linen-regular-fit-pants-navy",
-    name: "Linen Regular Fit Trousers, Navy blue",
-    brand: "Zara",
-    type: "Pants",
-    price: "39.99 GBP",
-    color: "Navy blue",
-    colors: [
-      { name: "Navy blue", hex: "#2A323D" },
-      { name: "Brown", hex: "#6B4F3A" },
-      { name: "Black", hex: "#17171A" },
-      { name: "White", hex: "#F2F0EA" },
-      { name: "Light beige", hex: "#E3D8C3" },
-      { name: "Mink", hex: "#A18775" },
-    ],
-    image:
-      "https://static.zara.net/assets/public/ebfd/2e7d/0e6044a0824c/ef7ebb0d6078/04410012401-p/04410012401-p.jpg?w=1024",
-    url: "https://www.zara.com/uk/en/100-linen-regular-fit-trousers-p05070012.html?v1=545456679&v2=2432096",
   },
   {
     id: "zara-pleated-relaxed-fit-trousers-ecru-khaki",

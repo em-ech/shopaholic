@@ -107,6 +107,27 @@ const HEX = /^#[0-9A-Fa-f]{6}$/;
 // and app.js sorts such a piece on the lower figure.
 const PRICE = /^\d+(\.\d{2})?( to \d+(\.\d{2})?)? [A-Z]{3}$/;
 
+// What actually names one piece at a retailer that puts several colourways
+// behind one page: the product code, plus whichever parameter selects the
+// colour. Returns null for retailers that give each colourway its own url,
+// where the plain url comparison already covers it.
+function colourwayKey(url) {
+  let m;
+  if ((m = url.match(/-p(\d{6,})\.html/))) {
+    // Zara. v1 is the colourway, v2 is a tracking segment and is ignored here.
+    return `zara:${m[1]}:${(url.match(/[?&]v1=(\d+)/) || [])[1] || "none"}`;
+  }
+  if ((m = url.match(/\/(\d{7})\.html/))) {
+    // Springfield, where dwvar_<code>_color picks the colourway.
+    return `springfield:${m[1]}:${(url.match(/_color=(\d+)/) || [])[1] || "none"}`;
+  }
+  if ((m = url.match(/\/products\/([A-Z]\d{6})-(\d{3})/))) {
+    // UNIQLO, where colorDisplayCode picks the colourway.
+    return `uniqlo:${m[1]}:${(url.match(/colorDisplayCode=(\d+)/) || [])[1] || m[2]}`;
+  }
+  return null;
+}
+
 function ratesFromApp() {
   const src = read("app.js");
   const block = src.slice(src.indexOf("var RATES_TO_BASE"), src.indexOf("var collection"));
@@ -163,6 +184,20 @@ function testData(list, window) {
   products.forEach((p) => { (byUrl[p.url] = byUrl[p.url] || []).push(p.id); });
   const sameUrl = Object.entries(byUrl).filter(([, ids]) => ids.length > 1);
   check("no two pieces link to the same page", sameUrl.map(([, ids]) => ids.join(" and ")).join("; ") || "none", "none");
+
+  // Comparing whole urls is not enough. The Zara linen trousers were on the
+  // list twice on 2026-08-17 under urls that differed only by a trailing "v2",
+  // which is a tracking segment and not part of what the link opens. What
+  // identifies a piece is the retailer's product code plus the colourway id,
+  // so that is what gets compared. A style in two colourways is two pieces and
+  // must still pass.
+  const byColourway = {};
+  products.forEach((p) => {
+    const key = colourwayKey(p.url);
+    if (key) (byColourway[key] = byColourway[key] || []).push(p.id);
+  });
+  const sameColourway = Object.entries(byColourway).filter(([, ids]) => ids.length > 1);
+  check("no two pieces are the same product in the same colourway", sameColourway.map(([key, ids]) => `${key}: ${ids.join(" and ")}`).join("; ") || "none", "none");
 
   // Same brand, same name and same colourway is a duplicate in all but the url.
   // Colour has to be part of it: one style in two colourways is two pieces, and
