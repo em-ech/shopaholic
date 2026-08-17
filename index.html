@@ -18,7 +18,7 @@
       rel="icon"
       href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='-18 120 360 360'%3E%3Crect x='-18' y='120' width='360' height='360' fill='%230d1f3c'/%3E%3Cg fill='%23fff'%3E%3Ccircle cx='28' cy='228' r='11'/%3E%3Ccircle cx='64' cy='228' r='11'/%3E%3Ccircle cx='100' cy='228' r='11'/%3E%3Ccircle cx='28' cy='264' r='11'/%3E%3Ccircle cx='28' cy='300' r='11'/%3E%3Ccircle cx='64' cy='300' r='11'/%3E%3Ccircle cx='100' cy='300' r='11'/%3E%3Ccircle cx='28' cy='336' r='11'/%3E%3Ccircle cx='28' cy='372' r='11'/%3E%3Ccircle cx='64' cy='372' r='11'/%3E%3Ccircle cx='100' cy='372' r='11'/%3E%3Ccircle cx='152' cy='300' r='11'/%3E%3Ccircle cx='188' cy='300' r='11'/%3E%3Ccircle cx='224' cy='300' r='11'/%3E%3Ccircle cx='260' cy='300' r='11'/%3E%3Ccircle cx='296' cy='300' r='11'/%3E%3Ccircle cx='152' cy='336' r='11'/%3E%3Ccircle cx='224' cy='336' r='11'/%3E%3Ccircle cx='296' cy='336' r='11'/%3E%3Ccircle cx='152' cy='372' r='11'/%3E%3Ccircle cx='224' cy='372' r='11'/%3E%3Ccircle cx='296' cy='372' r='11'/%3E%3C/g%3E%3C/svg%3E"
     />
-    <link rel="stylesheet" href="styles.css?v=20260816043725" />
+    <link rel="stylesheet" href="styles.css?v=20260817142439" />
   </head>
   <body>
     <a class="skip-link" href="#grid">Skip to products</a>
@@ -102,7 +102,7 @@
         <!-- Density sits where the count used to. It only changes anything on
              a wide screen, so it is hidden below the breakpoint that gives the
              grid a choice of columns. The label is not decoration: bare numbers
-             sitting above a pager read as page numbers. -->
+             here were rejected because they read as page numbers. -->
         <div class="density" id="density" role="group" aria-label="Pieces per row">
           <span class="density__label" aria-hidden="true">Per row</span>
 
@@ -168,16 +168,6 @@
 
       <p class="feedback" id="empty-message" hidden>No saved pieces yet.</p>
       <div class="grid" id="grid" data-cols="4"></div>
-
-      <nav class="pager" id="pager" aria-label="Pages" hidden>
-        <button class="pager__button" id="pager-prev" type="button">
-          Previous
-        </button>
-        <p class="pager__status" id="pager-status" aria-live="polite"></p>
-        <button class="pager__button" id="pager-next" type="button">
-          Next
-        </button>
-      </nav>
 
       <p class="result-count" id="result-count"></p>
     </main>
@@ -289,7 +279,7 @@
       </article>
     </template>
 
-    <script src="products.js?v=20260816043725"></script>
-    <script src="app.js?v=20260816043725"></script>
+    <script src="products.js?v=20260817142439"></script>
+    <script src="app.js?v=20260817142439"></script>
   </body>
 </html>

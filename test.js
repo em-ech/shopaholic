@@ -82,13 +82,16 @@ function lists() {
   return found;
 }
 
-function open(list) {
+// "seed" runs against a live window before app.js does, which is the only way
+// to test what the app makes of localStorage it did not write itself.
+function open(list, seed) {
   const dom = new JSDOM(read("index.html"), {
     url: "http://localhost:8899/",
     runScripts: "outside-only",
     pretendToBeVisual: true,
   });
   const { window } = dom;
+  if (seed) seed(window);
   // products.js sets window.COLLECTION and window.PRODUCTS, the same two
   // globals app.js reads in a browser.
   window.eval(read(list.products));
@@ -232,17 +235,19 @@ function testData(list, window) {
 function testRender(list, window) {
   const doc = window.document;
   const products = window.PRODUCTS;
-  const perPage = Math.min(20, products.length);
   section(`${list.products}: what renders`);
 
   check("the title comes from the collection", doc.getElementById("collection-title").textContent, window.COLLECTION.title);
   check("the document title matches", doc.title, window.COLLECTION.title);
-  check("a full page of pieces is on screen", doc.querySelectorAll("#grid .product").length, perPage);
+  check("every piece is on screen", doc.querySelectorAll("#grid .product").length, products.length);
   check("every card has an image src", [...doc.querySelectorAll("#grid .product__image")].every((i) => i.getAttribute("src")), "true");
   check("every card links somewhere", [...doc.querySelectorAll("#grid a[href]")].every((a) => a.getAttribute("href").startsWith("https://")), "true");
+  // The whole list renders at once, so the offscreen images must not all be
+  // fetched on first paint.
+  check("every card image is lazy", [...doc.querySelectorAll("#grid .product__image")].every((i) => i.getAttribute("loading") === "lazy"), "true");
 
-  const expected = products.length > perPage ? `${perPage} of ${products.length} pieces` : products.length === 1 ? "1 piece" : `${products.length} pieces`;
-  check("the count under the list reads shown of total", doc.getElementById("result-count").textContent, expected);
+  const expected = products.length === 1 ? "1 piece" : `${products.length} pieces`;
+  check("the count under the list reads the total", doc.getElementById("result-count").textContent, expected);
 }
 
 /* --------------------------------------------------------- per row --- */
@@ -338,33 +343,32 @@ async function testFilterAndSort(list, window) {
   await go("#all");
 }
 
-/* ---------------------------------------------------------- paging --- */
+/* ------------------------------------------------------ the whole list --- */
 
-async function testPaging(list, window) {
+// The list used to be cut into pages of twenty. It is not any more, and these
+// guard the two ways that could come back: a cap on what renders, and a stray
+// page key left in the hash by an old link.
+async function testWholeList(list, window) {
   const doc = window.document;
   const products = window.PRODUCTS;
-  const pages = Math.ceil(products.length / 20);
   const go = async (hash) => {
     window.location.hash = hash;
     await tick();
   };
-  section(`${list.products}: paging`);
+  section(`${list.products}: the whole list`);
 
   await go("#all");
-  check("twenty to a page", doc.querySelectorAll("#grid .product").length, Math.min(20, products.length));
-  check(pages > 1 ? "the pager is shown" : "no pager for a single page", doc.getElementById("pager").hidden, pages <= 1);
+  check("nothing is held back", doc.querySelectorAll("#grid .product").length, products.length);
+  check("there is no pager", doc.getElementById("pager"), null);
+  check("the count is a plain total", doc.getElementById("result-count").textContent, `${products.length} pieces`);
 
-  if (pages > 1) {
-    await go(`#page=${pages}`);
-    const rest = products.length - (pages - 1) * 20;
-    check("the last page holds the remainder", doc.querySelectorAll("#grid .product").length, rest);
-    check("and the count says so", doc.getElementById("result-count").textContent, `${rest} of ${products.length} pieces`);
-
-    await go("#page=9999");
-    check("a page past the end falls back to the last one", doc.querySelectorAll("#grid .product").length, rest);
-  }
+  // Links sent out while the pager existed carry #page=N. It is not a key the
+  // state knows any more, so it must be ignored rather than narrow the view.
+  await go("#view=all&page=7");
+  check("an old paged link still shows everything", doc.querySelectorAll("#grid .product").length, products.length);
 
   await go("#all");
+  check("and the page key is not written back into the hash", window.location.hash.includes("page="), false);
 }
 
 /* ----------------------------------------------------------- saved --- */
@@ -403,6 +407,53 @@ async function testSaved(list, window) {
   await go("#all");
 }
 
+/* --------------------------------------------------- absorbed hearts --- */
+
+// A merged list takes the other list's hearts with it. Jared had saved pieces
+// under his own key before the two lists became one, and localStorage is keyed
+// by origin, so those entries are still sitting in his browser. This is the one
+// visit that folds them in, and it has to survive being run twice.
+async function testAbsorbedSaves(list, window) {
+  const sources = window.COLLECTION.absorbsSavesFrom;
+  if (!sources || !sources.length) return;
+
+  const key = (id) => `shopaholic:saved:v1:${id}`;
+  const mine = key(window.COLLECTION.id);
+  const theirs = key(sources[0]);
+  const [a, b, c] = window.PRODUCTS.slice(0, 3).map((p) => p.id);
+
+  section(`${list.products}: hearts absorbed from ${sources[0]}`);
+
+  const seeded = open(list, (w) => {
+    w.localStorage.setItem(mine, JSON.stringify([a]));
+    w.localStorage.setItem(theirs, JSON.stringify([b, c, a]));
+  });
+  await tick();
+
+  const union = JSON.parse(seeded.localStorage.getItem(mine));
+  check("both sets of hearts survive", union.length, 3);
+  check("and the piece hearted on both is not doubled", union.filter((id) => id === a).length, 1);
+  check("the Saved link counts all three", seeded.document.getElementById("saved-count").textContent, "3");
+  check("the old key is cleared, so this happens once", seeded.localStorage.getItem(theirs), null);
+
+  // Reopening must not resurrect anything: the source key is gone, and a heart
+  // unsaved after the merge has to stay unsaved.
+  const carried = JSON.stringify(union);
+  const again = open(list, (w) => w.localStorage.setItem(mine, carried));
+  await tick();
+  check("a second visit changes nothing", again.localStorage.getItem(mine), carried);
+  again.close();
+  seeded.close();
+
+  // Nothing to absorb is the ordinary case, and it must not touch the hearts
+  // this list already holds under the key it inherited from the old site.
+  const legacyOnly = open(list, (w) => w.localStorage.setItem("shopping-list:saved:v1", JSON.stringify([a])));
+  await tick();
+  check("with no source key the legacy hearts are still read", legacyOnly.document.getElementById("saved-count").textContent, "1");
+  check("and are not rewritten under this list's key", legacyOnly.localStorage.getItem(mine), null);
+  legacyOnly.close();
+}
+
 /* ------------------------------------------------------------- shells --- */
 
 function testBookmarklet() {
@@ -426,6 +477,27 @@ function testBookmarklet() {
   check("it writes a colors array with a hex", source.includes("colors: [{ name: "), true);
   check("it strips dashes out of names, per the no hyphens rule", source.includes('replace(/[-–—]/g, " ")'), true);
   check("it formats price as figure and currency", source.includes('n.toFixed(2) + " " + currency'), true);
+}
+
+// Jared's list was merged into the root list, and the link to his old page was
+// already sent out, so that folder has to keep forwarding. It holds no
+// products.js, which is what keeps sync-lists.sh from overwriting it, so
+// nothing else in the suite would notice if it were lost.
+function testRetiredLists() {
+  section("the retired lists");
+  const RETIRED = ["jared"];
+
+  RETIRED.forEach((id) => {
+    const dir = path.join(ROOT, id);
+    check(`${id}/ still exists`, fs.existsSync(dir), true);
+    check(`${id}/ holds no products.js, so sync-lists.sh leaves it alone`, fs.existsSync(path.join(dir, "products.js")), false);
+
+    const page = read(`${id}/index.html`);
+    check(`${id}/index.html redirects without javascript`, /http-equiv="refresh"[^>]*url=\.\.\//.test(page), true);
+    check(`${id}/index.html redirects with javascript`, page.includes('window.location.replace("../")'), true);
+    check(`${id}/index.html offers a link as well`, page.includes('href="../"'), true);
+    check(`${id}/index.html is not indexed`, page.includes('name="robots" content="noindex"'), true);
+  });
 }
 
 function testShells() {
@@ -452,11 +524,13 @@ function testShells() {
     testRender(list, window);
     await testPerRow(list, window);
     await testFilterAndSort(list, window);
-    await testPaging(list, window);
+    await testWholeList(list, window);
     await testSaved(list, window);
+    await testAbsorbedSaves(list, window);
     window.close();
   }
   testBookmarklet();
+  testRetiredLists();
   testShells();
 
   if (notes.length) {

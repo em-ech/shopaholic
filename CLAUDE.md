@@ -3,10 +3,16 @@
 Static curated shopping lists published to GitHub Pages. One codebase, one list
 per person, all published from `main`.
 
-| List  | Edit                | Live at       |
-| ----- | ------------------- | ------------- |
-| Em    | `products.js`       | the site root |
-| Jared | `jared/products.js` | `/jared/`     |
+| List | Edit          | Live at       |
+| ---- | ------------- | ------------- |
+| Em   | `products.js` | the site root |
+
+There is one list. Jared had his own at `/jared/` until 2026-08-17, when Em
+asked for the two to be merged back into one. His 152 pieces are in
+`products.js` below a banner comment, still pointing at UK storefronts and
+priced in GBP. `jared/` holds no `products.js` any more, only a redirect to the
+root, because the link had already been sent to him. `sync-lists.sh` loops over
+`*/products.js`, so it leaves that folder alone.
 
 `./deploy.sh` prints the live URLs. Read them from there rather than assuming.
 
@@ -207,7 +213,8 @@ npm test
 
 Run it before deploying anything that touches `app.js`, `index.html` or
 `styles.css`. `test.js` opens the real page in jsdom and drives it, once per
-list, so Jared's list is covered too.
+list, so a second person's list would be covered by the same suite rather than
+trusted because Em's passes.
 
 Add a case whenever you change behaviour. Assert the invariant, never a
 snapshot: no product counts, no specific prices. The lists change constantly
@@ -231,8 +238,12 @@ name because the retailer only names the colourway being viewed.
   the photo. On desktop the visitor picks two, three or four across and the
   default is four; below 900px the grid decides for itself.
 - The per row control is three glyphs drawing the columns they produce, with
-  PER ROW beside them. It was bare numbers once and Em rejected that: sitting
-  above a pager they read as page numbers. Do not go back to numbers.
+  PER ROW beside them. It was bare numbers once and Em rejected that: they read
+  as page numbers. Do not go back to numbers.
+- The whole list renders on one page. The pager was removed on 2026-08-17
+  because a 232 piece list looked like an 80 piece one until you found Next. Do
+  not reintroduce paging without being asked. Card images are `loading="lazy"`,
+  which is what keeps a long list cheap, so leave that attribute alone.
 - Never edit a `<name>/index.html`. They are generated from the root
   `index.html` by `sync-lists.sh` and any edit is overwritten on the next
   deploy.

@@ -471,51 +471,10 @@ body.has-drawer {
   cursor: pointer;
 }
 
-/* --------------------------------------------------------------------------
-   Pager
-   -------------------------------------------------------------------------- */
-.pager {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 2rem;
-  padding-top: 4rem;
-}
-
-.pager[hidden] {
-  display: none;
-}
-
-.pager__button {
-  margin: 0;
-  padding: 0.4rem 0;
-  border: 0;
-  border-bottom: 1px solid var(--ink);
-  background: none;
-  color: var(--ink);
-  font: inherit;
-  text-transform: uppercase;
-  letter-spacing: var(--track);
-  cursor: pointer;
-}
-
-.pager__button:disabled {
-  border-bottom-color: transparent;
-  color: var(--ink-soft);
-  cursor: default;
-}
-
-.pager__status {
-  color: var(--ink-soft);
-  text-transform: uppercase;
-  letter-spacing: var(--track);
-  font-variant-numeric: tabular-nums;
-}
-
-/* The last line under the list. It follows the pager, so on a filtered view the
-   visitor reads the page they are on and then how much there is in total. */
+/* The last line under the list, and the only thing below the grid now that the
+   whole list renders at once. It carries the gap the pager used to hold. */
 .result-count {
-  padding-top: 2rem;
+  padding-top: 4rem;
   color: var(--ink-soft);
   text-align: center;
   text-transform: uppercase;

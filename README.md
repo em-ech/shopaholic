@@ -41,9 +41,10 @@ found on the site. A price in euros or pounds leads with roughly what it costs
 in dollars, with the real figure underneath. Everything on the page can be
 compared at a glance, and sorting by price actually means something.
 
-**Lets them narrow it down fast.** Filter by brand or by colour, sort by price,
-twenty at a time. Someone who only wants to see what is under fifty, in blue,
-gets there in two taps.
+**Lets them narrow it down fast.** Filter by brand or by colour, sort by price.
+The whole list is on the one page, so nothing is hidden behind a Next button.
+Someone who only wants to see what is under fifty, in blue, gets there in two
+taps.
 
 **Remembers what they liked.** A heart on any piece saves it to a Saved view
 that survives closing the tab. It lives in their own browser, so there is no
@@ -128,24 +129,27 @@ above it can be changed whenever you like; the slug cannot.
 generated from it and says so in a banner. Edit the root and run
 `./sync-lists.sh`, or just deploy and it happens for you.
 
-### Filtering, sorting, paging
+### Filtering and sorting
 
 State lives in the URL hash, so a filtered page can be sent to someone and the
 back button steps through it:
 
 ```
-#view=saved&brand=UNIQLO&color=Blue&sort=price-asc&page=2
+#view=saved&brand=UNIQLO&color=Blue&sort=price-asc&cols=3
 ```
 
 Filters live in a drawer that slides over the page: brand, type and colour as
 multiselect checkboxes with counts, plus the sort. Density sits in the toolbar
 instead, on the right, as three glyphs drawing two, three and four columns.
-They are glyphs rather than the numbers 2, 3 and 4 because bare numbers above a
-pager read as page numbers. Below 900px the grid picks its own columns, so the
+They are glyphs rather than the numbers 2, 3 and 4 because bare numbers there
+read as page numbers. Below 900px the grid picks its own columns, so the
 control is hidden there rather than offered and ignored.
 
-How much of the list is on screen is printed under the pager, as `20 of 186
-pieces`, and drops the "of" once everything fits on one page.
+The whole list renders at once. There was a pager taking twenty at a time until
+2026-08-17, and it was removed because a 232 piece list read as an 80 piece one
+until you found the Next button. Card images carry `loading="lazy"`, so a long
+list still only fetches what is on screen. The length is printed under the
+list, as `232 pieces`.
 
 Colourways arrive in whatever language and vocabulary the retailer uses, so
 `COLOURS` in `app.js` groups them into families for the filter while each card
@@ -183,7 +187,9 @@ refuses to run outside `main`.
 python3 -m http.server 8899
 ```
 
-Em's list at http://localhost:8899 and Jared's at http://localhost:8899/jared/
+The list at http://localhost:8899. There is one list now: Jared's was merged
+back into it on 2026-08-17, and http://localhost:8899/jared/ forwards to the
+root so the link that was already sent out keeps working.
 
 ### Tests
 

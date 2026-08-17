@@ -6,6 +6,7 @@
   "use strict";
 
   var LEGACY_STORAGE_KEY = "shopping-list:saved:v1";
+  var SAVED_KEY_PREFIX = "shopaholic:saved:v1:";
   var VIEW_ALL = "all";
   var VIEW_SAVED = "saved";
 
@@ -13,8 +14,6 @@
   var SORT_PRICE_ASC = "price-asc";
   var SORT_PRICE_DESC = "price-desc";
   var SORTS = [SORT_CURATED, SORT_PRICE_ASC, SORT_PRICE_DESC];
-
-  var PAGE_SIZE = 20;
 
   // How many products sit across a row, once the screen is wide enough to have
   // a say. Narrower than that and the layout decides for itself.
@@ -189,7 +188,7 @@
   // Every list on this site shares one origin, and localStorage is keyed by
   // origin rather than by path. Without the list id in the key, Em's hearts and
   // Jared's hearts would overwrite each other.
-  var STORAGE_KEY = "shopaholic:saved:v1:" + (collection.id || "default");
+  var STORAGE_KEY = SAVED_KEY_PREFIX + (collection.id || "default");
 
   var dom = {
     title: document.getElementById("collection-title"),
@@ -210,10 +209,6 @@
     filtersClear: document.getElementById("filters-clear"),
     sortBy: document.getElementById("sort-by"),
     density: document.getElementById("density"),
-    pager: document.getElementById("pager"),
-    pagerPrev: document.getElementById("pager-prev"),
-    pagerNext: document.getElementById("pager-next"),
-    pagerStatus: document.getElementById("pager-status"),
   };
 
   FACETS.forEach(function (facet) {
@@ -416,6 +411,45 @@
     }
   }
 
+  // When two lists are merged the survivor takes the other one's hearts with
+  // it, otherwise they sit in localStorage under a key nothing reads any more.
+  // The union is written back under this list's key and the source is cleared,
+  // so a browser does this once and never again. Listed in COLLECTION as
+  // absorbsSavesFrom: ["jared"].
+  function absorbSaves() {
+    var sources = collection.absorbsSavesFrom || [];
+    if (!sources.length) return;
+
+    // Seeding from readSavedIds rather than the raw key keeps the legacy hearts
+    // in play: on a browser that has never saved under this list's own key, the
+    // union must start from the ones it inherited, not from nothing.
+    var merged = readSavedIds();
+    var seen = {};
+    merged.forEach(function (id) {
+      seen[id] = true;
+    });
+
+    var moved = 0;
+    sources.forEach(function (source) {
+      var key = SAVED_KEY_PREFIX + source;
+      readKey(key).forEach(function (id) {
+        if (seen[id]) return;
+        seen[id] = true;
+        merged.push(id);
+        moved += 1;
+      });
+      try {
+        window.localStorage.removeItem(key);
+      } catch (error) {
+        console.warn("Could not clear " + key + ".", error);
+      }
+    });
+
+    if (moved) writeSavedIds(merged);
+  }
+
+  absorbSaves();
+
   var savedIds = readSavedIds();
 
   function isSaved(id) {
@@ -453,7 +487,6 @@
       type: [],
       color: [],
       cols: COLUMNS_DEFAULT,
-      page: 1,
     };
 
     raw.split("&").forEach(function (pair) {
@@ -470,8 +503,6 @@
             return item.trim();
           })
           .filter(Boolean);
-      } else if (key === "page") {
-        state[key] = Math.max(1, parseInt(value, 10) || 1);
       } else {
         state[key] = value;
       }
@@ -497,26 +528,21 @@
       }
     });
     if (state.cols !== COLUMNS_DEFAULT) parts.push("cols=" + state.cols);
-    if (state.page > 1) parts.push("page=" + state.page);
     return "#" + parts.join("&");
   }
 
-  // Any change other than paging sends the visitor back to page one, since the
-  // page they were on may not exist once the list is filtered.
   function updateState(changes) {
     var state = readState();
     Object.keys(changes).forEach(function (key) {
       state[key] = changes[key];
     });
-    if (!Object.prototype.hasOwnProperty.call(changes, "page")) state.page = 1;
 
     var next = stateToHash(state);
     if (next === window.location.hash) render();
     else window.location.hash = next;
   }
 
-  // Switching view keeps the filters, the sort and the density. Only the page
-  // resets, since the other view is a different length.
+  // Switching view keeps the filters, the sort and the density.
   function viewLink(state, view) {
     return {
       view: view,
@@ -525,7 +551,6 @@
       type: state.type,
       color: state.color,
       cols: state.cols,
-      page: 1,
     };
   }
 
@@ -813,37 +838,22 @@
     else dom.filtersToggle.focus();
   }
 
-  /* ---------------------------------------------------------------- pager --- */
+  /* ---------------------------------------------------------------- count --- */
 
-  function renderPager(page, shown, total, pages) {
-    dom.pager.hidden = pages <= 1;
-    dom.pagerPrev.disabled = page <= 1;
-    dom.pagerNext.disabled = page >= pages;
-    dom.pagerStatus.textContent =
-      pages > 1 ? "Page " + page + " of " + pages : "";
-    dom.resultCount.textContent = resultCountLabel(shown, total);
-  }
-
-  // Says how much of the list is on screen. On a single page that is the whole
-  // of it, so the figure is not repeated back at the visitor.
-  function resultCountLabel(shown, total) {
+  // Says how long the list is. The whole of it is always on screen, so this is
+  // a plain total rather than a shown of total.
+  function resultCountLabel(total) {
     if (total === 0) return "";
     if (total === 1) return "1 piece";
-    if (shown === total) return total + " pieces";
-    return shown + " of " + total + " pieces";
+    return total + " pieces";
   }
 
   function render() {
     var state = readState();
     var list = selectProducts(state);
-    var pages = Math.max(1, Math.ceil(list.length / PAGE_SIZE));
-    // Clearing a filter, or unsaving the last piece on a page, can leave the
-    // visitor past the end of the list.
-    var page = Math.min(state.page, pages);
-    var slice = list.slice((page - 1) * PAGE_SIZE, page * PAGE_SIZE);
 
     var fragment = document.createDocumentFragment();
-    slice.forEach(function (product) {
+    list.forEach(function (product) {
       fragment.appendChild(buildProduct(product));
     });
 
@@ -872,7 +882,7 @@
     dom.navSaved.href = stateToHash(viewLink(state, VIEW_SAVED));
 
     renderControls(state);
-    renderPager(page, slice.length, list.length, pages);
+    dom.resultCount.textContent = resultCountLabel(list.length);
     updateSavedCount();
   }
 
@@ -914,15 +924,6 @@
     var button = event.target.closest(".density__button");
     if (!button) return;
     updateState({ cols: button.getAttribute("data-cols") });
-  });
-
-  dom.pagerPrev.addEventListener("click", function () {
-    updateState({ page: Math.max(1, readState().page - 1) });
-    window.scrollTo(0, 0);
-  });
-  dom.pagerNext.addEventListener("click", function () {
-    updateState({ page: readState().page + 1 });
-    window.scrollTo(0, 0);
   });
 
   window.addEventListener("hashchange", render);
