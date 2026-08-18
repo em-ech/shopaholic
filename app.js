@@ -160,6 +160,35 @@
     "yellow and white stripe": { family: "Multi" },
     "patchwork": { family: "Multi" },
     "multi colour": { family: "Multi" },
+
+    // Added with the fifteen shops of 18 August 2026. Without these each one
+    // becomes its own entry in the Colour filter, which is how a filter with
+    // thirty single-piece options happens.
+    "all black": { family: "Black" },
+    "washed black": { family: "Black" },
+    obsidian: { family: "Black" },
+    "off white": { family: "White" },
+    cloud: { family: "White" },
+    vanilla: { family: "White" },
+    almond: { family: "Beige" },
+    cream: { family: "Beige" },
+    "dull cream": { family: "Beige" },
+    anthracite: { family: "Grey" },
+    "grey and black": { family: "Grey" },
+    "indigo blue": { family: "Blue" },
+    orange: { family: "Orange" },
+    kobicha: { family: "Brown" },
+    "gold kakao": { family: "Brown" },
+    "tutzetae brown": { family: "Brown" },
+    "black and white": { family: "Multi" },
+    "brown patchwork": { family: "Multi" },
+    "ivory patchwork": { family: "Multi" },
+    "ivory and heura": { family: "Multi" },
+    "ivory, black and niagara": { family: "Multi" },
+    "ivory, sky, jade and red": { family: "Multi" },
+    "red and navy": { family: "Multi" },
+    "vintage white": { family: "White" },
+    "acid grey": { family: "Grey" },
   };
 
   var COLOUR_UNSET = "Unspecified";
@@ -172,15 +201,19 @@
   // figure with the retailer's own underneath.
   //
   // These rates are a snapshot, not a live feed. Taken from
-  // exchangerate-api.com on 15 August 2026. They drift, which is why a
+  // exchangerate-api.com on 18 August 2026. They drift, which is why a
   // converted price is marked approximate. To refresh them:
   //   curl -s https://open.er-api.com/v6/latest/USD
   // and use 1 / rates[CODE] for each currency.
   var BASE_CURRENCY = "USD";
   var RATES_TO_BASE = {
     USD: 1,
-    EUR: 1.1566,
-    GBP: 1.3535,
+    EUR: 1.158577,
+    GBP: 1.355203,
+    // The Indian labels added on 18 August 2026 quote one price worldwide and
+    // offer no other currency, so without this every one of them would fail to
+    // convert and sort as though its rupee figure were dollars.
+    INR: 0.01045,
   };
 
   var collection = window.COLLECTION || {};

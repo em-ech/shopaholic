@@ -140,7 +140,9 @@ function coloursFromApp() {
   const src = read("app.js");
   const block = src.slice(src.indexOf("var COLOURS = {"), src.indexOf("var COLOUR_UNSET"));
   const map = {};
-  for (const m of block.matchAll(/^\s*"?([a-z][a-z .'/-]*)"?:\s*\{[^}]*family:\s*"([A-Za-z]+)"/gm)) {
+  // Commas belong in the class: a colourway like "ivory, sky, jade and red" is
+  // a real key and was being read as unmapped by this parser alone.
+  for (const m of block.matchAll(/^\s*"?([a-z][a-z .,'/-]*)"?:\s*\{[^}]*family:\s*"([A-Za-z]+)"/gm)) {
     map[m[1].trim()] = m[2];
   }
   return map;
