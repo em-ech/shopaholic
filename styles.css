@@ -342,22 +342,22 @@ body.has-drawer {
   overflow: hidden;
 }
 
-.drawer__head,
-.drawer__foot {
+.drawer__head {
   flex: none;
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 1rem;
   padding: 1.5rem var(--page-pad);
-}
-
-.drawer__head {
   border-bottom: 1px solid var(--well);
 }
 
-.drawer__foot {
-  border-top: 1px solid var(--well);
+/* Clear all and Close, kept together on the right so the title still owns the
+   left edge and the two controls read as a pair. */
+.drawer__actions {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
 }
 
 .drawer__title {

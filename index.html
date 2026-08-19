@@ -18,7 +18,7 @@
       rel="icon"
       href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='-18 120 360 360'%3E%3Crect x='-18' y='120' width='360' height='360' fill='%230d1f3c'/%3E%3Cg fill='%23fff'%3E%3Ccircle cx='28' cy='228' r='11'/%3E%3Ccircle cx='64' cy='228' r='11'/%3E%3Ccircle cx='100' cy='228' r='11'/%3E%3Ccircle cx='28' cy='264' r='11'/%3E%3Ccircle cx='28' cy='300' r='11'/%3E%3Ccircle cx='64' cy='300' r='11'/%3E%3Ccircle cx='100' cy='300' r='11'/%3E%3Ccircle cx='28' cy='336' r='11'/%3E%3Ccircle cx='28' cy='372' r='11'/%3E%3Ccircle cx='64' cy='372' r='11'/%3E%3Ccircle cx='100' cy='372' r='11'/%3E%3Ccircle cx='152' cy='300' r='11'/%3E%3Ccircle cx='188' cy='300' r='11'/%3E%3Ccircle cx='224' cy='300' r='11'/%3E%3Ccircle cx='260' cy='300' r='11'/%3E%3Ccircle cx='296' cy='300' r='11'/%3E%3Ccircle cx='152' cy='336' r='11'/%3E%3Ccircle cx='224' cy='336' r='11'/%3E%3Ccircle cx='296' cy='336' r='11'/%3E%3Ccircle cx='152' cy='372' r='11'/%3E%3Ccircle cx='224' cy='372' r='11'/%3E%3Ccircle cx='296' cy='372' r='11'/%3E%3C/g%3E%3C/svg%3E"
     />
-    <link rel="stylesheet" href="styles.css?v=20260819012548" />
+    <link rel="stylesheet" href="styles.css?v=20260819015717" />
   </head>
   <body>
     <a class="skip-link" href="#grid">Skip to products</a>
@@ -178,11 +178,19 @@
          so the grid keeps its place while the visitor narrows things. -->
     <div class="drawer-scrim" id="drawer-scrim" hidden></div>
     <aside class="drawer" id="filters" aria-label="Filters" hidden>
+      <!-- Clear all sits up here beside Close rather than at the foot. The facet
+           lists are long enough now that reaching the bottom of the drawer to
+           undo a filter meant scrolling past the very thing being undone. -->
       <div class="drawer__head">
         <p class="drawer__title">Filters</p>
-        <button class="drawer__close" id="drawer-close" type="button">
-          Close
-        </button>
+        <div class="drawer__actions">
+          <button class="drawer__clear" id="filters-clear" type="button">
+            Clear all
+          </button>
+          <button class="drawer__close" id="drawer-close" type="button">
+            Close
+          </button>
+        </div>
       </div>
 
       <div class="drawer__body">
@@ -222,12 +230,6 @@
           <legend class="facet__title">Color</legend>
           <div class="facet__options" id="facet-color"></div>
         </fieldset>
-      </div>
-
-      <div class="drawer__foot">
-        <button class="drawer__clear" id="filters-clear" type="button">
-          Clear all
-        </button>
       </div>
     </aside>
 
@@ -289,7 +291,7 @@
       </article>
     </template>
 
-    <script src="products.js?v=20260819012548"></script>
-    <script src="app.js?v=20260819012548"></script>
+    <script src="products.js?v=20260819015717"></script>
+    <script src="app.js?v=20260819015717"></script>
   </body>
 </html>

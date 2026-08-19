@@ -251,6 +251,24 @@
     // First yellow on the list, from a Mango colour range.
     "pastel yellow": { family: "Yellow" },
     "black and amber": { family: "Multi" },
+
+    // Added with the sixty of 18 August 2026, almost all Reiss. Its colourway
+    // names are its own vocabulary, so each one is mapped rather than left to
+    // become its own entry in the Color filter.
+    "bright navy": { family: "Blue" },
+    "dark blue wash": { family: "Blue" },
+    "camel brown": { family: "Brown" },
+    "chocolate brown": { family: "Brown" },
+    "mouse brown": { family: "Brown" },
+    mahogany: { family: "Brown" },
+    "dark bordeaux": { family: "Red" },
+    sage: { family: "Green" },
+    "thyme green": { family: "Green" },
+    pink: { family: "Pink" },
+    "soft pink": { family: "Pink" },
+    "stone check": { family: "Beige" },
+    "chocolate brown and off white": { family: "Multi" },
+    "green and white": { family: "Multi" },
   };
 
   var COLOUR_UNSET = "Unspecified";
