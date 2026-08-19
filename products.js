@@ -810,7 +810,7 @@ window.PRODUCTS = [
     name: "White cotton t shirt with Ami de Coeur arrow",
     brand: "Ami Paris",
     type: "Short sleeve",
-    price: "230.00 USD",
+    price: "150.00 GBP",
     image:
       "https://cdn.shopify.com/s/files/1/0774/7865/8352/files/HTS411.JE0270_160eb8f1-5bd3-4f72-a2e2-5acc009e646c.jpg?width=1400",
     url: "https://www.amiparis.com/en-us/products/white-cotton-t-shirt-with-ami-de-coeur-arrow-hts411je0270100",
@@ -820,7 +820,7 @@ window.PRODUCTS = [
     name: "White cotton t shirt with Ami de Coeur",
     brand: "Ami Paris",
     type: "Short sleeve",
-    price: "190.00 USD",
+    price: "140.00 GBP",
     image:
       "https://cdn.shopify.com/s/files/1/0774/7865/8352/files/BFUTS035.724_e4a609bf-6d09-4d84-809a-58d93962ce33.jpg?width=1400",
     url: "https://www.amiparis.com/en-us/products/white-cotton-red-ami-de-coeur-t-shirt-bfuts035724100",
@@ -830,7 +830,7 @@ window.PRODUCTS = [
     name: "Black cotton t shirt with Ami de Coeur",
     brand: "Ami Paris",
     type: "Short sleeve",
-    price: "190.00 USD",
+    price: "140.00 GBP",
     image:
       "https://cdn.shopify.com/s/files/1/0774/7865/8352/files/BFUTS035.724_fcc51069-a0b6-4f43-b1c8-34b4f5911721.jpg?width=1400",
     url: "https://www.amiparis.com/en-us/products/black-cotton-red-ami-de-coeur-t-shirt-bfuts035724001",
@@ -840,7 +840,7 @@ window.PRODUCTS = [
     name: "Black contrasted cotton t shirt with Ami de Coeur",
     brand: "Ami Paris",
     type: "Short sleeve",
-    price: "240.00 USD",
+    price: "150.00 GBP",
     image:
       "https://cdn.shopify.com/s/files/1/0774/7865/8352/files/HTS412.JE0246.jpg?width=1400",
     url: "https://www.amiparis.com/en-us/products/black-contrasted-cotton-t-shirt-with-ami-de-coeur-hts412je0246044",
@@ -850,7 +850,7 @@ window.PRODUCTS = [
     name: "Blue cotton t shirt with Ami de Coeur",
     brand: "Ami Paris",
     type: "Short sleeve",
-    price: "190.00 USD",
+    price: "140.00 GBP",
     image:
       "https://cdn.shopify.com/s/files/1/0774/7865/8352/files/BFUTS035.724_e55187fb-81c1-4fa9-b97d-c16b52a8a04d.jpg?width=1400",
     url: "https://www.amiparis.com/en-us/products/blue-cotton-red-ami-de-coeur-t-shirt-bfuts035724430",
@@ -860,7 +860,7 @@ window.PRODUCTS = [
     name: "Blue Cotton Boxy Embroidered Ami De Coeur Shirt",
     brand: "Ami Paris",
     type: "Long sleeve",
-    price: "440.00 USD",
+    price: "280.00 GBP",
     image:
       "https://cdn.shopify.com/s/files/1/0774/7865/8352/files/HSH822.CO0221_79017bbc-c0b5-440a-867a-289f1b2ef0a0.jpg?width=1400",
     url: "https://www.amiparis.com/en-us/products/blue-cotton-boxy-embroidered-ami-de-coeur-shirt-hsh822co0221484",
@@ -870,7 +870,7 @@ window.PRODUCTS = [
     name: "Black cotton sweatshirt with Ami de Coeur",
     brand: "Ami Paris",
     type: "Long sleeve",
-    price: "360.00 USD",
+    price: "230.00 GBP",
     image:
       "https://cdn.shopify.com/s/files/1/0774/7865/8352/files/BFUSW035.730_953dfd9b-8cf6-437e-8e03-6f08840c7db7.jpg?width=1400",
     url: "https://www.amiparis.com/en-us/products/black-cotton-red-ami-de-coeur-sweatshirt-bfusw035730001",
@@ -880,7 +880,7 @@ window.PRODUCTS = [
     name: "White Wool Ami De Coeur Crewneck Sweater",
     brand: "Ami Paris",
     type: "Long sleeve",
-    price: "550.00 USD",
+    price: "380.00 GBP",
     image:
       "https://cdn.shopify.com/s/files/1/0774/7865/8352/files/UKS838.018_e4049d34-cb5c-495a-a0ce-baf3b0a1dca2.jpg?width=1400",
     url: "https://www.amiparis.com/en-us/products/white-wool-ami-de-coeur-crewneck-sweater-uks838018151",
@@ -890,7 +890,7 @@ window.PRODUCTS = [
     name: "Natural crewneck wool sweater with Ami de Coeur",
     brand: "Ami Paris",
     type: "Long sleeve",
-    price: "550.00 USD",
+    price: "380.00 GBP",
     image:
       "https://cdn.shopify.com/s/files/1/0774/7865/8352/files/UKS838.018_53441b5e-19e2-4cdc-b5ca-4b0dce0263c9.jpg?width=1400",
     url: "https://www.amiparis.com/en-us/products/white-wool-ami-de-coeur-crewneck-sweater-uks838018154",
@@ -900,7 +900,7 @@ window.PRODUCTS = [
     name: "Blue crewneck wool sweater with Ami de Coeur",
     brand: "Ami Paris",
     type: "Long sleeve",
-    price: "440.00 USD",
+    price: "280.00 GBP",
     image:
       "https://cdn.shopify.com/s/files/1/0774/7865/8352/files/HKS826.001_0532f9f7-4ec1-46a2-b818-3f0ef33ef47f.jpg?width=1400",
     url: "https://www.amiparis.com/en-us/products/blue-wool-ami-de-coeur-crewneck-sweater-hks826001414",
