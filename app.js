@@ -189,6 +189,39 @@
     "red and navy": { family: "Multi" },
     "vintage white": { family: "White" },
     "acid grey": { family: "Grey" },
+
+    // Added with the seven shops of 18 August 2026. "salute" is rag & bone's
+    // name for a near black navy and was sampled off the product photo at
+    // #1F222E rather than guessed from the word, which suggests nothing.
+    salute: { family: "Blue" },
+    "black indigo": { family: "Blue" },
+    "sunfaded navy": { family: "Blue" },
+    "sunfaded blue": { family: "Blue" },
+    "french blue": { family: "Blue" },
+    "fog blue": { family: "Blue" },
+    "soft blue": { family: "Blue" },
+    "dark blue": { family: "Blue" },
+    lagoon: { family: "Blue" },
+    "forest green": { family: "Green" },
+    spruce: { family: "Green" },
+    elm: { family: "Green" },
+    "sunfaded black": { family: "Black" },
+    "faded black": { family: "Black" },
+    "sunfaded red": { family: "Red" },
+    chalk: { family: "White" },
+    "ivory white": { family: "White" },
+    "beach pebble": { family: "Beige" },
+    "sand dollar": { family: "Beige" },
+    "seeded natural": { family: "Beige" },
+    bone: { family: "Beige" },
+    "black walnut": { family: "Brown" },
+    "washed slate": { family: "Grey" },
+    "dark grey": { family: "Grey" },
+    "mink grey": { family: "Grey" },
+    "medium pink": { family: "Pink" },
+    // First yellow on the list, from a Mango colour range.
+    "pastel yellow": { family: "Yellow" },
+    "black and amber": { family: "Multi" },
   };
 
   var COLOUR_UNSET = "Unspecified";
