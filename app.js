@@ -269,6 +269,21 @@
     "stone check": { family: "Beige" },
     "chocolate brown and off white": { family: "Multi" },
     "green and white": { family: "Multi" },
+
+    // Portuguese Flannel and Barbour, 18 August 2026. Portuguese Flannel calls
+    // two different shirts Bordeaux: the linen one is a dark red, the Belavista
+    // measures #D5BECC and is a pale pink, so they sit in different families.
+    bordeaux: { family: "Red" },
+    "pale bordeaux": { family: "Pink" },
+    "red stripe": { family: "Red" },
+    "blue stripe": { family: "Blue" },
+    sky: { family: "Blue" },
+    "white stripe": { family: "White" },
+    "black stripe": { family: "Black" },
+    // Barbour's JSON-LD says color: None, but the page does print the name
+    // beside the swatch row. These are Barbour's own words.
+    "olive marl": { family: "Green" },
+    "laurel green": { family: "Green" },
   };
 
   var COLOUR_UNSET = "Unspecified";
