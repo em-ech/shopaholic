@@ -1010,6 +1010,21 @@ window.PRODUCTS = [
     brand: "Barbour",
     type: "Long sleeve",
     color: "Olive Marl",
+    colors: [
+      { name: "Neutral", hex: "#C4C3BA" },
+      { name: "Dark Chambray", hex: "#ABBECF" },
+      { name: "Inky Marl", hex: "#2B3659" },
+      { name: "Dusk Blue", hex: "#576376" },
+      { name: "Ocean Sky", hex: "#A2B7C8" },
+      { name: "Charcoal", hex: "#3B3B3D" },
+      { name: "Laurel Green", hex: "#8D9164" },
+      { name: "Grey Marl", hex: "#8E8E92" },
+      { name: "Classic Navy", hex: "#1A1D2B" },
+      { name: "Olive Marl", hex: "#626362" },
+      { name: "Winter Moss", hex: "#66664C" },
+      { name: "Sandstone", hex: "#8F6B4D" },
+      { name: "Vintage Teal", hex: "#476069" },
+    ],
     price: "140.00 USD",
     image:
       "https://www.barbour.com/dw/image/v2/blcl_prd/on/demandware.static/-/Sites-master-catalog/default/dwc8dff084/images/MKN1074OL91/MKN1074OL91_01front.jpg?sw=1500&q=70&strip=false",
@@ -1021,6 +1036,13 @@ window.PRODUCTS = [
     brand: "Barbour",
     type: "Long sleeve",
     color: "Laurel Green",
+    colors: [
+      { name: "Charcoal", hex: "#4A474F" },
+      { name: "Sage", hex: "#34342F" },
+      { name: "Laurel Green", hex: "#9EA172" },
+      { name: "Classic Navy", hex: "#474C5E" },
+      { name: "Vintage Teal", hex: "#6C828B" },
+    ],
     price: "120.00 USD",
     image:
       "https://www.barbour.com/dw/image/v2/blcl_prd/on/demandware.static/-/Sites-master-catalog/default/dwec80fdd8/images/MKN0932GN34/MKN0932GN34_01front.jpg?sw=1500&q=70&strip=false",
@@ -3207,6 +3229,11 @@ window.PRODUCTS = [
     type: "Long sleeve",
     price: "27.90 EUR",
     color: "Anthracite",
+    colors: [
+      { name: "Sienna", hex: "#B97580" },
+      { name: "Off white", hex: "#E3DFDB" },
+      { name: "Anthracite", hex: "#464452" },
+    ],
     image:
       "https://cdn.shopify.com/s/files/1/0122/2724/8185/files/NATURESWEATSHIRT_ANTRACITE.webp?v=1771944602",
     url: "https://www.bluebananabrand.com/en/products/anthracite-nature-crew-ss26",
@@ -3219,6 +3246,10 @@ window.PRODUCTS = [
     type: "Long sleeve",
     price: "23.90 EUR",
     color: "Navy",
+    colors: [
+      { name: "Frost", hex: "#C6C7D3" },
+      { name: "Navy", hex: "#1F2639" },
+    ],
     image:
       "https://cdn.shopify.com/s/files/1/0122/2724/8185/files/LOOMSHIRT_NAVY.webp?v=1771946966",
     url: "https://www.bluebananabrand.com/en/products/navy-loom-shirt-ss26",
@@ -3231,6 +3262,11 @@ window.PRODUCTS = [
     type: "Long sleeve",
     price: "31.90 EUR",
     color: "Navy",
+    colors: [
+      { name: "Sage", hex: "#6B8081" },
+      { name: "Sienna", hex: "#BC7888" },
+      { name: "Navy", hex: "#10182D" },
+    ],
     image:
       "https://cdn.shopify.com/s/files/1/0122/2724/8185/files/COREKNITTEDSWEATER_NAVY.jpg?v=1769684107",
     url: "https://www.bluebananabrand.com/en/products/navy-core-knitted-sweater-ss26",
@@ -3243,6 +3279,10 @@ window.PRODUCTS = [
     type: "Short sleeve",
     price: "32.90 EUR",
     color: "Anthracite",
+    colors: [
+      { name: "Mint", hex: "#98B6AC" },
+      { name: "Anthracite", hex: "#1E252D" },
+    ],
     image:
       "https://cdn.shopify.com/s/files/1/0122/2724/8185/files/2_ANTHRACITECLASSICTEE_BB-C-CLA-TEE-ANTR-2.webp?v=1761838671",
     url: "https://www.bluebananabrand.com/en/products/anthracite-classic-tee-aw21",
@@ -3255,6 +3295,10 @@ window.PRODUCTS = [
     type: "Long sleeve",
     price: "20.90 EUR",
     color: "White",
+    colors: [
+      { name: "White", hex: "#E4E4F0" },
+      { name: "Mist", hex: "#A6B4BA" },
+    ],
     image:
       "https://cdn.shopify.com/s/files/1/0122/2724/8185/files/CORESLTEE_WHITE.webp?v=1771930046",
     url: "https://www.bluebananabrand.com/en/products/white-core-ls-tee-ss26",
@@ -3267,6 +3311,10 @@ window.PRODUCTS = [
     type: "Short sleeve",
     price: "20.90 EUR",
     color: "Off white",
+    colors: [
+      { name: "Anthracite", hex: "#232832" },
+      { name: "Off white", hex: "#E2E1E6" },
+    ],
     image:
       "https://cdn.shopify.com/s/files/1/0122/2724/8185/files/CLEANTEE_OFFWHITE.webp?v=1771505689",
     url: "https://www.bluebananabrand.com/en/products/off-white-clean-tee-ss26",
@@ -3279,6 +3327,10 @@ window.PRODUCTS = [
     type: "Accessories",
     price: "17.90 EUR",
     color: "Black",
+    colors: [
+      { name: "Wine", hex: "#B06D78" },
+      { name: "Black", hex: "#3D3D3F" },
+    ],
     image:
       "https://cdn.shopify.com/s/files/1/0122/2724/8185/files/GROWCAP_BLACK.webp?v=1771489962",
     url: "https://www.bluebananabrand.com/en/products/black-grow-cap-ss26",
@@ -3291,6 +3343,11 @@ window.PRODUCTS = [
     type: "Long sleeve",
     price: "59.90 EUR",
     color: "Anthracite",
+    colors: [
+      { name: "Red", hex: "#C6423E" },
+      { name: "Mint", hex: "#92B1A1" },
+      { name: "Anthracite", hex: "#1F282F" },
+    ],
     image:
       "https://cdn.shopify.com/s/files/1/0122/2724/8185/files/ANTHRACITECLASSICCREW_BB-C-CLA-SWE-ANTR_1_4bf05d95-f405-4fcc-8d97-024360fe4988.webp?v=1761914052",
     url: "https://www.bluebananabrand.com/en/products/anthracite-classic-crew-aw21",
@@ -3303,6 +3360,10 @@ window.PRODUCTS = [
     type: "Short sleeve",
     price: "20.90 EUR",
     color: "White",
+    colors: [
+      { name: "Sage", hex: "#839796" },
+      { name: "White", hex: "#D4D3E1" },
+    ],
     image:
       "https://cdn.shopify.com/s/files/1/0122/2724/8185/files/GLANCETEE_WHITE_dfac6fb1-dd2f-4fb1-9110-5e74330b570f.webp?v=1771511275",
     url: "https://www.bluebananabrand.com/en/products/white-glance-tee-ss26",
@@ -3315,6 +3376,11 @@ window.PRODUCTS = [
     type: "Short sleeve",
     price: "20.90 EUR",
     color: "Anthracite",
+    colors: [
+      { name: "Frost", hex: "#B4C1CE" },
+      { name: "Anthracite", hex: "#3A383D" },
+      { name: "White", hex: "#E1E1EB" },
+    ],
     image:
       "https://cdn.shopify.com/s/files/1/0122/2724/8185/files/BONFIRETEE_ANTRACITE.webp?v=1771504263",
     url: "https://www.bluebananabrand.com/en/products/anthracite-bonfire-tee-ss26",
@@ -3327,6 +3393,10 @@ window.PRODUCTS = [
     type: "Short sleeve",
     price: "20.90 EUR",
     color: "Anthracite",
+    colors: [
+      { name: "Anthracite", hex: "#232832" },
+      { name: "Off white", hex: "#E2E1E6" },
+    ],
     image:
       "https://cdn.shopify.com/s/files/1/0122/2724/8185/files/CLEANTEE_ANTRACITE.webp?v=1771506015",
     url: "https://www.bluebananabrand.com/en/products/anthracite-clean-tee-ss26",
@@ -3339,6 +3409,10 @@ window.PRODUCTS = [
     type: "Short sleeve",
     price: "20.90 EUR",
     color: "Navy",
+    colors: [
+      { name: "Navy", hex: "#262E49" },
+      { name: "White", hex: "#D9DBE8" },
+    ],
     image:
       "https://cdn.shopify.com/s/files/1/0122/2724/8185/files/AMSTERDAMTEE_NAVY.webp?v=1771500757",
     url: "https://www.bluebananabrand.com/en/products/navy-amsterdam-tee-ss26",

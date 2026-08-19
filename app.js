@@ -284,6 +284,27 @@
     // beside the swatch row. These are Barbour's own words.
     "olive marl": { family: "Green" },
     "laurel green": { family: "Green" },
+
+    // Swatch ranges added 2026-08-18. These names come off Barbour's colour row
+    // and Blue Banana's sibling products, and every hex behind them was
+    // measured from the shop's own swatch or product photo. Sienna and Wine are
+    // both dusty rose at Blue Banana, checked against the photos, which is why
+    // they sit under Pink rather than Brown and Red.
+    neutral: { family: "Beige" },
+    sandstone: { family: "Brown" },
+    "dark chambray": { family: "Blue" },
+    "inky marl": { family: "Blue" },
+    "dusk blue": { family: "Blue" },
+    "ocean sky": { family: "Blue" },
+    "classic navy": { family: "Blue" },
+    "vintage teal": { family: "Blue" },
+    frost: { family: "Blue" },
+    mist: { family: "Blue" },
+    "grey marl": { family: "Grey" },
+    "winter moss": { family: "Green" },
+    mint: { family: "Green" },
+    sienna: { family: "Pink" },
+    wine: { family: "Pink" },
   };
 
   var COLOUR_UNSET = "Unspecified";
