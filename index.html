@@ -18,7 +18,7 @@
       rel="icon"
       href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='-18 120 360 360'%3E%3Crect x='-18' y='120' width='360' height='360' fill='%230d1f3c'/%3E%3Cg fill='%23fff'%3E%3Ccircle cx='28' cy='228' r='11'/%3E%3Ccircle cx='64' cy='228' r='11'/%3E%3Ccircle cx='100' cy='228' r='11'/%3E%3Ccircle cx='28' cy='264' r='11'/%3E%3Ccircle cx='28' cy='300' r='11'/%3E%3Ccircle cx='64' cy='300' r='11'/%3E%3Ccircle cx='100' cy='300' r='11'/%3E%3Ccircle cx='28' cy='336' r='11'/%3E%3Ccircle cx='28' cy='372' r='11'/%3E%3Ccircle cx='64' cy='372' r='11'/%3E%3Ccircle cx='100' cy='372' r='11'/%3E%3Ccircle cx='152' cy='300' r='11'/%3E%3Ccircle cx='188' cy='300' r='11'/%3E%3Ccircle cx='224' cy='300' r='11'/%3E%3Ccircle cx='260' cy='300' r='11'/%3E%3Ccircle cx='296' cy='300' r='11'/%3E%3Ccircle cx='152' cy='336' r='11'/%3E%3Ccircle cx='224' cy='336' r='11'/%3E%3Ccircle cx='296' cy='336' r='11'/%3E%3Ccircle cx='152' cy='372' r='11'/%3E%3Ccircle cx='224' cy='372' r='11'/%3E%3Ccircle cx='296' cy='372' r='11'/%3E%3C/g%3E%3C/svg%3E"
     />
-    <link rel="stylesheet" href="styles.css?v=20260819011906" />
+    <link rel="stylesheet" href="styles.css?v=20260819012548" />
   </head>
   <body>
     <a class="skip-link" href="#grid">Skip to products</a>
@@ -191,12 +191,27 @@
              putting it under them buried it. -->
         <div class="facet">
           <label class="facet__title" for="sort-by">Sort</label>
+          <!-- "Random" is the label for the default order. The order itself is
+               a stable brand mix, the same on every load, which is what lets a
+               shared link open on what the sender saw. The value stays
+               "curated" so links sent before the rename still resolve. -->
           <select class="drawer__select" id="sort-by">
-            <option value="curated">Curated</option>
+            <option value="curated">Random</option>
             <option value="price-asc">Price low to high</option>
             <option value="price-desc">Price high to low</option>
+            <option value="name-asc">Product A to Z</option>
+            <option value="brand-asc">Brand A to Z</option>
+            <option value="color-asc">Color A to Z</option>
           </select>
         </div>
+
+        <!-- Type sits directly under Sort. It is seven entries that do not grow,
+             where Brand and Color are long lists that collapse behind Show
+             more, so leading with it keeps the top of the drawer readable. -->
+        <fieldset class="facet">
+          <legend class="facet__title">Type</legend>
+          <div class="facet__options" id="facet-type"></div>
+        </fieldset>
 
         <fieldset class="facet">
           <legend class="facet__title">Brand</legend>
@@ -204,12 +219,7 @@
         </fieldset>
 
         <fieldset class="facet">
-          <legend class="facet__title">Type</legend>
-          <div class="facet__options" id="facet-type"></div>
-        </fieldset>
-
-        <fieldset class="facet">
-          <legend class="facet__title">Colour</legend>
+          <legend class="facet__title">Color</legend>
           <div class="facet__options" id="facet-color"></div>
         </fieldset>
       </div>
@@ -279,7 +289,7 @@
       </article>
     </template>
 
-    <script src="products.js?v=20260819011906"></script>
-    <script src="app.js?v=20260819011906"></script>
+    <script src="products.js?v=20260819012548"></script>
+    <script src="app.js?v=20260819012548"></script>
   </body>
 </html>

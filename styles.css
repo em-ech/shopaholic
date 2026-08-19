@@ -471,6 +471,22 @@ body.has-drawer {
   cursor: pointer;
 }
 
+/* Show more on a long facet. Reads as a control rather than a filter row, so it
+   is left aligned with the options and underlined instead of boxed. */
+.facet__more {
+  display: block;
+  margin: 0.6rem 0 0;
+  padding: 0.2rem 0;
+  border: 0;
+  border-bottom: 1px solid var(--ink);
+  background: none;
+  color: var(--ink);
+  font: inherit;
+  text-transform: uppercase;
+  letter-spacing: var(--track);
+  cursor: pointer;
+}
+
 /* The last line under the list, and the only thing below the grid now that the
    whole list renders at once. It carries the gap the pager used to hold. */
 .result-count {

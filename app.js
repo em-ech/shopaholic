@@ -10,10 +10,33 @@
   var VIEW_ALL = "all";
   var VIEW_SAVED = "saved";
 
+  // The default keeps the hash value "curated" it has always had, so any link
+  // already sent still resolves, even though the menu now labels it Random.
   var SORT_CURATED = "curated";
   var SORT_PRICE_ASC = "price-asc";
   var SORT_PRICE_DESC = "price-desc";
-  var SORTS = [SORT_CURATED, SORT_PRICE_ASC, SORT_PRICE_DESC];
+  var SORT_NAME_ASC = "name-asc";
+  var SORT_BRAND_ASC = "brand-asc";
+  var SORT_COLOR_ASC = "color-asc";
+  var SORTS = [
+    SORT_CURATED,
+    SORT_PRICE_ASC,
+    SORT_PRICE_DESC,
+    SORT_NAME_ASC,
+    SORT_BRAND_ASC,
+    SORT_COLOR_ASC,
+  ];
+
+  // The three alphabetical sorts. Each names the field it reads and a second
+  // field to settle ties, so two pieces of the same brand do not land in an
+  // order that changes between renders.
+  var ALPHABETICAL = {};
+  ALPHABETICAL[SORT_NAME_ASC] = { field: "name", tiebreak: "brand" };
+  ALPHABETICAL[SORT_BRAND_ASC] = { field: "brand", tiebreak: "name" };
+  // Colour sorts on the family, not the colourway as written, so every black
+  // sits in one run instead of Anthracite landing between Almond and Beach
+  // pebble. Within a family the colourway settles it.
+  ALPHABETICAL[SORT_COLOR_ASC] = { field: "colorFamily", tiebreak: "color" };
 
   // How many products sit across a row, once the screen is wide enough to have
   // a say. Narrower than that and the layout decides for itself.
@@ -22,11 +45,17 @@
 
   // The three facets are all multi select and all behave identically, so they
   // are described once and everything else loops over this.
+  // Order here is the order they appear in the drawer. Type leads because it is
+  // seven entries that never grow, where Company and Colour are long lists.
   var FACETS = [
-    { key: "brand", field: "brand", title: "Brand" },
     { key: "type", field: "type", title: "Type" },
-    { key: "color", field: "colorFamily", title: "Colour" },
+    { key: "brand", field: "brand", title: "Brand" },
+    { key: "color", field: "colorFamily", title: "Color" },
   ];
+
+  // How many options a long facet shows before "Show more". Type is shorter
+  // than this so it never collapses and never grows a control it does not need.
+  var FACET_VISIBLE = 8;
 
   // Retailers write colourways in their own language and vocabulary. One table
   // does both jobs: "label" is what the card shows, in English, and "family" is
@@ -706,9 +735,33 @@
     return list;
   }
 
+  // localeCompare rather than < so accented names land where a reader expects.
+  // Stussy and Stuessy sort together, and a missing field sorts last instead of
+  // throwing.
+  function compareText(a, b) {
+    if (!a && !b) return 0;
+    if (!a) return 1;
+    if (!b) return -1;
+    return String(a).localeCompare(String(b), "en", { sensitivity: "base" });
+  }
+
   function sortProducts(list, sort) {
     if (sort === SORT_CURATED) return mixBrands(list);
+
+    var alpha = ALPHABETICAL[sort];
     var sorted = list.slice();
+
+    if (alpha) {
+      sorted.sort(function (a, b) {
+        return (
+          compareText(a[alpha.field], b[alpha.field]) ||
+          compareText(a[alpha.tiebreak], b[alpha.tiebreak]) ||
+          compareText(a.id, b.id)
+        );
+      });
+      return sorted;
+    }
+
     sorted.sort(function (a, b) {
       return sort === SORT_PRICE_ASC
         ? a.baseValue - b.baseValue
@@ -898,7 +951,19 @@
 
     facet.node.textContent = "";
 
-    options.forEach(function (option) {
+    // Brand runs to fifty entries and Color to twenty, so a long facet shows a
+    // first handful and hides the rest behind Show more. Anything the visitor
+    // has ticked always stays on screen: collapsing the list must never hide a
+    // filter that is still narrowing the page.
+    var overflow = options.length - FACET_VISIBLE;
+    var collapsed = overflow > 0 && !facet.expanded;
+    var shown = collapsed
+      ? options.filter(function (option, index) {
+          return index < FACET_VISIBLE || picked.indexOf(option.value) !== -1;
+        })
+      : options;
+
+    shown.forEach(function (option) {
       var id = "facet-" + facet.key + "-" + slugify(option.value);
 
       var row = document.createElement("label");
@@ -934,6 +999,24 @@
       row.appendChild(count);
       facet.node.appendChild(row);
     });
+
+    if (overflow > 0) {
+      var toggle = document.createElement("button");
+      toggle.type = "button";
+      toggle.className = "facet__more";
+      toggle.textContent = collapsed ? "Show " + overflow + " more" : "Show less";
+      // No aria-controls: the button sits inside the very list it expands, so
+      // pointing at its own container would be a self reference.
+      toggle.setAttribute("aria-expanded", String(!collapsed));
+      toggle.addEventListener("click", function () {
+        facet.expanded = !facet.expanded;
+        // Only this facet changes, and it is a view of the drawer rather than
+        // anything the hash carries, so nothing else is re-rendered and no
+        // link is affected.
+        renderFacet(facet, base, readState()[facet.key]);
+      });
+      facet.node.appendChild(toggle);
+    }
   }
 
   function renderControls(state) {

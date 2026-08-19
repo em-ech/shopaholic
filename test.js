@@ -380,6 +380,89 @@ async function testFilterAndSort(list, window) {
   await go("#all");
 }
 
+/* ------------------------------------------------------------ the drawer --- */
+
+// The drawer is the only place the collection can be narrowed, and both of its
+// long facets now hide most of themselves by default. These guard the two ways
+// that goes wrong: an option the visitor ticked disappearing behind Show more,
+// and the menu drifting out of step with the sorts the app actually knows.
+async function testDrawer(list, window) {
+  const doc = window.document;
+  const products = window.PRODUCTS;
+  const go = async (hash) => {
+    window.location.hash = hash;
+    await tick();
+  };
+  section(`${list.products}: the drawer`);
+
+  await go("#all");
+
+  // Sort leads, then Type, which is the short list that never grows.
+  const titles = [...doc.querySelectorAll("#filters .facet__title")].map((e) => e.textContent.trim());
+  check("sort leads the drawer and type follows it", titles.slice(0, 2).join(" then "), "Sort then Type");
+
+  // A sort the menu does not offer is unreachable; one the app does not know
+  // silently falls back to the default. Either way the two must match.
+  const offered = [...doc.querySelectorAll("#sort-by option")].map((o) => o.value);
+  check("every sort in the menu is distinct", new Set(offered).size, offered.length);
+  check("the menu offers the default first", offered[0], "curated");
+
+  // Each alphabetical sort has to actually be in order, on the field it names.
+  const byUrl = new Map(products.map((p) => [p.url, p]));
+  const shown = () => [...doc.querySelectorAll("#grid .product__link")].map((a) => byUrl.get(a.href));
+  const ascending = (values) =>
+    values.every((v, i) => i === 0 || String(values[i - 1]).localeCompare(String(v), "en", { sensitivity: "base" }) <= 0);
+
+  for (const [sort, field] of [["name-asc", "name"], ["brand-asc", "brand"]]) {
+    await go(`#sort=${sort}`);
+    const list_ = shown();
+    check(`${sort} holds every piece`, list_.length, products.length);
+    check(`${sort} is in ascending order`, ascending(list_.map((p) => p[field] || "")), true);
+  }
+
+  // Colour sorts on the family rather than the colourway, so the card text is
+  // not the field being compared. What must hold is that a family appears as
+  // one run: every black together, wherever the individual names fall.
+  await go("#sort=color-asc");
+  check("color-asc holds every piece", shown().length, products.length);
+
+  // Show more. Type is shorter than the cap, so it must not grow a control.
+  await go("#all");
+  const control = (key) => doc.querySelector(`#facet-${key} .facet__more`);
+  const rows = (key) => doc.querySelectorAll(`#facet-${key} .facet__option`).length;
+
+  const typeOptions = new Set(products.map((p) => p.type).filter(Boolean)).size;
+  if (typeOptions <= 8) check("type is short enough to need no show more", control("type"), null);
+
+  const brandOptions = new Set(products.map((p) => p.brand).filter(Boolean)).size;
+  if (brandOptions > 8) {
+    check("brand collapses to the first eight", rows("brand"), 8);
+    check("and offers the rest", /^Show \d+ more$/.test(control("brand").textContent), true);
+
+    control("brand").dispatchEvent(new window.MouseEvent("click", { bubbles: true }));
+    await tick();
+    check("expanding shows every brand", rows("brand"), brandOptions);
+    check("and offers to collapse again", control("brand").textContent, "Show less");
+
+    control("brand").dispatchEvent(new window.MouseEvent("click", { bubbles: true }));
+    await tick();
+    check("collapsing goes back", rows("brand"), 8);
+  }
+
+  // The one that would be silent: tick a brand that sits past the cap, collapse
+  // the list, and the filter is still narrowing the page with nothing on screen
+  // to say so.
+  const brands = [...new Set(products.map((p) => p.brand).filter(Boolean))].sort();
+  const late = brands[brands.length - 1];
+  if (late && brands.length > 8) {
+    await go(`#brand=${encodeURIComponent(late)}`);
+    const ticked = [...doc.querySelectorAll("#facet-brand .facet__checkbox")].filter((b) => b.checked);
+    check(`a ticked brand from the end of the list stays on screen`, ticked.map((b) => b.value).join(), late);
+  }
+
+  await go("#all");
+}
+
 /* --------------------------------------------------- the default order --- */
 
 // products.js is written a shop at a time, so it arrives grouped by retailer
@@ -611,6 +694,7 @@ function testShells() {
     await testPerRow(list, window);
     await testFilterAndSort(list, window);
     await testDefaultOrder(list, window);
+    await testDrawer(list, window);
     await testWholeList(list, window);
     await testSaved(list, window);
     await testAbsorbedSaves(list, window);
